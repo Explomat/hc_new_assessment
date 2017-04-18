@@ -32,10 +32,12 @@ class HalfYearContainer extends Component {
 		const monthsLen = months ? months.length : 0;
 		return (
 			monthsLen > 0 ?
-				<div className='half-year__months'>
-					{months.map(m =>
-						<MonthContainer key={m} id={m} />
-					)}
+				<div className='half-year__months-container'>
+					<div className='half-year__months'>
+						{months.map(m =>
+							<MonthContainer key={m} id={m} />
+						)}
+					</div>
 				</div> :
 				<AlertWarning className='half-year__no-months' text='Нет данных' isClose={false} />
 		);

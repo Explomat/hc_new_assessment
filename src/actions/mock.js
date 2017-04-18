@@ -71,7 +71,7 @@ const assessment = {
 									min: 'MIN',
 									percent: '% выполнения'
 								},
-								tasks: [Task(), Task()],
+								tasks: [Task(), Task(), Task(), Task()],
 								calcs: [
 									{
 										id: 0,
