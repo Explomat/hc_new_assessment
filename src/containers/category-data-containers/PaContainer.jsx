@@ -69,7 +69,7 @@ class PaContainer extends Component {
 		const { isDisplayNewTask } = this.state;
 		return (
 			<div className='pa'>
-				<h3>{title}</h3>
+				<h4>{title}</h4>
 				<div className='tasks-container'>
 					{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
 					<div className='tasks-container__menu'>

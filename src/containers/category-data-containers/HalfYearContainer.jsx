@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PaContainer from './PaContainer';
 import MonthContainer from './MonthContainer';
 import Test from '../../components/Test';
+import { AlertWarning } from '../../components/modules/alert';
 import * as actionCreators from '../../actions';
 import { connect } from 'react-redux';
 
@@ -21,8 +22,27 @@ class HalfYearContainer extends Component {
 		this.setState({ isDisplayMonths: !isDisplayMonths });
 	}
 	
+	_renderMonths(){
+		const { isDisplayMonths } = this.state;
+		if (!isDisplayMonths){
+			return null;
+		}
+		
+		const { months } = this.props;
+		const monthsLen = months ? months.length : 0;
+		return (
+			monthsLen > 0 ?
+				<div className='half-year__months'>
+					{months.map(m =>
+						<MonthContainer key={m} id={m} />
+					)}
+				</div> :
+				<AlertWarning className='half-year__no-months' text='Нет данных' isClose={false} />
+		);
+	}
+	
 	render(){
-		const { pas, months, tests, activateTest } = this.props;
+		const { pas, tests, activateTest } = this.props;
 		const { isDisplayMonths } = this.state;
 		return (
 			<div className='half-year'>
@@ -57,13 +77,7 @@ class HalfYearContainer extends Component {
 						<i className='icon-down-open' />
 					</span>
 				}
-				{isDisplayMonths &&
-					<div className='half-year__months'>
-						{months.map(m =>
-							<MonthContainer key={m} id={m} />
-						)}
-					</div>
-				}
+				{this._renderMonths()}
 			</div>
 		);
 	}
