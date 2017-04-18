@@ -211,13 +211,12 @@ const assessment = {
 						months: [
 							{
 								id: 0,
-								isEdit: true,
 								title: 'Месяц 0',
 								
 								pas: [
 									{
 										id: getRandomArbitrary(0, 1000),
-										isEdit: true,
+										isEdit: false,
 										tasksHeader: {
 											name: 'Наименование',
 											unit: 'Ед. измерения',
@@ -249,7 +248,7 @@ const assessment = {
 								pas: [
 									{
 										id: getRandomArbitrary(0, 1000),
-										isEdit: true,
+										isEdit: false,
 										tasksHeader: {
 											name: 'Наименование',
 											unit: 'Ед. измерения',
