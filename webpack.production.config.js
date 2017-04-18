@@ -71,6 +71,7 @@ module.exports = {
 	      }
 	    }),
         new webpack.NoErrorsPlugin(),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'react',
             filename: 'react.js'

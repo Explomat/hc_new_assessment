@@ -28,7 +28,13 @@ class Confirm extends Component {
 		return (
 			<div className={classes}>
 				<div className='confirm-dialog'>
-					<button type='button' className='close-button' onClick={this.props.onClose}>&times;</button>
+					<button
+						type='button'
+						className='close-button close-button--modal'
+						onClick={this.props.onClose}
+					>
+						&times;
+					</button>
 					<Panel>
 						<PanelHeader>
 							<PanelTitle>
@@ -36,16 +42,16 @@ class Confirm extends Component {
 							</PanelTitle>
 						</PanelHeader>
 						<PanelBody>{text}</PanelBody>
-						<PanelFooter>
-							<ButtonPrimary
-								text='Да'
-								className='confirm-dialog__confirm'
-								onClick={this.handleConfirm}
-							/>
+						<PanelFooter className='clearfix'>
 							<ButtonDefault
 								text='Отмена'
 								className='confirm-dialog__cancel'
 								onClick={this.handleCancel}
+							/>
+							<ButtonPrimary
+								text='Да'
+								className='confirm-dialog__confirm'
+								onClick={this.handleConfirm}
 							/>
 						</PanelFooter>
 					</Panel>

@@ -1,10 +1,13 @@
 /* import { get } from '../utils/ajax';
 import { url } from '../config';*/
 import constants from '../constants';
+import { normalize } from 'normalizr';
+import uuid from '../utils/uuid';
 // import { info } from './appCreators';
 import {
 	getMockAssessment
 } from './mock';
+import assessmentSchema from '../schemas';
 
 export function getAssessment(){
 	return dispatch => {
@@ -14,7 +17,7 @@ export function getAssessment(){
 			const data = getMockAssessment();
 			dispatch({
 				type: constants.ASSESSMENT_GET_DATA_SUCCESS,
-				response: data
+				...normalize(data, assessmentSchema)
 			});
 		}, 300);
 		
@@ -46,76 +49,63 @@ export function getAssessment(){
 	};
 }
 
-export function removeTask0Quarters(halfIndex, quarterIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_0_QUARTERS',
-		halfIndex,
-		quarterIndex,
-		taskIndex
-	};
-}
-
-export function removeTask1(halfIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_1',
-		halfIndex,
-		taskIndex
-	};
-}
-
-export function removeTask2Year(halfIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_2_YEAR',
-		halfIndex,
-		taskIndex
-	};
-}
-
-export function removeTask2Month(halfIndex, monthIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_2_MONTH',
-		halfIndex,
-		monthIndex,
-		taskIndex
-	};
-}
-
-export function removeTask3HalfYear(halfIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_3_HALFYEAR',
-		halfIndex,
-		taskIndex
-	};
-}
-
-export function removeTask3Month(halfIndex, monthIndex, taskIndex){
-	return {
-		type: 'ASSESSMENT_REMOVE_TASK_3_MONTH',
-		halfIndex,
-		monthIndex,
-		taskIndex
-	};
-}
-
-/* export function addNewQuestion(testId, sectionId){
-	return dispatch => {
-		dispatch({
-			type: constants.TESTS_ADD_NEW_QUESTION
-		});
-		
+export function addTask(paId, task){
+	return (dispatch, getState) => {
 		setTimeout(() => {
-			const question = getMockQuestionTemplate();
+			const pa = getState().pas[paId];
 			dispatch({
-				type: constants.TESTS_ADD_NEW_QUESTION_SUCCESS,
-				question
+				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+				pa: {
+					...pa,
+					calcs: []
+				}
 			});
-			window.location.href = `#questions/new/${testId}/${sectionId}`;
+			
+			dispatch({
+				type: constants.ASSESSMENT_ADD_TASK_SUCCESS,
+				paId,
+				task: {
+					...task,
+					id: uuid(),
+					percent: 1000
+				}
+			});
 		}, 300);
 	};
 }
 
-export function addNewAnswer(){
-	return {
-		type: constants.TESTS_ADD_NEW_ANSWER
+export function removeTask(paId, taskId){
+	return (dispatch, getState) => {
+		setTimeout(() => {
+			const pa = getState().pas[paId];
+			dispatch({
+				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+				pa: {
+					...pa,
+					calcs: []
+				}
+			});
+			dispatch({
+				type: constants.ASSESSMENT_REMOVE_TASK_SUCCESS,
+				task: getState().tasks[taskId],
+				paId
+			});
+		}, 300);
 	};
-}*/
+}
+
+export function activateTest(testId){
+	return (dispatch, getState) => {
+		setTimeout(() => {
+			const { tests } = getState();
+			dispatch({
+				type: constants.ASSESSMENT_ACTIVATE_TEST_SUCCESS,
+				test: {
+					...tests[testId],
+					isAssignTest: true,
+					message: 'Тест назначен. Для его прохождения перейдите по ссылке, отправленной вам на почту.'
+				}
+			});
+		}, 300);
+	};
+}

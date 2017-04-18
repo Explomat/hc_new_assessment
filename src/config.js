@@ -35,7 +35,8 @@ const url = {
 };
 
 const dom = {
-	appId: 'app'
+	appId: 'app',
+	portalModalId: 'portalModal'
 };
 
 export { url, dom };

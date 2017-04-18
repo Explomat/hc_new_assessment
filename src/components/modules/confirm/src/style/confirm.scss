@@ -1,7 +1,7 @@
 @import '../../../vars.scss';
 
 .confirm {
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     background-color: rgba(91,91,91,.26);
@@ -26,7 +26,12 @@
 	    
 	    .confirm-dialog__confirm{
 	    	margin-right: 12px;
+            float: right;
 	    }
+        
+        .confirm-dialog__cancel{
+            float: right;
+        }
     }
 }
 
