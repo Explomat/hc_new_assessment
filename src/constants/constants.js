@@ -1,4 +1,4 @@
-import keyMirror from 'keyMirror';
+import keyMirror from 'keymirror';
 import createRemoteActions from './utils/createRemoteActions';
 import merge from 'lodash/merge';
 
