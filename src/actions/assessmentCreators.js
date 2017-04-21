@@ -1,57 +1,81 @@
-/* import { get } from '../utils/ajax';
-import { url } from '../config';*/
+import { get, post } from '../utils/ajax';
+import { url } from '../config';
 import constants from '../constants';
 import { normalize } from 'normalizr';
-import uuid from '../utils/uuid';
-// import { info } from './appCreators';
-import {
+//import uuid from '../utils/uuid';
+import { error } from './appCreators';
+
+/*import {
 	getMockAssessment
-} from './mock';
+} from './mock';*/
 import assessmentSchema from '../schemas';
 
 export function getAssessment(){
 	return dispatch => {
 		dispatch({ type: constants.ASSESSMENT_GET_DATA });
 		
-		setTimeout(() => {
+		/*setTimeout(() => {
 			const data = getMockAssessment();
 			dispatch({
 				type: constants.ASSESSMENT_GET_DATA_SUCCESS,
 				...normalize(data, assessmentSchema)
 			});
-		}, 300);
+		}, 300);*/
 		
-		/* const path = config.url.createPath({
-			server_name: 'mytests',
-			action_name: 'Tests',
-			search,
-			page,
-			order
+		const path = url.createPath({
+			server_name: 'assessment',
+			action_name: 'Assessment'
 		});
-		get(path, true)
+		get(path)
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
 				dispatch(error(data.error));
 			} else {
 				dispatch({
-					type: constants.TESTS_GET_TESTS_SUCCESS,
-					...data,
-					search,
-					page,
-					order
+					type: constants.ASSESSMENT_GET_DATA_SUCCESS,
+					...normalize(data, assessmentSchema)
 				});
 			}
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
+		});
 	};
 }
 
 export function addTask(paId, task){
 	return (dispatch, getState) => {
-		setTimeout(() => {
+		const path = url.createPath({
+			server_name: 'assessment',
+			action_name: 'AddTask'
+		});
+		post(path, { task, pa_id: paId })
+		.then(resp => JSON.parse(resp))
+		.then(data => {
+			if (data.error){
+				dispatch(error(data.error));
+			} else {
+				const pa = getState().pas[paId];
+				dispatch({
+					type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+					pa: {
+						...pa,
+						calcs: data.calcs
+					}
+				});
+				
+				dispatch({
+					type: constants.ASSESSMENT_ADD_TASK_SUCCESS,
+					paId,
+					task: data.task
+				});
+			}
+		})
+		.catch(e => {
+			dispatch(error(e.message));
+		});
+		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
@@ -70,13 +94,13 @@ export function addTask(paId, task){
 					percent: 1000
 				}
 			});
-		}, 300);
+		}, 300);*/
 	};
 }
 
 export function removeTask(paId, taskId){
 	return (dispatch, getState) => {
-		setTimeout(() => {
+		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
@@ -90,13 +114,42 @@ export function removeTask(paId, taskId){
 				task: getState().tasks[taskId],
 				paId
 			});
-		}, 300);
+		}, 300);*/
+
+		const path = url.createPath({
+			server_name: 'assessment',
+			action_name: 'RemoveTask'
+		});
+		post(path, { pa_id: paId, task_id: taskId })
+		.then(resp => JSON.parse(resp))
+		.then(data => {
+			if (data.error){
+				dispatch(error(data.error));
+			} else {
+				const pa = getState().pas[paId];
+				dispatch({
+					type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+					pa: {
+						...pa,
+						calcs: data.calcs
+					}
+				});
+				dispatch({
+					type: constants.ASSESSMENT_REMOVE_TASK_SUCCESS,
+					task: getState().tasks[taskId],
+					paId
+				});
+			}
+		})
+		.catch(e => {
+			dispatch(error(e.message));
+		});
 	};
 }
 
 export function activateTest(testId){
-	return (dispatch, getState) => {
-		setTimeout(() => {
+	return (dispatch) => {
+		/*setTimeout(() => {
 			const { tests } = getState();
 			dispatch({
 				type: constants.ASSESSMENT_ACTIVATE_TEST_SUCCESS,
@@ -106,6 +159,25 @@ export function activateTest(testId){
 					message: 'Тест назначен. Для его прохождения перейдите по ссылке, отправленной вам на почту.'
 				}
 			});
-		}, 300);
+		}, 300);*/
+		const path = url.createPath({
+			server_name: 'assessment',
+			action_name: 'ActivateTest'
+		});
+		post(path, { test_id: testId })
+		.then(resp => JSON.parse(resp))
+		.then(data => {
+			if (data.error){
+				dispatch(error(data.error));
+			} else {
+				dispatch({
+					type: constants.ASSESSMENT_ACTIVATE_TEST_SUCCESS,
+					test: data.test
+				});
+			}
+		})
+		.catch(e => {
+			dispatch(error(e.message));
+		});
 	};
 }

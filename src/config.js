@@ -3,10 +3,14 @@ import { addServer, getAll } from  './servers';
 const routerId = '6238833803725312131';
 const customBaseUrl = process.env.NODE_ENV === 'production' ? '/custom_web_template.html' : 'https://study.merlion.ru/custom_web_template.html';
 
-addServer({ id: '6322023433485303550', name: 'mytests' })
+addServer({ id: '6322023433485303550', name: 'assessment' })
 .addActions(
 	[
-		'getState'
+		'Access',
+		'Assessment',
+		'AddTask',
+		'RemoveTask',
+		'ActivateTest'
 	]
 );
 
