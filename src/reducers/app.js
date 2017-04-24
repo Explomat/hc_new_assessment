@@ -3,7 +3,7 @@ import { setSuccess, setFailure } from './utils/setState';
 
 export default function app(state = {
 	title: '',
-	access: false,
+	access: true,
 	isFetching: false,
 	errorMessage: null,
 	infoMessage: null

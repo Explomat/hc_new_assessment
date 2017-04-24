@@ -4,6 +4,7 @@ import constants from '../constants';
 import { normalize } from 'normalizr';
 //import uuid from '../utils/uuid';
 import { error } from './appCreators';
+import queryString from 'query-string';
 
 /*import {
 	getMockAssessment
@@ -22,9 +23,11 @@ export function getAssessment(){
 			});
 		}, 300);*/
 		
+		const uriParams = queryString.parse(location.search);
 		const path = url.createPath({
 			server_name: 'assessment',
-			action_name: 'Assessment'
+			action_name: 'Assessment',
+			pa_id: uriParams.pa_id
 		});
 		get(path)
 		.then(resp => JSON.parse(resp))
@@ -50,7 +53,7 @@ export function addTask(paId, task){
 			server_name: 'assessment',
 			action_name: 'AddTask'
 		});
-		post(path, { task, pa_id: paId })
+		post(path, JSON.stringify({ task, pa_id: paId }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -120,7 +123,7 @@ export function removeTask(paId, taskId){
 			server_name: 'assessment',
 			action_name: 'RemoveTask'
 		});
-		post(path, { pa_id: paId, task_id: taskId })
+		post(path, JSON.stringify({ pa_id: paId, task_id: taskId }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -164,7 +167,7 @@ export function activateTest(testId){
 			server_name: 'assessment',
 			action_name: 'ActivateTest'
 		});
-		post(path, { test_id: testId })
+		post(path, JSON.stringify({ test_id: testId }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){

@@ -10,7 +10,7 @@ module.exports = {
     },
     devtool: 'source-map',
     output: {
-        path: project.remotePath,
+        path: project.localPath,
         publicPath: '/',
         filename: 'bundle.js',
         library: '[name]'   
@@ -32,11 +32,11 @@ module.exports = {
         loaders: [
             { 
                 test: /\.woff(2)?(\?)?(\d+)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?name=fonts/[name].[ext]&limit=10000&mimetype=application/font-woff" 
+                loader: "url-loader?name=fonts/[name].[ext]&limit=65000&mimetype=application/font-woff" 
             },
             { 
                 test: /\.(ttf|eot|svg)(\?)?(\d+)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-                loader: 'file?name=fonts/[name].[ext]'
+                loader: 'file?name=fonts/[name].[ext]&limit=65000'
             },
             {
                 test: /\.css$/,
@@ -71,7 +71,6 @@ module.exports = {
 	      }
 	    }),
         new webpack.NoErrorsPlugin(),
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'react',
             filename: 'react.js'

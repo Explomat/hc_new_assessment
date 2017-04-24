@@ -37,11 +37,11 @@ class NewTask extends Component {
 			fields: {
 				name: '',
 				unit: '',
-				weight: '',
-				min: '',
-				targ: '',
-				max: '',
-				fact: '',
+				weight: 0,
+				min: 0,
+				targ: 0,
+				max: 0,
+				fact: 0,
 				percent: 0,
 				comment: ''
 			},
@@ -95,11 +95,11 @@ class NewTask extends Component {
 							switch (k){
 								case 'name':
 									return (
-										<TextView
+										<TextAreaView
 											key={index}
 											value={name}
 											placeholder={tasksHeader.name}
-											onChange={this.handleChangeField.bind(this, 'name')}
+											onChange={(val) => this.handleChangeField('name', (val || ''))}
 										/>
 									);
 								case 'unit':
@@ -108,7 +108,7 @@ class NewTask extends Component {
 											key={index}
 											value={unit}
 											placeholder={tasksHeader.unit}
-											onChange={this.handleChangeField.bind(this, 'unit')}
+											onChange={(val) => this.handleChangeField('unit', (val || ''))}
 										/>
 									);
 								case 'weight':
@@ -117,7 +117,7 @@ class NewTask extends Component {
 											key={index}
 											value={weight}
 											title={tasksHeader.weight}
-											onChange={this.handleChangeField.bind(this, 'weight')}
+											onChange={(val) => this.handleChangeField('weight', (val || 0))}
 											className='form-control'
 										/>
 									);
@@ -127,7 +127,7 @@ class NewTask extends Component {
 											key={index}
 											value={min}
 											title={tasksHeader.min}
-											onChange={this.handleChangeField.bind(this, 'min')}
+											onChange={(val) => this.handleChangeField('min', (val || 0))}
 											className='form-control'
 										/>
 									);
@@ -137,7 +137,7 @@ class NewTask extends Component {
 											key={index}
 											value={targ}
 											title={tasksHeader.targ}
-											onChange={this.handleChangeField.bind(this, 'targ')}
+											onChange={(val) => this.handleChangeField('targ', (val || 0))}
 											className='form-control'
 										/>
 									);
@@ -147,7 +147,7 @@ class NewTask extends Component {
 											key={index}
 											value={max}
 											title={tasksHeader.max}
-											onChange={this.handleChangeField.bind(this, 'max')}
+											onChange={(val) => this.handleChangeField('max', (val || 0))}
 											className='form-control'
 										/>
 									);
@@ -157,7 +157,7 @@ class NewTask extends Component {
 											key={index}
 											value={fact}
 											title={tasksHeader.fact}
-											onChange={this.handleChangeField.bind(this, 'fact')}
+											onChange={(val) => this.handleChangeField('fact', (val || 0))}
 											className='form-control'
 										/>
 									);
@@ -167,7 +167,7 @@ class NewTask extends Component {
 											key={index}
 											value={comment}
 											placeholder={tasksHeader.comment}
-											onChange={this.handleChangeField.bind(this, 'comment')}
+											onChange={(val) => this.handleChangeField('comment', (val || 0))}
 										/>
 									);
 								default:

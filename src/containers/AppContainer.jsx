@@ -6,6 +6,20 @@ import { dom } from '../config';
 // import cx from 'classnames';
 
 class AppContainer extends Component {
+
+	_changeStyles(){
+		$(`#${dom.wtZoneMain}`)
+			.css({
+				marginRight: '0px',
+				marginLeft: '0px'
+			});
+		$(`#${dom.wtZoneRight}`)
+			.css({ display: 'none' });
+	}
+
+	componentDidMount(){
+		this._changeStyles();
+	}
 	
 	render(){
 		const {
