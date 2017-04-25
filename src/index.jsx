@@ -25,9 +25,6 @@ const store = createStore(
   applyMiddleware(...middleware)
 );
 
-store.dispatch(getAccess());
-
-
 ReactDOM.render(
 	<Provider store={store}>
 		<AppContainer>
