@@ -156,26 +156,29 @@
 						width: 30%;
 					}
 				}
-				.task__delete-button{
-					width: 20px;
-					cursor: pointer;
-					color: #a8a8a8;
-					border-top: 1px solid #D3D3D3;
-    				border-right: 1px solid #D3D3D3;
-    				border-bottom: 1px solid #D3D3D3;
-					
-					&:hover {
-						color: #444;
+				.task__check-container{
+					width: 30px;
+    				border-top: 1px solid #D3D3D3;
+    				
+					.task__check {
+						margin-bottom: 0px;
 					}
 				}
 			}
 		}
 		.tasks-container__menu {
-		    display: inline-block;
-		    float: right;
 		    position: relative;
-		    right: 23px;
-		    top: 12px;
+			top: 12px;
+			
+		    .tasks-container__edit{
+		    	display: inline-block;
+			    float: right;
+		    	display: inline-block;
+		    	
+		    	.tasks-container__edit-button{
+		    		margin-right: 12px;
+		    	}
+		    }
 		}
 	}
 	.calcs{

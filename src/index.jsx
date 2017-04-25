@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import { getAccess } from './actions';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import AppContainer from './containers/AppContainer';

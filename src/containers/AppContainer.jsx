@@ -7,18 +7,25 @@ import { dom } from '../config';
 
 class AppContainer extends Component {
 
+	componentDidMount(){
+		this._changeStyles();
+	}
+	
 	_changeStyles(){
-		$(`#${dom.wtZoneMain}`)
+		const mainZoneNode = document.getElementById(dom.wtZoneMain);
+		const rightZoneNode = document.getElementById(dom.wtZoneRight);
+		if (mainZoneNode && rightZoneNode){
+			mainZoneNode.style.marginRight = '0px';
+			mainZoneNode.style.marginLeft = '0px';
+			rightZoneNode.state.display = 'none';
+		}
+		/*$(`#${dom.wtZoneMain}`)
 			.css({
 				marginRight: '0px',
 				marginLeft: '0px'
 			});
 		$(`#${dom.wtZoneRight}`)
-			.css({ display: 'none' });
-	}
-
-	componentDidMount(){
-		this._changeStyles();
+			.css({ display: 'none' });*/
 	}
 	
 	render(){

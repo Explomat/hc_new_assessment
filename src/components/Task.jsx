@@ -1,68 +1,194 @@
 import React, { Component } from 'react';
-import Portal from './modules/portal';
-import Confirm from './modules/confirm';
-import { dom } from '../config';
+import Modal from './modules/modal';
+import { TextView, TextAreaView } from './modules/text-label';
+import { AlertDanger } from './modules/alert';
+import InputReal from './modules/input-real';
 
 class Task extends Component {
 	
 	constructor(props){
 		super(props);
 		
-		this.handleToggleConfirm = this.handleToggleConfirm.bind(this);
-		this.handleRemoveTask = this.handleRemoveTask.bind(this);
-		this._firstCol = () => {
-			const firstColName = Object.keys(this.props)[1];
-			return this.props[firstColName];
+		this.handleSave = this.handleSave.bind(this);
+		this.handleChangeField = this.handleChangeField.bind(this);
+		this.handleCloseError = this.handleCloseError.bind(this);
+		
+		/*this._checkFields = () => {
+			const { fields } = this.state;
+			const { header } = this.props;
+			return Object.keys(fields)
+				.filter(k => (k in header) && fields[k])
+				.length === Object.keys(header).length;
+		};*/
+		
+		this._checkFields = () => {
+			const { fields } = this.state;
+			const { tasksHeader } = this.props;
+			return Object.keys(fields)
+				.filter(k => (k in tasksHeader) && fields[k].toString().trim() !== '')
+				.length === Object.keys(tasksHeader).length;
 		};
 		
+		const { id, name, unit, weight, min, targ, max, fact, percent, comment } = this.props.task || {};
 		this.state = {
-			isDisplayConfirm: false
+			fields: {
+				id: id || null,
+				name: name || '',
+				unit: unit || '',
+				weight: weight || 0,
+				min: min || 0,
+				targ: targ || 0,
+				max: max ||  0,
+				fact: fact || 0,
+				percent: percent || 0,
+				comment: comment || ''
+			},
+			error: null
 		};
 	}
 	
-	handleToggleConfirm(){
-		this.setState({ isDisplayConfirm: !this.state.isDisplayConfirm });
+	handleSave(){
+		const { onSave } = this.props;
+		const isFilled = this._checkFields();
+		if (!isFilled){
+			this.setState({
+				error: 'Необходимо заполнить все поля!'
+			});
+		} else if (onSave && isFilled) {
+			onSave(this.state.fields);
+		}
 	}
 	
-	handleRemoveTask(isConfirm){
-		const { id, onRemove } = this.props;
-		if (onRemove && isConfirm){
-			onRemove(id);
-		}
-		this.handleToggleConfirm();
+	handleChangeField(key, val){
+		const { fields } = this.state;
+		const newFields = { ...fields };
+		newFields[key] = val;
+		//newFields.percent = this._calcPercent();
+		this.setState({
+			fields: newFields
+		});
+	}
+	
+	handleCloseError(){
+		this.setState({ error: null });
 	}
 	
 	render(){
 		const {
 			tasksHeader,
-			isEdit
+			title
 		} = this.props;
-		const { isDisplayConfirm } = this.state;
+		const { fields, error } = this.state;
+		const { name, unit, weight, min, targ, max, fact, comment } = fields;
 		return (
-			<tr className='task'>
-				{Object.keys(this.props).map((k, index) => {
-					if (k in tasksHeader){
-						return <td key={index} className={`task__name task__name--${k}`}>{this.props[k]}</td>;
-					}
-					return null;
-				})}
-				{isEdit &&
-					<td className='task__delete-button'>
-						<i className='icon-trash-1' onClick={this.handleToggleConfirm}/>
-					</td>
-				}
-				<Portal nodeId={dom.portalModalId}>
-					{isDisplayConfirm &&
-						<Confirm
-							text={`Вы действительно хотите удалить - \"${this._firstCol()}\"`}
-							onConfirm={this.handleRemoveTask}
-							onClose={this.handleToggleConfirm}
-						/>
-					}
-				</Portal>
-			</tr>
+			<Modal
+				title={title}
+				footerButtonText='Сохранить'
+				onClose={this.props.onClose}
+				onSave={this.handleSave}
+			>
+				{error && <AlertDanger text={error} onClose={this.handleCloseError}/>}
+				<div className='new-task'>
+					{Object.keys(fields).map((k, index) => {
+						if (k in tasksHeader){
+							switch (k){
+								case 'name':
+									return (
+										<TextAreaView
+											key={index}
+											value={name}
+											placeholder={tasksHeader.name}
+											onChange={(val) => this.handleChangeField('name', (val || ''))}
+										/>
+									);
+								case 'unit':
+									return (
+										<TextView
+											key={index}
+											value={unit}
+											placeholder={tasksHeader.unit}
+											onChange={(val) => this.handleChangeField('unit', (val || ''))}
+										/>
+									);
+								case 'weight':
+									return (
+										<InputReal
+											key={index}
+											value={weight}
+											title={tasksHeader.weight}
+											onChange={(val) => this.handleChangeField('weight', (val || 0))}
+											className='form-control'
+										/>
+									);
+								case 'min':
+									return (
+										<InputReal
+											key={index}
+											value={min}
+											title={tasksHeader.min}
+											onChange={(val) => this.handleChangeField('min', (val || 0))}
+											className='form-control'
+										/>
+									);
+								case 'targ':
+									return (
+										<InputReal
+											key={index}
+											value={targ}
+											title={tasksHeader.targ}
+											onChange={(val) => this.handleChangeField('targ', (val || 0))}
+											className='form-control'
+										/>
+									);
+								case 'max':
+									return (
+										<InputReal
+											key={index}
+											value={max}
+											title={tasksHeader.max}
+											onChange={(val) => this.handleChangeField('max', (val || 0))}
+											className='form-control'
+										/>
+									);
+								case 'fact':
+									return (
+										<InputReal
+											key={index}
+											value={fact}
+											title={tasksHeader.fact}
+											onChange={(val) => this.handleChangeField('fact', (val || 0))}
+											className='form-control'
+										/>
+									);
+								case 'comment':
+									return (
+										<TextAreaView
+											key={index}
+											value={comment}
+											placeholder={tasksHeader.comment}
+											onChange={(val) => this.handleChangeField('comment', (val || 0))}
+										/>
+									);
+								default:
+									return null;
+							}
+						}
+						return null;
+					})}
+				</div>
+			</Modal>
 		);
 	}
 }
+
+Task.defaultProps = {
+	title: 'Добавление задачи'
+};
+
+Task.propTypes = {
+	tasksHeader: React.PropTypes.object,
+	title: React.PropTypes.string,
+	footerButtonText: React.PropTypes.string
+};
 
 export default Task;

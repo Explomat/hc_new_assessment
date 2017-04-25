@@ -4,8 +4,8 @@ import constants from '../constants';
 import { normalize } from 'normalizr';
 import uuid from '../utils/uuid';
 
-import { error } from './appCreators';
-import queryString from 'query-string';
+//import { error } from './appCreators';
+//import queryString from 'query-string';
 
 import {
 	getMockAssessment
@@ -103,7 +103,57 @@ export function addTask(paId, task){
 	};
 }
 
-export function removeTask(paId, taskId){
+export function editTask(paId, task){
+	return (dispatch, getState) => {
+		/*const path = url.createPath({
+			server_name: 'assessment',
+			action_name: 'AddTask'
+		});
+		post(path, JSON.stringify({ task, pa_id: paId }))
+		.then(resp => JSON.parse(resp))
+		.then(data => {
+			if (data.error){
+				dispatch(error(data.error));
+			} else {
+				const pa = getState().pas[paId];
+				dispatch({
+					type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+					pa: {
+						...pa,
+						calcs: data.calcs
+					}
+				});
+				
+				dispatch({
+					type: constants.ASSESSMENT_ADD_TASK_SUCCESS,
+					paId,
+					task: data.task
+				});
+			}
+		})
+		.catch(e => {
+			dispatch(error(e.message));
+		});*/
+		setTimeout(() => {
+			const pa = getState().pas[paId];
+			dispatch({
+				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
+				pa: {
+					...pa,
+					calcs: []
+				}
+			});
+			
+			dispatch({
+				type: constants.ASSESSMENT_EDIT_TASK_SUCCESS,
+				paId,
+				task
+			});
+		}, 300);
+	};
+}
+
+export function removeTasks(paId){
 	return (dispatch, getState) => {
 		setTimeout(() => {
 			const pa = getState().pas[paId];
@@ -115,8 +165,7 @@ export function removeTask(paId, taskId){
 				}
 			});
 			dispatch({
-				type: constants.ASSESSMENT_REMOVE_TASK_SUCCESS,
-				task: getState().tasks[taskId],
+				type: constants.ASSESSMENT_REMOVE_TASKS_SUCCESS,
 				paId
 			});
 		}, 300);
@@ -184,5 +233,13 @@ export function activateTest(testId){
 		.catch(e => {
 			dispatch(error(e.message));
 		});*/
+	};
+}
+
+export function toggleSelectTask(taskId, val){
+	return {
+		type: constants.ASSESSMENT_TOGGLE_SELECT_TASK,
+		taskId,
+		val
 	};
 }

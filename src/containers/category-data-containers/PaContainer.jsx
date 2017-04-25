@@ -1,35 +1,66 @@
 import React, { Component } from 'react';
+import ViewTask from '../../components/ViewTask';
 import Task from '../../components/Task';
-import NewTask from '../../components/NewTask';
-import { ButtonDefault } from '../../components/modules/button';
+import { ButtonDefault, ButtonPrimary } from '../../components/modules/button';
 import { AlertInfo } from '../../components/modules/alert';
+import Portal from '../../components/modules/portal';
+import Confirm from '../../components/modules/confirm';
+
+import { getVisibleTasksByPa, getCheckedTasksByPa } from '../../selectors';
+import { dom } from '../../config';
 import * as actionCreators from '../../actions';
 import { connect } from 'react-redux';
-import { getVisibleTasksByPa } from '../../selectors';
 
 class PaContainer extends Component {
 	
 	constructor(props){
 		super(props);
 		
+		this.handleToggleConfirm = this.handleToggleConfirm.bind(this);
+		this.handleToggleSelectTask = this.handleToggleSelectTask.bind(this);
 		this.handleToogleDisplayNewTask = this.handleToogleDisplayNewTask.bind(this);
-		this.handleRemoveTask = this.handleRemoveTask.bind(this);
+		this.handleToggleEditTask = this.handleToggleEditTask.bind(this);
+		this.handleRemoveTasks = this.handleRemoveTasks.bind(this);
 		this.handleAddNewTask = this.handleAddNewTask.bind(this);
+		this.handleEditTask = this.handleEditTask.bind(this);
 		
 		this.state = {
-			isDisplayNewTask: false
+			isDisplayNewTask: false,
+			isDisplayEditTask: false,
+			isDisplayConfirm: false
 		};
 	}
 	
-	handleRemoveTask(taskId){
-		const { id, removeTask } = this.props;
-		removeTask(id, taskId);
+	handleToggleConfirm(){
+		this.setState({ isDisplayConfirm: !this.state.isDisplayConfirm });
+	}
+	
+	handleToggleSelectTask(taskId, val){
+		this.props.toggleSelectTask(taskId, val);
+	}
+	
+	handleRemoveTasks(isConfirm){
+		const { id, removeTasks } = this.props;
+		if (isConfirm){
+			removeTasks(id);
+		}
+		this.handleToggleConfirm();
 	}
 	
 	handleAddNewTask(task){
 		const { id, addTask } = this.props;
 		this.handleToogleDisplayNewTask();
 		addTask(id, task);
+	}
+	
+	handleEditTask(task){
+		const { id, editTask } = this.props;
+		this.handleToggleEditTask();
+		editTask(id, task);
+	}
+	
+	handleToggleEditTask(){
+		this.setState({ isDisplayEditTask: !this.state.isDisplayEditTask });
 	}
 	
 	handleToogleDisplayNewTask(){
@@ -42,6 +73,7 @@ class PaContainer extends Component {
 			<table className='tasks'>
 				<thead>
 					<tr>
+						<th />
 						{Object.values(tasksHeader).map((h, index) => {
 							return <th key={index} className='tasks__header-name'>{h}</th>;
 						})}
@@ -50,12 +82,12 @@ class PaContainer extends Component {
 				<tbody>
 					{tasks.map((t, index) => {
 						return (
-							<Task
+							<ViewTask
 								key={index}
 								{...t}
 								isEdit={isEdit && t.isEdit}
 								tasksHeader={tasksHeader}
-								onRemove={this.handleRemoveTask}
+								onToggleSelect={this.handleToggleSelectTask}
 							/>
 						);
 					})}
@@ -65,21 +97,49 @@ class PaContainer extends Component {
 	}
 	
 	render(){
-		const { isEdit, title, tasksHeader, tasks, calcs } = this.props;
-		const { isDisplayNewTask } = this.state;
+		const { isEdit, title, tasksHeader, tasks, checkedTasksCount, calcs, editedTask } = this.props;
+		const { isDisplayNewTask, isDisplayEditTask, isDisplayConfirm } = this.state;
 		return (
 			<div className='pa'>
 				<h4>{title}</h4>
 				<div className='tasks-container'>
 					{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
-					<div className='tasks-container__menu'>
-						{isEdit && <ButtonDefault text='Добавить задачу' onClick={this.handleToogleDisplayNewTask} />}
-					</div>
+					{isEdit &&
+						<div className='tasks-container__menu'>
+							<div className='tasks-container__edit'>
+								{(checkedTasksCount === 1) &&
+									<ButtonPrimary
+										text='Редактировать'
+										onClick={this.handleToggleEditTask}
+										className='tasks-container__edit-button'
+									/>
+								}
+								{(checkedTasksCount > 0) &&
+									<ButtonDefault
+										text='Удалить'
+										onClick={this.handleToggleConfirm}
+										className='tasks-container__delete-button'
+									/>
+								}
+							</div>
+							<ButtonDefault text='Добавить' onClick={this.handleToogleDisplayNewTask} />
+						</div>
+					}
 					{isDisplayNewTask &&
-						<NewTask
+						<Task
 							tasksHeader={tasksHeader}
 							onClose={this.handleToogleDisplayNewTask}
 							onSave={this.handleAddNewTask}
+						/>
+					}
+					{isDisplayEditTask &&
+						<Task
+							tasksHeader={tasksHeader}
+							title='Редактирование задачи'
+							footerButtonText='Сохранить'
+							onClose={this.handleToggleEditTask}
+							onSave={this.handleEditTask}
+							task={editedTask}
 						/>
 					}
 				</div>
@@ -91,15 +151,28 @@ class PaContainer extends Component {
 						</span>
 					)}
 				</div>
+				<Portal nodeId={dom.portalModalId}>
+					{isDisplayConfirm &&
+						<Confirm
+							text='Вы действительно хотите удалить выбранные задачи?'
+							onConfirm={this.handleRemoveTasks}
+							onClose={this.handleToggleConfirm}
+						/>
+					}
+				</Portal>
 			</div>
 		);
 	}
 }
 
 function mapStateToProps(state, ownProps) {
+	const checkedTasks = getCheckedTasksByPa(state, ownProps);
+	const editedTask = checkedTasks[0];
 	return {
 		...state.pas[ownProps.id],
-		tasks: getVisibleTasksByPa(state, ownProps)
+		tasks: getVisibleTasksByPa(state, ownProps),
+		checkedTasksCount: checkedTasks.length,
+		editedTask
 	};
 }
 

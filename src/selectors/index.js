@@ -7,3 +7,8 @@ export const getVisibleTasksByPa = createSelector(
 	[getPa, getTasks],
 	(pa, tasks) => pa.tasks.map(t => tasks[t]).filter(t => !t.isRemoved)
 );
+
+export const getCheckedTasksByPa = createSelector(
+	[getPa, getTasks],
+	(pa, tasks) => pa.tasks.map(t => tasks[t]).filter(t => (t.checked && !t.isRemoved))
+);
