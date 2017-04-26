@@ -86,6 +86,7 @@ class Task extends Component {
 				footerButtonText='Сохранить'
 				onClose={this.props.onClose}
 				onSave={this.handleSave}
+				className='new-task__container'
 			>
 				{error && <AlertDanger text={error} onClose={this.handleCloseError}/>}
 				<div className='new-task'>
@@ -94,80 +95,88 @@ class Task extends Component {
 							switch (k){
 								case 'name':
 									return (
-										<TextAreaView
-											key={index}
-											value={name}
-											placeholder={tasksHeader.name}
-											onChange={(val) => this.handleChangeField('name', (val || ''))}
-										/>
+										<div key={index} className='new-task__name'>
+											<TextAreaView
+												value={name}
+												placeholder={tasksHeader.name}
+												onChange={(val) => this.handleChangeField('name', (val || ''))}
+											/>
+										</div>
 									);
 								case 'unit':
 									return (
-										<TextView
-											key={index}
-											value={unit}
-											placeholder={tasksHeader.unit}
-											onChange={(val) => this.handleChangeField('unit', (val || ''))}
-										/>
+										<div key={index} className='new-task__unit'>
+											<TextView
+												value={unit}
+												placeholder={tasksHeader.unit}
+												onChange={(val) => this.handleChangeField('unit', (val || ''))}
+											/>
+										</div>
 									);
 								case 'weight':
 									return (
-										<InputReal
-											key={index}
-											value={weight}
-											title={tasksHeader.weight}
-											onChange={(val) => this.handleChangeField('weight', (val || 0))}
-											className='form-control'
-										/>
+										<div key={index} className='new-task__weight'>
+											<InputReal
+												value={weight}
+												title={tasksHeader.weight}
+												onChange={(val) => this.handleChangeField('weight', (val || 0))}
+												className='form-control'
+											/>
+										</div>
 									);
 								case 'min':
 									return (
-										<InputReal
-											key={index}
-											value={min}
-											title={tasksHeader.min}
-											onChange={(val) => this.handleChangeField('min', (val || 0))}
-											className='form-control'
-										/>
+										<div key={index} className='new-task__min'>
+											<InputReal
+												value={min}
+												title={tasksHeader.min}
+												onChange={(val) => this.handleChangeField('min', (val || 0))}
+												className='form-control'
+											/>
+										</div>
 									);
 								case 'targ':
 									return (
-										<InputReal
-											key={index}
-											value={targ}
-											title={tasksHeader.targ}
-											onChange={(val) => this.handleChangeField('targ', (val || 0))}
-											className='form-control'
-										/>
+										<div key={index} className='new-task__targ'>
+											<InputReal
+												value={targ}
+												title={tasksHeader.targ}
+												onChange={(val) => this.handleChangeField('targ', (val || 0))}
+												className='form-control'
+											/>
+										</div>
 									);
 								case 'max':
 									return (
-										<InputReal
-											key={index}
-											value={max}
-											title={tasksHeader.max}
-											onChange={(val) => this.handleChangeField('max', (val || 0))}
-											className='form-control'
-										/>
+										<div key={index} className='new-task__max'>
+											<InputReal
+												value={max}
+												title={tasksHeader.max}
+												onChange={(val) => this.handleChangeField('max', (val || 0))}
+												className='form-control'
+											/>
+										</div>
 									);
 								case 'fact':
 									return (
-										<InputReal
-											key={index}
-											value={fact}
-											title={tasksHeader.fact}
-											onChange={(val) => this.handleChangeField('fact', (val || 0))}
-											className='form-control'
-										/>
+										<div key={index} className='new-task__fact'>
+											<InputReal
+												value={fact}
+												title={tasksHeader.fact}
+												onChange={(val) => this.handleChangeField('fact', (val || 0))}
+												className='form-control'
+											/>
+										</div>
 									);
 								case 'comment':
 									return (
-										<TextAreaView
-											key={index}
-											value={comment}
-											placeholder={tasksHeader.comment}
-											onChange={(val) => this.handleChangeField('comment', (val || 0))}
-										/>
+										<div key={index} className='new-task__comment'>
+											<TextAreaView
+												value={comment}
+												placeholder={tasksHeader.comment}
+												onChange={(val) => this.handleChangeField('comment', (val || 0))}
+											/>
+										</div>
 									);
 								default:
 									return null;

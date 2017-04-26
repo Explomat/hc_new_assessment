@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PaContainer from './PaContainer';
 import MonthContainer from './MonthContainer';
-import Test from '../../components/Test';
+//import Test from '../../components/Test';
 import { AlertWarning } from '../../components/modules/alert';
 import * as actionCreators from '../../actions';
 import { connect } from 'react-redux';
@@ -44,10 +44,10 @@ class HalfYearContainer extends Component {
 	}
 	
 	render(){
-		const { pas, tests, activateTest } = this.props;
+		const { pas/*, tests, activateTest*/ } = this.props;
 		const { isDisplayMonths } = this.state;
 		return (
-			<div className='half-year'>
+			<div className='half-year clearfix'>
 				<div className='half-year__year'>
 					<div className='pas'>
 						{pas.map(p =>
@@ -57,10 +57,10 @@ class HalfYearContainer extends Component {
 							/>
 						)}
 					</div>
-					{tests && tests.length > 0 && <div className='half-year__tests'>
+					{/*tests && tests.length > 0 && <div className='half-year__tests'>
 						<div>Тестирование</div>
 						{tests.map((t, index) => <Test key={index} {...t} onActivate={activateTest}/>)}
-					</div>}
+					</div>*/}
 					
 				</div>
 				{isDisplayMonths ?
