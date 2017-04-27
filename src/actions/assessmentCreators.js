@@ -1,30 +1,30 @@
-//import { get, post } from '../utils/ajax';
-//import { url } from '../config';
+import { get, post } from '../utils/ajax';
+import { url } from '../config';
 import constants from '../constants';
 import { normalize } from 'normalizr';
-import uuid from '../utils/uuid';
+//import uuid from '../utils/uuid';
+import toArray from 'lodash/toArray';
 
-//import { error } from './appCreators';
-//import queryString from 'query-string';
+import { error } from './appCreators';
+import queryString from 'query-string';
 
-import {
+/*import {
 	getMockAssessment
-} from './mock';
+} from './mock';*/
 import assessmentSchema from '../schemas';
 
 export function getAssessment(){
 	return dispatch => {
 		dispatch({ type: constants.ASSESSMENT_GET_DATA });
 		
-		setTimeout(() => {
+		/*setTimeout(() => {
 			const data = getMockAssessment();
 			dispatch({
 				type: constants.ASSESSMENT_GET_DATA_SUCCESS,
 				...normalize(data, assessmentSchema)
 			});
-		}, 300);
+		}, 300);*/
 		
-		/*const path = url.createPath({
 		const uriParams = queryString.parse(location.search);
 		const path = url.createPath({
 			server_name: 'assessment',
@@ -45,13 +45,13 @@ export function getAssessment(){
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
+		});
 	};
 }
 
 export function addTask(paId, task){
 	return (dispatch, getState) => {
-		/*const path = url.createPath({
+		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'AddTask'
 		});
@@ -79,8 +79,8 @@ export function addTask(paId, task){
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
-		setTimeout(() => {
+		});
+		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
@@ -99,13 +99,13 @@ export function addTask(paId, task){
 					percent: 1000
 				}
 			});
-		}, 300);
+		}, 300);*/
 	};
 }
 
 export function editTask(paId, task){
 	return (dispatch, getState) => {
-		/*const path = url.createPath({
+		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'AddTask'
 		});
@@ -133,8 +133,8 @@ export function editTask(paId, task){
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
-		setTimeout(() => {
+		});
+		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
@@ -149,13 +149,13 @@ export function editTask(paId, task){
 				paId,
 				task
 			});
-		}, 300);
+		}, 300);*/
 	};
 }
 
 export function removeTasks(paId){
 	return (dispatch, getState) => {
-		setTimeout(() => {
+		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
@@ -168,13 +168,22 @@ export function removeTasks(paId){
 				type: constants.ASSESSMENT_REMOVE_TASKS_SUCCESS,
 				paId
 			});
-		}, 300);
-
-		/*const path = url.createPath({
+		}, 300);*/
+	
+		
+		const path = url.createPath({
 			server_name: 'assessment',
-			action_name: 'RemoveTask'
+			action_name: 'RemoveTasks'
 		});
-		post(path, JSON.stringify({ pa_id: paId, task_id: taskId }))
+		const { tasks } = getState();
+		const checkedTasks = toArray(tasks).filter(t => t.checked).map(t => {
+			return {
+				...t,
+				isRemoved: true
+			};
+		});
+		
+		post(path, JSON.stringify({ pa_id: paId, tasks: checkedTasks }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -190,20 +199,22 @@ export function removeTasks(paId){
 				});
 				dispatch({
 					type: constants.ASSESSMENT_REMOVE_TASK_SUCCESS,
-					task: getState().tasks[taskId],
-					paId
+					removedTasks: checkedTasks.reduce((pv, cv, i, arr) => {
+						pv[cv.id] = arr[i];
+						return pv;
+					})
 				});
 			}
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
+		});
 	};
 }
 
 export function activateTest(testId){
-	return (dispatch, getState) => {
-		setTimeout(() => {
+	return (dispatch) => {
+		/*setTimeout(() => {
 			const { tests } = getState();
 			dispatch({
 				type: constants.ASSESSMENT_ACTIVATE_TEST_SUCCESS,
@@ -213,8 +224,8 @@ export function activateTest(testId){
 					message: 'Тест назначен. Для его прохождения перейдите по ссылке, отправленной вам на почту.'
 				}
 			});
-		}, 300);
-		/*const path = url.createPath({
+		}, 300);*/
+		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'ActivateTest'
 		});
@@ -232,7 +243,7 @@ export function activateTest(testId){
 		})
 		.catch(e => {
 			dispatch(error(e.message));
-		});*/
+		});
 	};
 }
 

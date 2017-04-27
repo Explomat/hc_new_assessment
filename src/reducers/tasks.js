@@ -59,13 +59,12 @@ export default function tasks(state = {}, action) {
 		}
 		
 		case constants.ASSESSMENT_REMOVE_TASKS_SUCCESS:{
-			const newState = { ...state };
-			for (const t in newState){
-				if (newState[t].checked){
-					newState[t].isRemoved = true;
-				}
-			}
-			return newState;
+			const { removedTasks } = action;
+			
+			return {
+				...state,
+				...removedTasks
+			};
 		}
 		
 		case constants.ASSESSMENT_ADD_TASK_SUCCESS:
