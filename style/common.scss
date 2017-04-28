@@ -1,4 +1,17 @@
 
+.container {
+    width: auto !important;
+}
+
+#wt-zone-main {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+#wt-zone-right {
+    display: none !important;
+}
+
 .app {
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
     position: relative;

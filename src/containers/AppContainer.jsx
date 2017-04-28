@@ -7,7 +7,7 @@ import { dom } from '../config';
 
 class AppContainer extends Component {
 
-	componentDidMount(){
+	/*componentDidMount(){
 		this._changeStyles();
 	}
 	
@@ -17,16 +17,9 @@ class AppContainer extends Component {
 		if (mainZoneNode && rightZoneNode){
 			mainZoneNode.style.marginRight = '0px';
 			mainZoneNode.style.marginLeft = '0px';
-			rightZoneNode.state.display = 'none';
+			rightZoneNode.style.display = 'none';
 		}
-		/*$(`#${dom.wtZoneMain}`)
-			.css({
-				marginRight: '0px',
-				marginLeft: '0px'
-			});
-		$(`#${dom.wtZoneRight}`)
-			.css({ display: 'none' });*/
-	}
+	}*/
 	
 	render(){
 		const {

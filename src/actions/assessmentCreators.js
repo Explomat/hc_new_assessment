@@ -107,7 +107,7 @@ export function editTask(paId, task){
 	return (dispatch, getState) => {
 		const path = url.createPath({
 			server_name: 'assessment',
-			action_name: 'AddTask'
+			action_name: 'EditTask'
 		});
 		post(path, JSON.stringify({ task, pa_id: paId }))
 		.then(resp => JSON.parse(resp))
@@ -125,7 +125,7 @@ export function editTask(paId, task){
 				});
 				
 				dispatch({
-					type: constants.ASSESSMENT_ADD_TASK_SUCCESS,
+					type: constants.ASSESSMENT_EDIT_TASK_SUCCESS,
 					paId,
 					task: data.task
 				});
@@ -198,11 +198,11 @@ export function removeTasks(paId){
 					}
 				});
 				dispatch({
-					type: constants.ASSESSMENT_REMOVE_TASK_SUCCESS,
-					removedTasks: checkedTasks.reduce((pv, cv, i, arr) => {
-						pv[cv.id] = arr[i];
+					type: constants.ASSESSMENT_REMOVE_TASKS_SUCCESS,
+					removedTasks: checkedTasks.reduce((pv, cv) => {
+						pv[cv.id] = cv;
 						return pv;
-					})
+					}, {})
 				});
 			}
 		})

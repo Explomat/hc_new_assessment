@@ -105,7 +105,7 @@ class PaContainer extends Component {
 				<div className='tasks-container'>
 					{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
 					{isEdit &&
-						<div className='tasks-container__menu'>
+						<div className='tasks-container__menu clearfix'>
 							<div className='tasks-container__edit'>
 								{(checkedTasksCount === 1) &&
 									<ButtonPrimary
@@ -122,7 +122,11 @@ class PaContainer extends Component {
 									/>
 								}
 							</div>
-							<ButtonDefault text='Добавить' onClick={this.handleToogleDisplayNewTask} />
+							<ButtonDefault
+								text='Добавить'
+								onClick={this.handleToogleDisplayNewTask}
+								className='tasks-container__add-button'
+							/>
 						</div>
 					}
 					{isDisplayNewTask &&
