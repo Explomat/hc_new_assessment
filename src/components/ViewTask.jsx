@@ -32,8 +32,8 @@ class ViewTask extends Component {
 						checked={checked}
 					/>
 				</td>
-				{Object.keys(this.props).map((k, index) => {
-					if (k in tasksHeader){
+				{Object.keys(tasksHeader).map((k, index) => {
+					if (k in this.props){
 						return <td key={index} className={`task__name task__name--${k}`}>{this.props[k]}</td>;
 					}
 					return null;
