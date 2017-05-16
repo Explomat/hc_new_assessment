@@ -7,7 +7,7 @@
     "test:watch": "npm run test -- --watch",
     "set-prod": "set NODE_ENV=production",
     "set-dev": "set NODE_ENV=development",
-    "start-dev-server": "npm run set-dev && webpack-dev-server",
+    "start-dev-server": "npm run set-dev && (webpack-dev-server --config webpack.config.js)",
     "development": "npm run set-dev && webpack --config webpack.config.js",
     "production": "npm run set-prod && webpack --config webpack.production.config.js && node pindex.js && npm run set-dev"
   },
