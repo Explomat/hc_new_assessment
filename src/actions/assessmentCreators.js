@@ -134,6 +134,7 @@ export function editTask(paId, task){
 		.catch(e => {
 			dispatch(error(e.message));
 		});
+
 		/*setTimeout(() => {
 			const pa = getState().pas[paId];
 			dispatch({
@@ -170,7 +171,6 @@ export function removeTasks(paId){
 			});
 		}, 300);*/
 	
-		
 		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'RemoveTasks'
@@ -225,6 +225,7 @@ export function activateTest(testId){
 				}
 			});
 		}, 300);*/
+
 		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'ActivateTest'

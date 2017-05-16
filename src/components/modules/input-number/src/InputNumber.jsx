@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import NumericInput from 'react-numeric-input';
+import NumericInput from '../../numeric-input';
 
 import './style/input-number.scss';
 

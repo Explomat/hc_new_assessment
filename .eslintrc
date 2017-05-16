@@ -65,8 +65,8 @@
         "curly": [2, "multi-line"],
         "default-case": 2,
         "dot-notation": [2, { "allowKeywords": true }],
-        "eqeqeq": 2,
-        "guard-for-in": 2,
+        "eqeqeq": 0,
+        "guard-for-in": 0,
         "no-alert": 1,
         "no-caller": 2,
         "no-case-declarations": 2,
@@ -90,7 +90,7 @@
         "no-new-wrappers": 2,
         "no-octal": 2,
         "no-octal-escape": 2,
-        "no-param-reassign": [2, { "props": false }],
+        "no-param-reassign": [0, { "props": false }],
         "no-proto": 2,
         "no-redeclare": 2,
         "no-script-url": 2,
@@ -113,7 +113,7 @@
         "no-var": 2,
         "object-shorthand": [2, "always"],
         "prefer-arrow-callback": 0,
-        "prefer-const": 2,
+        "prefer-const": 0,
         "prefer-spread": 2,
         "prefer-template": 0,
 
@@ -128,7 +128,7 @@
         "no-shadow": 2,
         "no-undef-init": 2,
         "no-undef": 2,
-        "no-unused-vars": 2,
+        "no-unused-vars": 0,
 
         // Node.js
         "callback-return": 2,
@@ -145,7 +145,7 @@
             "arraysInArrays": true
         }],
         "newline-after-var": 0,
-        "brace-style": [2, "1tbs"],
+        "brace-style": [0, "1tbs"],
         "camelcase": [0, { "properties": "never" }],
         "comma-spacing": [2, { "before": false, "after": true }],
         "comma-style": [2, "last"],
@@ -155,7 +155,7 @@
         "func-style": [2, "declaration", { "allowArrowFunctions": true }],
         "indent": [2, 'tab', { "SwitchCase": 1 }],
         "jsx-quotes": [2, "prefer-single"],
-        "linebreak-style": [2, "windows"],
+        "linebreak-style": [0, "windows"],
         "max-len": [2, 128, 4, {
             "ignoreUrls": true,
             "ignoreComments": false,
@@ -173,11 +173,11 @@
         "no-trailing-spaces": [2, { "skipBlankLines": true }],
         "no-unneeded-ternary": 2,
         "object-curly-spacing": [2, "always"],
-        "one-var": [2, "never"],
-        "padded-blocks": [2, "never"],
+        "one-var": [0, "never"],
+        "padded-blocks": [0, "never"],
         "quotes": [1, "single", "avoid-escape"],
         "semi-spacing": [2, { "before": false, "after": true }],
-        "semi": [2, "always"],
+        "semi": [0, "always"],
         "keyword-spacing": 2,
         "space-before-blocks": 0,
         "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
@@ -208,7 +208,7 @@
         "react/no-deprecated": 2,
         "react/no-did-mount-set-state": 0,
         "react/no-did-update-set-state": 0,
-        "react/no-direct-mutation-state": 2,
+        "react/no-direct-mutation-state": 0,
         "react/no-is-mounted": 2,
         "react/no-multi-comp": 0,
         "react/no-string-refs": 0,
@@ -217,7 +217,7 @@
         "react/prop-types": 0,
         "react/react-in-jsx-scope": 2,
         "react/self-closing-comp": 2,
-        "react/sort-comp": [2, {
+        "react/sort-comp": [0, {
             "order": [
                 "lifecycle",
                 "/^handle.+$/",
