@@ -59,7 +59,7 @@ function sendRequest(url, data, isCache, requestType){
 				if (xmlHttp.status === 200){
 					resolve(xmlHttp.responseText);
 				} else {
-					console.log(xmlHttp.status);
+					//console.log(xmlHttp.status);
 					reject(new Error(xmlHttp.statusText || 'Ajax request error'));
 				}
 			}

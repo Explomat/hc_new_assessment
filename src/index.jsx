@@ -11,6 +11,7 @@ import { dom } from './config';
 import moment from 'moment';
 moment.locale('ru');
 
+import 'console-polyfill';
 import 'classlist-polyfill';
 import 'babel-polyfill';
 import './styles';
