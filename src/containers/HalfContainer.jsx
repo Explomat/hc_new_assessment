@@ -14,7 +14,7 @@ class HalfContainer extends Component {
 		return (
 			<div className='half'>
 				<div className='half__title'>
-					{`${title} (${moment(startDate).format('LL')} - ${moment(endDate).format('LL')})`}
+					{`${title} (${moment(startDate, 'YYYY-MM-DD').format('LL')} - ${moment(endDate, 'YYYY-MM-DD').format('LL')})`}
 				</div>
 				{categories.map((c, index) => {
 					return <CategoryContainer key={index} id={c}/>;
