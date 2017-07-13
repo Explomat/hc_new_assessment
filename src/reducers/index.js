@@ -6,6 +6,7 @@ import categoryData from './categoryData';
 import halves from './halves';
 import months from './months';
 import pas from './pas';
+import pasCompetence from './pasCompetence';
 import tasks from './tasks';
 import tests from './tests';
 
@@ -17,6 +18,7 @@ export default combineReducers({
 	halves,
 	months,
 	pas,
+	pasCompetence,
 	tasks,
 	tests
 });

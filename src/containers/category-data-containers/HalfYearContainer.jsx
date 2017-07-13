@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PaContainer from './PaContainer';
+import PaCompetenceContainer from './PaCompetenceContainer';
 import MonthContainer from './MonthContainer';
 //import Test from '../../components/Test';
 import { AlertWarning } from '../../components/modules/alert';
@@ -44,7 +45,7 @@ class HalfYearContainer extends Component {
 	}
 	
 	render(){
-		const { pas/*, tests, activateTest*/ } = this.props;
+		const { pas, pasCompetence/*, tests, activateTest*/ } = this.props;
 		const { isDisplayMonths } = this.state;
 		return (
 			<div className='half-year clearfix'>
@@ -80,6 +81,11 @@ class HalfYearContainer extends Component {
 					</span>
 				}
 				{this._renderMonths()}
+				<div className='pas-competences'>
+					{pasCompetence.map(p =>
+						<PaCompetenceContainer key={p} id={p}/>
+					)}
+				</div>
 			</div>
 		);
 	}

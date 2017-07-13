@@ -3,11 +3,13 @@ import { schema } from 'normalizr';
 const task = new schema.Entity('tasks');
 const pa = new schema.Entity('pas', { tasks: [ task ] });
 const month = new schema.Entity('months', { pas: [ pa ] });
+const pasCompetence = new schema.Entity('pasCompetence', { tasks: [ task ] });
 const test = new schema.Entity('tests');
 const categoriesData = new schema.Entity('categoryData',
 	{
 		pas: [ pa ],
 		months: [ month ],
+		pasCompetence: [ pasCompetence ],
 		tests: [ test ]
 	}
 );
@@ -34,6 +36,11 @@ export default assessment;
 						tasks: [
 							
 						]
+					]
+				],
+				competenceTask: [
+					tasks: [
+						
 					]
 				],
 				tests: [

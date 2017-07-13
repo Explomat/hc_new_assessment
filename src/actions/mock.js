@@ -272,6 +272,36 @@ const assessment = {
 									}
 								]
 							}
+						],
+						pasCompetence: [
+							{
+								id: getRandomArbitrary(0, 1000),
+								isEdit: true,
+								tasksHeader: {
+									name: 'Наименование',
+									unit: 'Ед. измерения',
+									weight: 'Вес %',
+									min: 'MIN',
+									targ: 'targ',
+									max: 'MAX',
+									fact: 'ФАКТ',
+									percent: '% выполнения',
+									comment: 'Комментарий'
+								},
+								tasks: [ Task({ name: 'pasCompetence' }) ],
+								calcs: [
+									{
+										id: 0,
+										name: '% выполнения',
+										value: 15
+									},
+									{
+										id: 1,
+										name: 'Суммарный вес индивидуальных показателей',
+										value: 43
+									}
+								]
+							}
 						]
 					}
 					

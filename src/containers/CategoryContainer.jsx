@@ -28,7 +28,8 @@ class CategoryContainer extends Component {
 					<span
 						className='category__title'
 					>
-						{`${title} - период(${moment(startDate, 'YYYY-MM-DD').format('LL')} - ${moment(endDate, 'YYYY-MM-DD').format('LL')})`}
+						{title} - период({moment(startDate, 'YYYY-MM-DD').format('LL')} -&nbsp;
+							{moment(endDate, 'YYYY-MM-DD').format('LL')})
 					</span>
 					<strong className='category__boss'>{bossFullname}</strong>
 				</div>
