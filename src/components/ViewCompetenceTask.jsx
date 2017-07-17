@@ -15,7 +15,7 @@ class ViewCompetenceTask extends Component {
 							>
 								{this.props[k]}
 							</td>
-						)
+						);
 					}
 					return null;
 				})}

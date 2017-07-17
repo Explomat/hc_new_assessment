@@ -2,51 +2,59 @@ import { schema } from 'normalizr';
 
 const task = new schema.Entity('tasks');
 const pa = new schema.Entity('pas', { tasks: [ task ] });
-const month = new schema.Entity('months', { pas: [ pa ] });
-const pasCompetence = new schema.Entity('pasCompetence', { tasks: [ task ] });
-const test = new schema.Entity('tests');
-const categoriesData = new schema.Entity('categoryData',
-	{
-		pas: [ pa ],
-		months: [ month ],
-		pasCompetence: [ pasCompetence ],
-		tests: [ test ]
-	}
-);
-const category = new schema.Entity('categories', { data: categoriesData });
-const half = new schema.Entity('halves', { categories: [ category ] });
 
-const assessment = new schema.Object({
-	halves: [ half ]
+const quarterType = new schema.Entity('quarters', { pas: [ pa ] });
+const yearType = new schema.Entity('years', { pas: [ pa ] });
+const halfYearType = new schema.Entity('halfYears', { pas: [ pa ] });
+
+const taskCompetence = new schema.Entity('taskCompetences');
+const block = new schema.Entity('blocks', {
+	taskCompetences: [ taskCompetence ]
+});
+const competenceBlock = new schema.Entity('competences', {
+	blocks: [ block ]
 });
 
+const prevAssessment = new schema.Entity('assessments',
+	{
+		changes: new schema.Array({
+			quarter: quarterType,
+			year: yearType,
+			halfYear: halfYearType
+		}, 'type'),
+		competences: [ competenceBlock ]
+	}
+);
+const curAssessment = new schema.Entity('assessments',
+	{
+		changes: new schema.Array({
+			quarter: quarterType,
+			year: yearType,
+			halfYear: halfYearType
+		}, 'type'),
+		competences: [ competenceBlock ]
+	}
+);
+
+const assessment = new schema.Array({
+	prevAssessment,
+	curAssessment
+}, 'type');
 export default assessment;
 
-/*{
-	halves: [
-		categories: [
-			data: {
-				pas: [
-					tasks: [
-						
-					]
-				],
-				months: [
-					pas: [
-						tasks: [
-							
-						]
-					]
-				],
-				competenceTask: [
-					tasks: [
-						
-					]
-				],
-				tests: [
-					
-				]
-			}
-		]
-	]
-}*/
+
+/*
+assessments
+	quarters
+		pas
+			tasks
+	years
+		pas
+			tasks
+	halfYears
+		pas
+			tasks
+	competences
+		blocks
+			taskCompetences
+*/

@@ -1,11 +1,10 @@
 import constants from '../constants';
 import { normalize } from 'normalizr';
 import uuid from '../utils/uuid';
-import toArray from 'lodash/toArray';
 
 import {
-	getMockAssessment
-} from './mock';
+	assessments
+} from './mock2';
 import assessmentSchema from '../schemas';
 
 export function getAssessment(){
@@ -13,7 +12,7 @@ export function getAssessment(){
 		dispatch({ type: constants.ASSESSMENT_GET_DATA });
 		
 		setTimeout(() => {
-			const data = getMockAssessment();
+			const data = assessments();
 			const ndata = normalize(data, assessmentSchema);
 			dispatch({
 				type: constants.ASSESSMENT_GET_DATA_SUCCESS,

@@ -21,7 +21,7 @@ const url = {
 			const actions = s.getActions().filter(action => {
 				return action === actionName;
 			});
-			
+
 			return (s.getName() === serverName && actions.length > 0);
 		}).map(s => s.getId());
 		return _servers.length > 0 ? _servers[0] : '';
@@ -41,9 +41,7 @@ const url = {
 
 const dom = {
 	appId: 'app',
-	portalModalId: 'portalModal',
-	wtZoneMain: 'wt-zone-main',
-	wtZoneRight: 'wt-zone-right'
+	portalModalId: 'portalModal'
 };
 
 export { url, dom };

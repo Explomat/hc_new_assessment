@@ -33,7 +33,7 @@ class PaCompetenceContainer extends Component {
 	}
 	
 	render(){
-		const { title, tasks, tasksHeader, calcs } = this.props;
+		const { title, tasks, calcs } = this.props;
 		return (
 			<div className='pa-competence'>
 				<h4>{title}</h4>

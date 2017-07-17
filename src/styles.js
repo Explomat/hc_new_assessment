@@ -1,7 +1,7 @@
-import '../style/common.scss';
+import '../style/common.styl';
 import '../style/bootstrap-grid.css';
 
-import '../style/assessment.scss';
+import '../style/assessment.styl';
 
 import '../style/icon-file.css';
 import '../fonts/icon-file.eot';

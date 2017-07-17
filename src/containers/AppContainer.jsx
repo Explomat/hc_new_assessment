@@ -1,25 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { AlertDanger, AlertInfo } from '../components/modules/alert';
-import * as actionCreators from '../actions';
 import { connect } from 'react-redux';
 import { dom } from '../config';
 // import cx from 'classnames';
 
 class AppContainer extends Component {
-
-	/*componentDidMount(){
-		this._changeStyles();
-	}
-	
-	_changeStyles(){
-		const mainZoneNode = document.getElementById(dom.wtZoneMain);
-		const rightZoneNode = document.getElementById(dom.wtZoneRight);
-		if (mainZoneNode && rightZoneNode){
-			mainZoneNode.style.marginRight = '0px';
-			mainZoneNode.style.marginLeft = '0px';
-			rightZoneNode.style.display = 'none';
-		}
-	}*/
 	
 	render(){
 		const {
@@ -69,4 +54,4 @@ function mapStateToProps(state) {
 	return { ...state.app };
 }
 
-export default connect(mapStateToProps, actionCreators)(AppContainer);
+export default connect(mapStateToProps)(AppContainer);
