@@ -1,4 +1,6 @@
 import '../style/common.styl';
+import '../style/competence-block.styl';
+import '../style/half-year.styl';
 import '../style/bootstrap-grid.css';
 
 import '../style/assessment.styl';

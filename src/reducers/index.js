@@ -1,26 +1,22 @@
 import { combineReducers } from 'redux';
 import app from './app';
-import assessment from './assessment';
-import categories from './categories';
-import categoryData from './categoryData';
-import halves from './halves';
-import months from './months';
+import assessments from './assessments';
+import changes from './changes';
+import competenceBlocks from './competenceBlocks';
+import competenceStages from './competenceStages';
+import competences from './competences';
 import pas from './pas';
-import pasCompetence from './pasCompetence';
 import tasks from './tasks';
-import tests from './tests';
 
 export default combineReducers({
 	app,
-	assessment,
-	categories,
-	categoryData,
-	halves,
-	months,
+	assessments,
+	changes,
+	competenceStages,
+	competenceBlocks,
+	competences,
 	pas,
-	pasCompetence,
-	tasks,
-	tests
+	tasks
 });
 
 /*export default function reducer(state = {}, action) {

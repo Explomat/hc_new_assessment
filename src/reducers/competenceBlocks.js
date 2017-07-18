@@ -1,10 +1,10 @@
 import constants from '../constants';
 
-export default function pasCompetence(state = {}, action) {
+export default function competenceBlocks(state = {}, action) {
 	switch (action.type) {
 		case constants.ASSESSMENT_GET_DATA_SUCCESS: {
 			return {
-				...action.entities.pasCompetence
+				...action.entities.competenceBlocks
 			};
 		}
 
@@ -12,3 +12,4 @@ export default function pasCompetence(state = {}, action) {
 			return state;
 	}
 }
+

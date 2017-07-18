@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PaContainer from './PaContainer';
-import PaCompetenceContainer from './PaCompetenceContainer';
-import MonthContainer from './MonthContainer';
-//import Test from '../../components/Test';
 import { AlertWarning } from '../../components/modules/alert';
 import * as actionCreators from '../../actions';
 import { connect } from 'react-redux';
@@ -24,20 +21,15 @@ class HalfYearContainer extends Component {
 	}
 	
 	_renderMonths(){
-		const { isDisplayMonths } = this.state;
-		if (!isDisplayMonths){
-			return null;
-		}
-		
-		const { months } = this.props;
-		const monthsLen = months ? months.length : 0;
+		const { pas } = this.props;
+		const pasLen = pas ? pas.length : 0;
 		return (
-			monthsLen > 0 ?
+			pasLen > 0 ?
 				<div className='half-year__months-container'>
 					<div className='half-year__months'>
-						{months.map(m =>
-							<MonthContainer key={m} id={m} />
-						)}
+						{pas.map((p, index) => {
+							return index > 0 ? <PaContainer key={p} id={p} /> : null;
+						})}
 					</div>
 				</div> :
 				<AlertWarning className='half-year__no-months' text='Нет данных' isClose={false} />
@@ -45,23 +37,21 @@ class HalfYearContainer extends Component {
 	}
 	
 	render(){
-		const { pas, pasCompetence/*, tests, activateTest*/ } = this.props;
+		const { pas } = this.props;
+		const pasLen = pas ? pas.length : 0;
 		const { isDisplayMonths } = this.state;
 		return (
 			<div className='half-year clearfix'>
+				<h3>HALF YEAR</h3>
 				<div className='half-year__year'>
 					<div className='pas'>
-						{pas.map(p =>
+						{pasLen > 0 &&
 							<PaContainer
-								key={p}
-								id={p}
+								key={pas[0]}
+								id={pas[0]}
 							/>
-						)}
+						}
 					</div>
-					{/*tests && tests.length > 0 && <div className='half-year__tests'>
-						<div>Тестирование</div>
-						{tests.map((t, index) => <Test key={index} {...t} onActivate={activateTest}/>)}
-					</div>*/}
 					
 				</div>
 				{isDisplayMonths ?
@@ -80,12 +70,7 @@ class HalfYearContainer extends Component {
 						<i className='icon-down-open' />
 					</span>
 				}
-				{this._renderMonths()}
-				<div className='pas-competences'>
-					{pasCompetence.map(p =>
-						<PaCompetenceContainer key={p} id={p}/>
-					)}
-				</div>
+				{isDisplayMonths && this._renderMonths()}
 			</div>
 		);
 	}
@@ -93,12 +78,7 @@ class HalfYearContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
 	const { id } = ownProps;
-	const hyState = state.categoryData[id];
-	const tests = hyState.tests.map(t => state.tests[t]);
-	return {
-		...hyState,
-		tests
-	};
+	return { ...state.changes[id] };
 }
 
 export default connect(mapStateToProps, actionCreators)(HalfYearContainer);

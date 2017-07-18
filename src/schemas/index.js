@@ -3,36 +3,26 @@ import { schema } from 'normalizr';
 const task = new schema.Entity('tasks');
 const pa = new schema.Entity('pas', { tasks: [ task ] });
 
-const quarterType = new schema.Entity('quarters', { pas: [ pa ] });
-const yearType = new schema.Entity('years', { pas: [ pa ] });
-const halfYearType = new schema.Entity('halfYears', { pas: [ pa ] });
+const changeType = new schema.Entity('changes', { pas: [ pa ] });
 
-const taskCompetence = new schema.Entity('taskCompetences');
-const block = new schema.Entity('blocks', {
-	taskCompetences: [ taskCompetence ]
+const competence = new schema.Entity('competences');
+const competenceBlock = new schema.Entity('competenceBlocks', {
+	competences: [ competence ]
 });
-const competenceBlock = new schema.Entity('competences', {
-	blocks: [ block ]
+const competenceStage = new schema.Entity('competenceStages', {
+	competenceBlocks: [ competenceBlock ]
 });
 
 const prevAssessment = new schema.Entity('assessments',
 	{
-		changes: new schema.Array({
-			quarter: quarterType,
-			year: yearType,
-			halfYear: halfYearType
-		}, 'type'),
-		competences: [ competenceBlock ]
+		changes: [ changeType ],
+		competenceStages: [ competenceStage ]
 	}
 );
 const curAssessment = new schema.Entity('assessments',
 	{
-		changes: new schema.Array({
-			quarter: quarterType,
-			year: yearType,
-			halfYear: halfYearType
-		}, 'type'),
-		competences: [ competenceBlock ]
+		changes: [ changeType ],
+		competenceStages: [ competenceStage ]
 	}
 );
 
@@ -45,16 +35,10 @@ export default assessment;
 
 /*
 assessments
-	quarters
+	changes
 		pas
 			tasks
-	years
-		pas
-			tasks
-	halfYears
-		pas
-			tasks
-	competences
-		blocks
-			taskCompetences
+	competenceBlocks
+		categoryCompetences
+			competences
 */

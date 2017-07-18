@@ -48,15 +48,15 @@ function Pa(_obj) {
 	};	
 }
 
-function CompetenceBlock(){
-	function TaskCompetence(){
+function CompetenceStage(){
+	function Competence(){
 		return {
 			id: _getRandomArbitrary(0, 1000000),
 			title: { isEdit: false, value: 'Партнёрство' },
 			userMark: { 
 				isEdit: false, 
 				value: {
-					selected: 0,
+					selectedPayload: 0,
 					items: [
 						{
 							payload: 0, 
@@ -72,7 +72,7 @@ function CompetenceBlock(){
 			bossMark: { 
 				isEdit: false, 
 				value: {
-					selected: 0,
+					selectedPayload: 0,
 					items: [
 						{
 							payload: 0, 
@@ -93,11 +93,11 @@ function CompetenceBlock(){
 		id: _getRandomArbitrary(0, 1000000),
 		title: 'Компетенции за 1 полугодие',
 		tasksHeader: ['Название компетенции', 'Оценка сотрудника', 'Оценка руководителя', 'Комментарий'],
-		blocks: [
+		competenceBlocks: [
 			{
 				id:  _getRandomArbitrary(0, 1000000),
 				title: 'Ценности',
-				taskCompetences: [TaskCompetence(), TaskCompetence()]
+				competences: [Competence(), Competence()]
 			}
 		]
 	};
@@ -139,8 +139,8 @@ export function assessments(){
 			title: 'Оценка по ',
 			startDate: '1.01.2017',
 			finishDate: '30.03.2017',
-			changes: [ YearType() ],
-			competences: [CompetenceBlock(), CompetenceBlock()]
+			changes: [ HalfYearType() ],
+			competenceStages: [CompetenceStage(), CompetenceStage()]
 		},
 		{
 			id: 1,
@@ -155,7 +155,7 @@ export function assessments(){
 				QuarterType(),
 				QuarterType()
 			],
-			competences: [ CompetenceBlock() ]
+			competenceStages: [ CompetenceStage() ]
 		}
 	];
 }
@@ -165,7 +165,8 @@ assessments
 	changes
 		pas
 			tasks
-	competences
-		blocks
-			taskCompetences
+		
+	competenceBlocks
+		categoryCompetences
+			competences
 */

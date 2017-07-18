@@ -9,6 +9,7 @@ class QuarterContainer extends Component {
 		} = this.props;
 		return (
 			<div className='quarters'>
+				<h3>QUARTER</h3>
 				<div className='pas'>
 					{pas.map((p, index) =>
 						<PaContainer
@@ -24,7 +25,7 @@ class QuarterContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
 	const { id } = ownProps;
-	return { ...state.categoryData[id] };
+	return { ...state.changes[id] };
 }
 
 

@@ -24,7 +24,7 @@ class MonthContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
 	const { id } = ownProps;
-	return { ...state.months[id] };
+	return { ...state.changes[id] };
 }
 
 

@@ -9,6 +9,7 @@ class YearContainer extends Component {
 		} = this.props;
 		return (
 			<div className='year'>
+				<h3>YEAR</h3>
 				<div className='pas'>
 					{pas.map((p, index) =>
 						<PaContainer
@@ -24,7 +25,7 @@ class YearContainer extends Component {
 
 function mapStateToProps(state, ownProps) {
 	const { id } = ownProps;
-	return { ...state.categoryData[id] };
+	return { ...state.changes[id] };
 }
 
 

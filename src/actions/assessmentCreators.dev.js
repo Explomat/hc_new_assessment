@@ -7,7 +7,7 @@ import {
 } from './mock2';
 import assessmentSchema from '../schemas';
 
-export function getAssessment(){
+export function getAssessments(){
 	return dispatch => {
 		dispatch({ type: constants.ASSESSMENT_GET_DATA });
 		

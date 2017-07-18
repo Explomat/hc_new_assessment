@@ -1,0 +1,53 @@
+.competence-block{
+	border: dotted 1px #cccccc;
+    margin-top: 48px;
+    
+    .competence-table{
+    	border-spacing: 1px;
+    	
+    	.competence-table__th-name{
+            font-size: 12px;   
+            display: inline-block;   
+			padding: 4px;
+			background-color: #eeeeee;
+			border-left: dotted 1px #cccccc;
+			border-right: dotted 1px #cccccc;
+			border-bottom: solid 1px #cccccc;
+    	}
+     
+        .category-competence{
+            width: 100%;
+            vertical-align: top;
+            padding: 0px;
+            background-color: #ffffff;
+            
+            .category-competence__title{
+                padding: 4px;
+                background-position: 5px 5px;
+                background-repeat: no-repeat;
+                font-size: 12px;
+                font-weight: bold;
+                color: #666666;
+            }
+            
+            .competence{
+                border-bottom: dotted 1px #cccccc;
+                padding: 4px;
+                
+                &:last-child {
+                    border-bottom: none;
+                }
+                
+                .competence__field{
+                    display: inline-block;
+                    
+                    padding: 0px;
+                    font-size: 12px;
+                    vertical-align: top;
+                    color: #666666;
+                    text-decoration: none;
+                }
+            }
+        }   
+    }
+}
