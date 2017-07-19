@@ -101,69 +101,71 @@ class PaContainer extends Component {
 		const { isDisplayNewTask, isDisplayEditTask, isDisplayConfirm } = this.state;
 		return (
 			<div className='pa'>
-				<h4>{title}</h4>
-				<div className='tasks-container'>
-					{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
-					{isEdit &&
-						<div className='tasks-container__menu clearfix'>
-							<div className='tasks-container__edit'>
-								{(checkedTasksCount === 1) &&
-									<ButtonPrimary
-										text='Редактировать'
-										onClick={this.handleToggleEditTask}
-										className='tasks-container__edit-button'
-									/>
-								}
-								{(checkedTasksCount > 0) &&
-									<ButtonDefault
-										text='Удалить'
-										onClick={this.handleToggleConfirm}
-										className='tasks-container__delete-button'
-									/>
-								}
+				<div className='pa__container'>
+					<strong>{title}</strong>
+					<div className='tasks-container'>
+						{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
+						{isEdit &&
+							<div className='tasks-container__menu clearfix'>
+								<div className='tasks-container__edit'>
+									{(checkedTasksCount === 1) &&
+										<ButtonPrimary
+											text='Редактировать'
+											onClick={this.handleToggleEditTask}
+											className='tasks-container__edit-button'
+										/>
+									}
+									{(checkedTasksCount > 0) &&
+										<ButtonDefault
+											text='Удалить'
+											onClick={this.handleToggleConfirm}
+											className='tasks-container__delete-button'
+										/>
+									}
+								</div>
+								<ButtonDefault
+									text='Добавить'
+									onClick={this.handleToogleDisplayNewTask}
+									className='tasks-container__add-button'
+								/>
 							</div>
-							<ButtonDefault
-								text='Добавить'
-								onClick={this.handleToogleDisplayNewTask}
-								className='tasks-container__add-button'
+						}
+						{isDisplayNewTask &&
+							<Task
+								tasksHeader={tasksHeader}
+								onClose={this.handleToogleDisplayNewTask}
+								onSave={this.handleAddNewTask}
 							/>
-						</div>
-					}
-					{isDisplayNewTask &&
-						<Task
-							tasksHeader={tasksHeader}
-							onClose={this.handleToogleDisplayNewTask}
-							onSave={this.handleAddNewTask}
-						/>
-					}
-					{isDisplayEditTask &&
-						<Task
-							tasksHeader={tasksHeader}
-							title='Редактирование задачи'
-							footerButtonText='Сохранить'
-							onClose={this.handleToggleEditTask}
-							onSave={this.handleEditTask}
-							task={editedTask}
-						/>
-					}
+						}
+						{isDisplayEditTask &&
+							<Task
+								tasksHeader={tasksHeader}
+								title='Редактирование задачи'
+								footerButtonText='Сохранить'
+								onClose={this.handleToggleEditTask}
+								onSave={this.handleEditTask}
+								task={editedTask}
+							/>
+						}
+					</div>
+					<div className='calcs'>
+						{calcs.map((c, index) =>
+							<span key={index}>
+								<span className='calcs__label'>{c.name}</span>
+								<span className='calcs__value'>{c.value}</span>
+							</span>
+						)}
+					</div>
+					<Portal nodeId={dom.portalModalId}>
+						{isDisplayConfirm &&
+							<Confirm
+								text='Вы действительно хотите удалить выбранные задачи?'
+								onConfirm={this.handleRemoveTasks}
+								onClose={this.handleToggleConfirm}
+							/>
+						}
+					</Portal>
 				</div>
-				<div className='calcs'>
-					{calcs.map((c, index) =>
-						<span key={index}>
-							<span className='calcs__label'>{c.name}</span>
-							<span className='calcs__value'>{c.value}</span>
-						</span>
-					)}
-				</div>
-				<Portal nodeId={dom.portalModalId}>
-					{isDisplayConfirm &&
-						<Confirm
-							text='Вы действительно хотите удалить выбранные задачи?'
-							onConfirm={this.handleRemoveTasks}
-							onClose={this.handleToggleConfirm}
-						/>
-					}
-				</Portal>
 			</div>
 		);
 	}

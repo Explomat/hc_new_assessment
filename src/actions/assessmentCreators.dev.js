@@ -1,6 +1,7 @@
 import constants from '../constants';
 import { normalize } from 'normalizr';
 import uuid from '../utils/uuid';
+import toArray from 'lodash/toArray';
 
 import {
 	assessments
@@ -71,7 +72,18 @@ export function editTask(paId, task){
 export function removeTasks(paId){
 	return (dispatch, getState) => {
 		setTimeout(() => {
-			const pa = getState().pas[paId];
+			const state = getState();
+			const pa = state.pas[paId];
+
+
+			const { tasks } = state;
+			const checkedTasks = toArray(tasks).filter(t => t.checked).map(t => {
+				return {
+					...t,
+					isRemoved: true
+				};
+			});
+
 			dispatch({
 				type: constants.ASSESSMENT_UPDATE_CALCS_IN_PA,
 				pa: {
@@ -81,7 +93,10 @@ export function removeTasks(paId){
 			});
 			dispatch({
 				type: constants.ASSESSMENT_REMOVE_TASKS_SUCCESS,
-				paId
+				removedTasks: checkedTasks.reduce((pv, cv) => {
+					pv[cv.id] = cv;
+					return pv;
+				}, {})
 			});
 		}, 300);
 	};

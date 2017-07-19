@@ -37,12 +37,15 @@ class HalfYearContainer extends Component {
 	}
 	
 	render(){
-		const { pas } = this.props;
+		const { title, bossFullname, pas } = this.props;
 		const pasLen = pas ? pas.length : 0;
 		const { isDisplayMonths } = this.state;
 		return (
 			<div className='half-year clearfix'>
-				<h3>HALF YEAR</h3>
+				<div className='half-year__header'>
+					<strong className='half-year__title'>{title}</strong>
+					<strong className='half-year__boss-fullname'>{bossFullname}</strong>
+				</div>
 				<div className='half-year__year'>
 					<div className='pas'>
 						{pasLen > 0 &&
@@ -52,23 +55,22 @@ class HalfYearContainer extends Component {
 							/>
 						}
 					</div>
-					
 				</div>
 				{isDisplayMonths ?
-					<span
+					<div
 						className='half-year__display-months'
 						onClick={this.handleToggleDisplayMonths}
 					>
 						Скрыть
 						<i className='icon-up-open' />
-					</span> :
-					<span
+					</div> :
+					<div
 						className='half-year__display-months'
 						onClick={this.handleToggleDisplayMonths}
 					>
 						Показать по месяцам
 						<i className='icon-down-open' />
-					</span>
+					</div>
 				}
 				{isDisplayMonths && this._renderMonths()}
 			</div>

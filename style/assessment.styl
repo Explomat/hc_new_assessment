@@ -1,6 +1,18 @@
 .assessment-container{
 	min-width: 1200px;
 	
+	.prev-assessment{
+		padding: 16px;
+		
+		.prev-assessment__drop-title{
+			background-color: #f5f5f5;
+		}
+	}
+	
+	.cur-assessment {
+		padding: 16px;
+	}
+	
 	.tasks-container {
 		.new-task__container{
 			width: auto;
@@ -79,6 +91,8 @@
 					border-right: 1px solid #D3D3D3;
 					padding: 8px;
 					word-break: break-all;
+					font-size: 12px;
+    				color: #667;
 					
 					&.task__name--name {
 						width: 30%;
@@ -111,6 +125,7 @@
 				.task__check-container{
 					width: 30px;
     				border-top: 1px solid #D3D3D3;
+    				border-left: 1px solid #d3d3d3;
     				
 					.task__check {
 						margin-bottom: 0px;
@@ -141,7 +156,7 @@
 		margin-top: 24px;
 		padding: 0;
 	    font-size: 12px;
-	    line-height: 18px;
+	    line-height: 24px;
 	    overflow: hidden;
 	    text-align: left;
 		
@@ -152,14 +167,10 @@
 		    clear: both;
 		    float: left;
 		    width: 270px;
-		    margin: 0 5px 10px 0;
 		    text-align: left;
-		    padding-bottom: 4px;
-		    border-bottom: 1px solid #ccc;
 		}
 		.calcs__value {
 			float: left;
-		    margin: 0 0 10px;
 		    color: #444;
 		}
 	}

@@ -1,141 +1,116 @@
-import React = from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style/dropinfo.styl';
 
-var DropInfoHeader = React.createClass({
+class DropInfo extends Component {
 
-	contextTypes: {
-        parent: PropTypes.any
-    },
-
-    handleClick: function(){
-    	this.context.parent.handleToogleExpand();
-    },
-
-	render: function() {
-		var className = this.props.className ? this.props.className : '';
-		return (
-			<div onClick={this.handleClick} className={"dropinfo__content-header " + className}>
-				{this.props.children}
-			</div>
-		);
-	}
-});
-
-var DropInfoBody = React.createClass({
-
-	render: function() {
-		var className = this.props.className ? this.props.className : '';
-		return (
-			<div className={"dropinfo__content-body " + className}>
-				{this.props.children}
-			</div>
-		);
-	}
-});
-
-var DropInfoFooter = React.createClass({
-
-	render: function() {
-		var className = this.props.className ? this.props.className : '';
-		return (
-			<div className={"dropinfo__content-footer " + className}>
-				{this.props.children}
-			</div>
-		);
-	}
-});
-
-var DropInfo = React.createClass({
-
-	propTypes: {
-		children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-		expanded: PropTypes.bool,
-		onExpand: PropTypes.func,
-		descriptionMarkup: PropTypes.node,
-		children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-		classNameBlock: PropTypes.string,
-		additionalHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-	},
-
-	childContextTypes: {
-		parent: PropTypes.any
-	},
-
-	getChildContext: function() {
-        return {
-        	parent: this
-        };
-    },
-
-	getDefaultProps: function(){
-		return {
-			additionalHeight: 20,
-			expanded: false
-		}
-	},
-
-	getInitialState: function() {
-		return {
+	constructor(props){
+		super(props);
+		
+		this.handleToogleExpand = this.handleToogleExpand.bind(this);
+		this._setHeight = this._setHeight.bind(this);
+		this.interval = null;
+		this.state = {
 			expanded: this.props.expanded,
 			height: 0
-		}
-	},
+		};
+	}
 
-	componentDidMount: function(){
+	getChildContext() {
+		return {
+			parent: this
+		};
+	}
+
+	componentDidMount(){
 		this.expand(this.props.expanded);
-	},
-
-	componentWillReceiveProps: function(nextProps){
+	}
+	
+	componentWillReceiveProps(nextProps){
 		if (nextProps.expanded !== undefined && nextProps.expanded !== null){
 			this.expand(nextProps.expanded);
 		}
-	},
+	}
 
-	expand: function(_expanded){
-		var height = _expanded ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
+	componentWillUnmount(){
+		clearInterval(this.interval);
+	}
+
+	handleToogleExpand() {
+		const { expanded } = this.state;
+		this.setState({
+			expanded: !expanded
+		});
+		this._setHeight(!expanded);
+		this._watchHeight(!expanded);
+		
+		if (this.props.onExpand) {
+			this.props.onExpand(!expanded);
+		}
+	}
+
+	expand(_expanded){
+		const height = _expanded ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
 		this.setState({
 			expanded: _expanded,
-			height: height
+			height
 		});
-	},
+	}
 
-	handleToogleExpand: function() {
-		var height = !this.state.expanded ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
+	_setHeight(expanded){
+		const ex = expanded === undefined ? this.state.expanded : expanded;
+		const height = ex ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
 		this.setState({
-			expanded: !this.state.expanded,
-			height: height
+			height
 		});
-		if (this.props.onExpand) {
-			this.props.onExpand(!this.state.expanded);
-		}
-	},
+	}
 
-	render: function() {
-		var displayContentClassName = this.state.expanded ? "dropinfo__content-box_show" : "dropinfo__content-box_hide";
-		var displayBlockClassName = !this.state.expanded ? "dropinfo__block_show": "dropinfo__block_hide";
-		var glyphiconClass = this.state.expanded ? "glyphicon-menu-up" : "glyphicon-menu-down";
-		var classNameBlock = this.props.classNameBlock ? this.props.classNameBlock : '';
+	_watchHeight(expanded){
+		if (expanded){
+			this.interval = setInterval(this._setHeight, 500);
+		} else {
+			clearInterval(this.interval);
+		}
+	}
+
+	render() {
+		const displayContentClassName = this.state.expanded ? 'dropinfo__content-box_show' : 'dropinfo__content-box_hide';
+		const displayBlockClassName = !this.state.expanded ? 'dropinfo__block_show' : 'dropinfo__block_hide';
+		const glyphiconClass = this.state.expanded ? 'icon-up-open' : 'icon-down-open';
+		const classNameBlock = this.props.classNameBlock ? this.props.classNameBlock : '';
 		return (
-			<div className="dropinfo">
-				<div onClick={this.handleToogleExpand} className={"dropinfo__block clearfix " + displayBlockClassName + " " + classNameBlock}>
-					{this.props.descriptionMarkup}
-					<span className={"dropinfo__glyphicon-block glyphicon " + glyphiconClass}></span>
+			<div className='dropinfo'>
+				<div onClick={this.handleToogleExpand} className={`dropinfo__block clearfix ${displayBlockClassName} ${classNameBlock}`}>
+					{this.props.label}
+					<span className={`dropinfo__glyphicon-block ${glyphiconClass}`} />
 				</div>
-				<div style={{height: this.state.height}} className={"dropinfo__content-box " + displayContentClassName}>
-					<div ref="dropinfoContent" className="dropinfo__content">
+				<div style={{ height: this.state.height }} className={`dropinfo__content-box ${displayContentClassName}`}>
+					<div ref='dropinfoContent' className='dropinfo__content'>
 						{this.props.children}
-						<span onClick={this.handleToogleExpand} className={"dropinfo__glyphicon-content glyphicon " + glyphiconClass}></span>
+						<span onClick={this.handleToogleExpand} className={`dropinfo__glyphicon-content ${glyphiconClass}`} />
 					</div>
 				</div>
 			</div>
 		);
 	}
-});
-
-module.exports = {
-	DropInfo: DropInfo,
-	DropInfoHeader: DropInfoHeader,
-	DropInfoBody: DropInfoBody,
-	DropInfoFooter: DropInfoFooter
 }
+
+DropInfo.propTypes = {
+	children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
+	expanded: PropTypes.bool,
+	onExpand: PropTypes.func,
+	label: PropTypes.node,
+	classNameBlock: PropTypes.string,
+	additionalHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
+
+DropInfo.childContextTypes = {
+	parent: PropTypes.any
+};
+
+DropInfo.defaultProps = {
+	additionalHeight: 20,
+	expanded: false
+};
+
+export default DropInfo;

@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 class YearContainer extends Component {
 	render(){
 		const {
+			title,
+			bossFullname,
 			pas
 		} = this.props;
 		return (
 			<div className='year'>
-				<h3>YEAR</h3>
+				<div className='year__header'>
+					<strong className='year__title'>{title}</strong>
+					<strong className='year__boss-fullname'>{bossFullname}</strong>
+				</div>
 				<div className='pas'>
 					{pas.map((p, index) =>
 						<PaContainer

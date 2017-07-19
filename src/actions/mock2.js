@@ -108,6 +108,8 @@ function QuarterType(){
 	return {
 		id: _getRandomArbitrary(0, 1000000),
 		type: 'quarter',
+		title: 'QUARTER',
+		bossFullname: 'Габдуллин Дамир Габдульбариевич',
 		pas: [Pa(), Pa()]
 	};
 }
@@ -117,6 +119,8 @@ function YearType(){
 	return {
 		id: _getRandomArbitrary(0, 1000000),
 		type: 'year',
+		title: 'YEAR',
+		bossFullname: 'Габдуллин Дамир Габдульбариевич',
 		pas: [ Pa() ]
 	};
 }
@@ -126,6 +130,8 @@ function HalfYearType(){
 	return {
 		id: _getRandomArbitrary(0, 1000000),
 		type: 'halfYear',
+		title: 'HALF YEAR',
+		bossFullname: 'Габдуллин Дамир Габдульбариевич',
 		pas: [Pa(), Pa(), Pa()]
 	};
 }

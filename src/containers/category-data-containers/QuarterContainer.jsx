@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 class QuarterContainer extends Component {
 	render(){
 		const {
+			title,
+			bossFullname,
 			pas
 		} = this.props;
 		return (
-			<div className='quarters'>
-				<h3>QUARTER</h3>
+			<div className='quarter'>
+				<div className='quarter__header'>
+					<strong className='quarter__title'>{title}</strong>
+					<strong className='quarter__boss-fullname'>{bossFullname}</strong>
+				</div>
 				<div className='pas'>
 					{pas.map((p, index) =>
 						<PaContainer
