@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import './style/dropinfo.styl';
 
 class DropInfo extends Component {
@@ -7,11 +8,9 @@ class DropInfo extends Component {
 	constructor(props){
 		super(props);
 		
+		this.expanded = props.expanded;
 		this.handleToogleExpand = this.handleToogleExpand.bind(this);
-		this._setHeight = this._setHeight.bind(this);
-		this.interval = null;
 		this.state = {
-			expanded: this.props.expanded,
 			height: 0
 		};
 	}
@@ -37,12 +36,24 @@ class DropInfo extends Component {
 	}
 
 	handleToogleExpand() {
+		const { transitionTimeout } = this.props;
 		const { expanded } = this.state;
-		this.setState({
-			expanded: !expanded
-		});
-		this._setHeight(!expanded);
-		this._watchHeight(!expanded);
+		
+
+		if ((!expanded) === true){
+			const self = this;
+			this.timeout = setTimeout(() => {
+				self.setState({
+					height: 'auto'
+				});
+			}, transitionTimeout * 1000);
+		} else {
+			this.setState({
+				height: this.refs.dropinfoContent.offsetHeight + 20
+			});
+			clearTimeout(this.timeout);
+		}
+		this.expand(!expanded);
 		
 		if (this.props.onExpand) {
 			this.props.onExpand(!expanded);
@@ -50,44 +61,58 @@ class DropInfo extends Component {
 	}
 
 	expand(_expanded){
-		const height = _expanded ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
-		this.setState({
-			expanded: _expanded,
-			height
-		});
-	}
-
-	_setHeight(expanded){
-		const ex = expanded === undefined ? this.state.expanded : expanded;
-		const height = ex ? this.refs.dropinfoContent.offsetHeight + this.props.additionalHeight : 0;
-		this.setState({
-			height
-		});
-	}
-
-	_watchHeight(expanded){
-		if (expanded){
-			this.interval = setInterval(this._setHeight, 500);
-		} else {
-			clearInterval(this.interval);
-		}
+		const self = this;
+		const height = _expanded ? this.refs.dropinfoContent.offsetHeight + 20 : 0;
+		setTimeout(() => {
+			self.setState({
+				height,
+				expanded: _expanded
+			});
+		}, 0);
 	}
 
 	render() {
-		const displayContentClassName = this.state.expanded ? 'dropinfo__content-box_show' : 'dropinfo__content-box_hide';
-		const displayBlockClassName = !this.state.expanded ? 'dropinfo__block_show' : 'dropinfo__block_hide';
-		const glyphiconClass = this.state.expanded ? 'icon-up-open' : 'icon-down-open';
-		const classNameBlock = this.props.classNameBlock ? this.props.classNameBlock : '';
+		const { height, expanded } = this.state;
+		const { transitionTimeout, classNameBlock, label } = this.props;
+
+		const contentClassName = cx({
+			'dropinfo__content-box': true,
+			'dropinfo__content-box_show': expanded,
+			'dropinfo__content-box_hide': !expanded
+		});
+		const glyphiconClass = cx({
+			'icon-up-open': expanded,
+			'icon-down-open': !expanded
+		});
+		const classNameBl = cx({
+			'dropinfo__block': true,
+			'clearfix': true
+		}, classNameBlock);
+		const contentStyles = {
+			height,
+			'transition': `all ${transitionTimeout}s ease-in-out`,
+			'WebkitTransition': `all ${transitionTimeout}s ease-in-out`
+		};
 		return (
 			<div className='dropinfo'>
-				<div onClick={this.handleToogleExpand} className={`dropinfo__block clearfix ${displayBlockClassName} ${classNameBlock}`}>
-					{this.props.label}
+				<div
+					onClick={this.handleToogleExpand}
+					className={classNameBl}
+				>
+					{label}
 					<span className={`dropinfo__glyphicon-block ${glyphiconClass}`} />
 				</div>
-				<div style={{ height: this.state.height }} className={`dropinfo__content-box ${displayContentClassName}`}>
+				<div
+					ref='dropinfoContentBox'
+					style={contentStyles}
+					className={contentClassName}
+				>
 					<div ref='dropinfoContent' className='dropinfo__content'>
 						{this.props.children}
-						<span onClick={this.handleToogleExpand} className={`dropinfo__glyphicon-content ${glyphiconClass}`} />
+						<span
+							onClick={this.handleToogleExpand}
+							className={`dropinfo__glyphicon-content ${glyphiconClass}`}
+						/>
 					</div>
 				</div>
 			</div>
@@ -100,8 +125,7 @@ DropInfo.propTypes = {
 	expanded: PropTypes.bool,
 	onExpand: PropTypes.func,
 	label: PropTypes.node,
-	classNameBlock: PropTypes.string,
-	additionalHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+	classNameBlock: PropTypes.string
 };
 
 DropInfo.childContextTypes = {
@@ -109,7 +133,7 @@ DropInfo.childContextTypes = {
 };
 
 DropInfo.defaultProps = {
-	additionalHeight: 20,
+	transitionTimeout: 1,
 	expanded: false
 };
 

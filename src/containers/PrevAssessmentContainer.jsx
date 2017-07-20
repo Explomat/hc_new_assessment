@@ -1,7 +1,7 @@
 import React from 'react';
 import TypeContainer from './TypeContainer';
 import CompetenceStageContainer from './CompetenceStageContainer';
-import { DropInfo, DropInfoBody, DropInfoHeader/*, DropInfoFooter*/ } from '../components/modules/dropinfo';
+import { DropInfo, DropInfoBody } from '../components/modules/dropinfo';
 import { connect } from 'react-redux';
 
 const PrevAssessmentContainer = ({ title, changes, competenceStages }) => {
@@ -13,12 +13,11 @@ const PrevAssessmentContainer = ({ title, changes, competenceStages }) => {
 
 	return (
 		<div className='prev-assessment'>
-			<DropInfo label={header} classNameBlock='prev-assessment__drop-title'>
-				<DropInfoHeader>
-					<div className='prev-assessment__header'>
-						{header}
-					</div>
-				</DropInfoHeader>
+			<DropInfo
+				label={header}
+				transitionTimeout={0.5}
+				classNameBlock='prev-assessment__drop-title'
+			>
 				<DropInfoBody>
 					<div className='prev-assessment__changes'>
 						{changes.map(c => <TypeContainer key={c} id={c} />)}

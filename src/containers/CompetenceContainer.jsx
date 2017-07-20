@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DropDown from '../components/modules/dropdown';
 import { TextView } from '../components/modules/text-label';
+import * as actionCreators from '../actions';
 import { connect } from 'react-redux';
 
 class CompetenceContainer extends Component {
@@ -13,14 +14,14 @@ class CompetenceContainer extends Component {
 		this.handleChangeCompetenceComment = this.handleChangeCompetenceComment.bind(this);
 	}
 
-	handleChangeCompetenceUserMark(e, payload, text){
+	handleChangeCompetenceUserMark(e, payload){
 		const { id, changeUserMarkInCompetence } = this.props;
-		changeUserMarkInCompetence(id, payload, text);
+		changeUserMarkInCompetence(id, payload);
 	}
 
-	handleChangeCompetenceBossMark(e, payload, text){
+	handleChangeCompetenceBossMark(e, payload){
 		const { id, changeBossMarkInCompetence } = this.props;
-		changeBossMarkInCompetence(id, payload, text);
+		changeBossMarkInCompetence(id, payload);
 	}
 
 	handleChangeCompetenceComment(val){
@@ -70,4 +71,4 @@ function mapStateToProps(state, ownProps) {
 	};
 }
 
-export default connect(mapStateToProps)(CompetenceContainer);
+export default connect(mapStateToProps, actionCreators)(CompetenceContainer);

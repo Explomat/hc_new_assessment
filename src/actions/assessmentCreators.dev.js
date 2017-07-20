@@ -125,3 +125,27 @@ export function toggleSelectTask(taskId, val){
 		val
 	};
 }
+
+export function changeUserMarkInCompetence(competenceId, payload){
+	return {
+		type: constants.ASSESSMENT_CHANGE_USER_MARK_COMPETENCE,
+		competenceId,
+		payload
+	};
+}
+
+export function changeBossMarkInCompetence(competenceId, payload){
+	return {
+		type: constants.ASSESSMENT_CHANGE_BOSS_MARK_COMPETENCE,
+		competenceId,
+		payload
+	};
+}
+
+export function changeCommentInCompetence(competenceId, text){
+	return {
+		type: constants.ASSESSMENT_CHANGE_COMMENT_COMPETENCE,
+		competenceId,
+		text
+	};
+}

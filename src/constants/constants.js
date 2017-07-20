@@ -15,7 +15,10 @@ const remoteConstants = createRemoteActions([
 
 const constants = keyMirror({
 	'ASSESSMENT_UPDATE_CALCS_IN_PA': null,
-	'ASSESSMENT_TOGGLE_SELECT_TASK': null
+	'ASSESSMENT_TOGGLE_SELECT_TASK': null,
+	'ASSESSMENT_CHANGE_USER_MARK_COMPETENCE': null,
+	'ASSESSMENT_CHANGE_BOSS_MARK_COMPETENCE': null,
+	'ASSESSMENT_CHANGE_COMMENT_COMPETENCE': null
 });
 
 export default merge(remoteConstants, constants);
