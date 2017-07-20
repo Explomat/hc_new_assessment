@@ -1,33 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TypeContainer from './TypeContainer';
 import CompetenceStageContainer from './CompetenceStageContainer';
+import { DropInfo, DropInfoBody } from '../components/modules/dropinfo';
 import { connect } from 'react-redux';
 
-class CurAssessmentContainer extends Component {
+const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
+	const header = (
+		<strong className='category__title'>
+			{title}
+		</strong>
+	);
 	
-	render(){
-		const { title, changes, competenceStages } = this.props;
-		return (
-			<div className='cur-assessment'>
-				<div className='cur-assessment__header'>
-					<strong className='category__title'>
-						{title}
-					</strong>
-				</div>
-				<div className='cur-assessment__changes'>
-					{changes.map(c => <TypeContainer key={c} id={c} />)}
-				</div>
-				<div className='cur-assessment__competences'>
-					{competenceStages.map(c => <CompetenceStageContainer key={c} id={c} />)}
-				</div>
-			</div>
-		);
-	}
-}
+	return (
+		<div className='cur-assessment'>
+			<DropInfo
+				expanded
+				label={header}
+				transitionTimeout={0.5}
+				classNameBlock='prev-assessment__drop-title'
+			>
+				<DropInfoBody>
+					<div className='cur-assessment__changes'>
+						{changes.map((c, index) => {
+							if (index < changes.length - 1){
+								return (
+									<DropInfo
+										key={c.id}
+										label={c.title}
+										transitionTimeout={0.5}
+										className='prev-assessment__type-container'
+									>
+										<DropInfoBody>
+											<TypeContainer key={c.id} id={c.id} />
+										</DropInfoBody>
+									</DropInfo>
+								);
+							}
+							return <TypeContainer key={c.id} id={c.id} />;
+						})}
+					</div>
+					<div className='cur-assessment__competences'>
+						{competenceStages.map(c => <CompetenceStageContainer key={c} id={c} />)}
+					</div>
+				</DropInfoBody>
+			</DropInfo>
+		</div>
+	);
+};
 
 function mapStateToProps(state, ownProps) {
+	const assessment = state.assessments.items[ownProps.id];
 	return { 
-		...state.assessments.items[ownProps.id]
+		...assessment,
+		changes: assessment.changes.map(c => {
+			return {
+				id: state.changes[c].id,
+				title: state.changes[c].title
+			};
+		})
 	};
 }
 

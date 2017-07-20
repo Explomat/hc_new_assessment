@@ -1,6 +1,6 @@
 {
-  "name": "x5__manage_mors",
-  "description": "x5__manage_mors",
+  "name": "new_assessment",
+  "description": "new_assessment",
   "author": "Matveev Savva",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/testHelper.js  --recursive",
