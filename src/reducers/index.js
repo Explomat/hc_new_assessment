@@ -5,6 +5,7 @@ import changes from './changes';
 import competenceBlocks from './competenceBlocks';
 import competenceStages from './competenceStages';
 import competences from './competences';
+import halves from './halves';
 import pas from './pas';
 import tasks from './tasks';
 
@@ -15,6 +16,7 @@ export default combineReducers({
 	competenceStages,
 	competenceBlocks,
 	competences,
+	halves,
 	pas,
 	tasks
 });

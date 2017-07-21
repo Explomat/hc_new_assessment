@@ -8,136 +8,141 @@ export function assessments(){
 				{
 					'id': 'kl_0',
 					'type': 'halfYear',
-					'title': "Результаты по оценочной процедуре - Карьерная лестница'",
-					'bossFullname': 'ФИО руководителя',
-					'pas': [
+					'halves': [
 						{
-							'id': '6441884232411778397',
-							'isEdit': false,
-							'title': 'Итоги за период',
-							'tasksHeader': {
-								'name': 'Наименование',
-								'unit': 'eд.изм-я',
-								'weight': 'вес, %',
-								'fact': 'ФАКТ'
-							},
-							'tasks': [
+							'title': "Результаты по оценочной процедуре - Карьерная лестница'",
+							'bossFullname': 'ФИО руководителя',
+							'id': 'kl_halves_0',
+							'pas': [
 								{
-									'id': 'wl_standart_14485',
-									'name': 'Средневзвешенное выполнение целевого значения Мой Кредит',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '125'
+									'id': '6441884232411778397',
+									'isEdit': false,
+									'title': 'Итоги за период',
+									'tasksHeader': {
+										'name': 'Наименование',
+										'unit': 'eд.изм-я',
+										'weight': 'вес, %',
+										'fact': 'ФАКТ'
+									},
+									'tasks': [
+										{
+											'id': 'wl_standart_14485',
+											'name': 'Средневзвешенное выполнение целевого значения Мой Кредит',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '125'
+										},
+										{
+											'id': 'wl_standart_13189',
+											'name': 'Проникновение СМС',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '88.8889'
+										},
+										{
+											'id': 'wl_standart_9591',
+											'name': 'НПС (рекомендации)',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '100'
+										},
+										{
+											'id': 'wl_standart_15413',
+											'name': 'Проникновение страховок',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '0'
+										},
+										{
+											'id': 'wl_standart_11595',
+											'name': 'Продажа комиссионных продуктов (коробочное страхование)BOX+ОПС',
+											'unit': 'шт.',
+											'weight': 'РќРµС‚',
+											'fact': '0'
+										},
+										{
+											'id': 'wl_standart_12687',
+											'name': 'Продажи(POS)',
+											'unit': 'руб.',
+											'weight': 'РќРµС‚',
+											'fact': '161899'
+										}
+									],
+									'calcs': [
+										{
+											'name': '% выполнения',
+											'value': 16
+										},
+										{
+											'name': 'Суммарный вес индивидуальных показателей',
+											'value': 75
+										}
+									]
 								},
 								{
-									'id': 'wl_standart_13189',
-									'name': 'Проникновение СМС',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '88.8889'
-								},
-								{
-									'id': 'wl_standart_9591',
-									'name': 'НПС (рекомендации)',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '100'
-								},
-								{
-									'id': 'wl_standart_15413',
-									'name': 'Проникновение страховок',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '0'
-								},
-								{
-									'id': 'wl_standart_11595',
-									'name': 'Продажа комиссионных продуктов (коробочное страхование)BOX+ОПС',
-									'unit': 'шт.',
-									'weight': 'РќРµС‚',
-									'fact': '0'
-								},
-								{
-									'id': 'wl_standart_12687',
-									'name': 'Продажи(POS)',
-									'unit': 'руб.',
-									'weight': 'РќРµС‚',
-									'fact': '161899'
-								}
-							],
-							'calcs': [
-								{
-									'name': '% выполнения',
-									'value': 16
-								},
-								{
-									'name': 'Суммарный вес индивидуальных показателей',
-									'value': 75
-								}
-							]
-						},
-						{
-							'id': '6441884241509181972',
-							'isEdit': false,
-							'title': 'Апрель 2017',
-							'tasksHeader': {
-								'name': 'Наименование',
-								'unit': 'eд.изм-я',
-								'weight': 'вес, %',
-								'fact': 'ФАКТ'
-							},
-							'tasks': [
-								{
-									'id': 'wl_standart_5139',
-									'name': 'Средневзвешенное выполнение целевого значения Мой Кредит',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '125'
-								},
-								{
-									'id': 'wl_standart_1158',
-									'name': 'Проникновение СМС',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '88.8889'
-								},
-								{
-									'id': 'wl_standart_3787',
-									'name': 'НПС (рекомендации)',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '100'
-								},
-								{
-									'id': 'wl_standart_10389',
-									'name': 'Проникновение страховок',
-									'unit': '%',
-									'weight': 'РќРµС‚',
-									'fact': '0'
-								},
-								{
-									'id': 'wl_standart_11628',
-									'name': 'Продажа комиссионных продуктов (коробочное страхование)BOX+ОПС',
-									'unit': 'шт.',
-									'weight': 'РќРµС‚',
-									'fact': '0'
-								},
-								{
-									'id': 'wl_standart_10774',
-									'name': 'Продажи(POS)',
-									'unit': 'руб.',
-									'weight': 'РќРµС‚',
-									'fact': '161899'
-								}
-							],
-							'calcs': [
-								{
-									'name': '% выполнения',
-									'value': 16
-								},
-								{
-									'name': 'Суммарный вес индивидуальных показателей',
-									'value': 75
+									'id': '6441884241509181972',
+									'isEdit': false,
+									'title': 'Апрель 2017',
+									'tasksHeader': {
+										'name': 'Наименование',
+										'unit': 'eд.изм-я',
+										'weight': 'вес, %',
+										'fact': 'ФАКТ'
+									},
+									'tasks': [
+										{
+											'id': 'wl_standart_5139',
+											'name': 'Средневзвешенное выполнение целевого значения Мой Кредит',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '125'
+										},
+										{
+											'id': 'wl_standart_1158',
+											'name': 'Проникновение СМС',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '88.8889'
+										},
+										{
+											'id': 'wl_standart_3787',
+											'name': 'НПС (рекомендации)',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '100'
+										},
+										{
+											'id': 'wl_standart_10389',
+											'name': 'Проникновение страховок',
+											'unit': '%',
+											'weight': 'РќРµС‚',
+											'fact': '0'
+										},
+										{
+											'id': 'wl_standart_11628',
+											'name': 'Продажа комиссионных продуктов (коробочное страхование)BOX+ОПС',
+											'unit': 'шт.',
+											'weight': 'РќРµС‚',
+											'fact': '0'
+										},
+										{
+											'id': 'wl_standart_10774',
+											'name': 'Продажи(POS)',
+											'unit': 'руб.',
+											'weight': 'РќРµС‚',
+											'fact': '161899'
+										}
+									],
+									'calcs': [
+										{
+											'name': '% выполнения',
+											'value': 16
+										},
+										{
+											'name': 'Суммарный вес индивидуальных показателей',
+											'value': 75
+										}
+									]
 								}
 							]
 						}
@@ -670,7 +675,7 @@ export function assessments(){
 							},
 							'tasks': [
 								{
-									'id': '5177',
+									'id': '3946',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -683,7 +688,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '7136',
+									'id': '7102',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -696,7 +701,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '6765',
+									'id': '2584',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -709,7 +714,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5386',
+									'id': '5185',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -722,7 +727,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '6429',
+									'id': '5045',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -735,7 +740,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3785',
+									'id': '8554',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -748,7 +753,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5145',
+									'id': '5015',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -761,7 +766,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '4642',
+									'id': '4403',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -774,7 +779,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3338',
+									'id': '6223',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -787,7 +792,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5416',
+									'id': '7421',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -800,7 +805,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3998',
+									'id': '4536',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -813,7 +818,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '379',
+									'id': '7508',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -826,7 +831,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '1645',
+									'id': '3803',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -839,7 +844,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '4745',
+									'id': '3293',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -852,7 +857,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '8867',
+									'id': '5194',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -865,7 +870,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '2387',
+									'id': '7409',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -878,7 +883,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5205',
+									'id': '8414',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -891,7 +896,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3022',
+									'id': '724',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -904,7 +909,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '50',
+									'id': '5491',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -917,7 +922,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5146',
+									'id': '3589',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -930,7 +935,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3965',
+									'id': '5122',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -943,7 +948,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '6734',
+									'id': '8471',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -956,7 +961,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '6602',
+									'id': '1804',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -969,7 +974,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '5428',
+									'id': '6486',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -982,7 +987,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3296',
+									'id': '4417',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -995,7 +1000,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '8228',
+									'id': '145',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1008,7 +1013,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3603',
+									'id': '8548',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1021,7 +1026,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '1131',
+									'id': '614',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1034,7 +1039,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '1595',
+									'id': '976',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1047,7 +1052,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '4531',
+									'id': '7560',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1060,7 +1065,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '823',
+									'id': '4254',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1073,7 +1078,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '900',
+									'id': '3962',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1113,7 +1118,7 @@ export function assessments(){
 							},
 							'tasks': [
 								{
-									'id': '5144',
+									'id': '3593',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1126,7 +1131,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '2458',
+									'id': '561',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1166,7 +1171,7 @@ export function assessments(){
 							},
 							'tasks': [
 								{
-									'id': '4054',
+									'id': '5208',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1179,7 +1184,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '2100',
+									'id': '5696',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1219,7 +1224,7 @@ export function assessments(){
 							},
 							'tasks': [
 								{
-									'id': '6816',
+									'id': '7189',
 									'name': '',
 									'threshold': '',
 									'plan': '',
@@ -1232,7 +1237,7 @@ export function assessments(){
 									'percent': 0
 								},
 								{
-									'id': '3931',
+									'id': '3615',
 									'name': '',
 									'threshold': '',
 									'plan': '',

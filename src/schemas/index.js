@@ -3,7 +3,11 @@ import { schema } from 'normalizr';
 const task = new schema.Entity('tasks');
 const pa = new schema.Entity('pas', { tasks: [ task ] });
 
-const changeType = new schema.Entity('changes', { pas: [ pa ] });
+const half = new schema.Entity('halves', { pas: [ pa ] });
+
+const changeType = new schema.Entity('changes', {
+	pas: [ pa ], halves: [ half ] }
+);
 
 const competence = new schema.Entity('competences');
 const competenceBlock = new schema.Entity('competenceBlocks', {

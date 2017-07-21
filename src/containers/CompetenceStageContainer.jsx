@@ -9,7 +9,7 @@ class CompetenceStageContainer extends Component {
 		return (
 			<div className='competence-block clearfix'>
 				<div className='competence-block__header'>
-					{title}
+					<strong>{title}</strong>
 				</div>
 				<div className='competence-table col-lg-12 col-md-12 col-sm-12'>
 					<div className='competence-table__header'>
