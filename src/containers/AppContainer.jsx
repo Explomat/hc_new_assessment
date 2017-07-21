@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { AlertDanger, AlertInfo } from '../components/modules/alert';
+import * as actionCreators from '../actions';
 import { connect } from 'react-redux';
 import { dom } from '../config';
 // import cx from 'classnames';
@@ -54,4 +55,4 @@ function mapStateToProps(state) {
 	return { ...state.app };
 }
 
-export default connect(mapStateToProps)(AppContainer);
+export default connect(mapStateToProps, actionCreators)(AppContainer);

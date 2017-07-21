@@ -10,7 +10,7 @@ var common = {
 
 var build = {
 	syncSources: false,
-	localClientPath: path.join(__dirname, 'dist'),
+	localClientPath: path.join(__dirname, 'dist', 'client'),
 	localServerPath: path.join(__dirname, 'server'),
 	remoteClientPath: path.join(exportPath, packageSettings.name, 'client'),
 	remoteServerPath: path.join(exportPath, packageSettings.name, 'server')

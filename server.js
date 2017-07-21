@@ -38,11 +38,11 @@ var apiProxy = proxy({
 app.use('/custom_web_template.html', apiProxy);
 
 app.use('/', function (req, res, next) {
-	var filename = path.join(compiler.outputPath, 'index.html');
+  var filename = path.join(compiler.outputPath, 'index.html');
 
-	res.set('Content-Type','text/html');
-	res.send(compiler.outputFileSystem.readFileSync(filename, 'utf8'));
-	res.end();
+  res.set('Content-Type','text/html');
+  res.send(compiler.outputFileSystem.readFileSync(filename, 'utf8'));
+  res.end();
 });
 
 app.listen(8080, function () {
