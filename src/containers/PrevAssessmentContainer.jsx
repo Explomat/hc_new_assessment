@@ -11,6 +11,10 @@ const PrevAssessmentContainer = ({ title, changes, competenceStages }) => {
 		</strong>
 	);
 
+	if ((changes && !changes.length) && (competenceStages && !competenceStages.length)){
+		return null;
+	}
+
 	return (
 		<div className='prev-assessment'>
 			<DropInfo
