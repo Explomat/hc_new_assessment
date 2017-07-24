@@ -97,7 +97,7 @@ class PaContainer extends Component {
 	}
 	
 	render(){
-		const { isEdit, title, tasksHeader, tasks, checkedTasksCount, calcs, editedTask } = this.props;
+		const { type, isEdit, title, tasksHeader, tasks, checkedTasksCount, calcs, editedTask } = this.props;
 		const { isDisplayNewTask, isDisplayEditTask, isDisplayConfirm } = this.state;
 		return (
 			<div className='pa'>
@@ -132,6 +132,7 @@ class PaContainer extends Component {
 						}
 						{isDisplayNewTask &&
 							<Task
+								type={type}
 								tasksHeader={tasksHeader}
 								onClose={this.handleToogleDisplayNewTask}
 								onSave={this.handleAddNewTask}
@@ -139,6 +140,7 @@ class PaContainer extends Component {
 						}
 						{isDisplayEditTask &&
 							<Task
+								type={type}
 								tasksHeader={tasksHeader}
 								title='Редактирование задачи'
 								footerButtonText='Сохранить'
@@ -178,9 +180,9 @@ function mapStateToProps(state, ownProps) {
 		...state.pas[ownProps.id],
 		tasks: getVisibleTasksByPa(state, ownProps),
 		checkedTasksCount: checkedTasks.length,
-		editedTask
+		editedTask,
+		type: ownProps.type
 	};
 }
-
 
 export default connect(mapStateToProps, actionCreators)(PaContainer);

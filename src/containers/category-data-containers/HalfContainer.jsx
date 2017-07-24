@@ -25,7 +25,7 @@ class HalfContainer extends Component {
 			<div className='half-year__months-container'>
 				<div className='half-year__months'>
 					{pas.map((p, index) => {
-						return index > 0 ? <PaContainer key={p} id={p} /> : null;
+						return index > 0 ? <PaContainer key={p} id={p} type='halfYear' /> : null;
 					})}
 				</div>
 			</div>
@@ -50,6 +50,7 @@ class HalfContainer extends Component {
 						<PaContainer
 							key={pas[0]}
 							id={pas[0]}
+							type='halfYear'
 						/>
 					</div>
 				</div>

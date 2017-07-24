@@ -671,7 +671,7 @@
   margin-right: 16px;
 }
 .dropinfo .dropinfo__content-box {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .dropinfo .dropinfo__content-box.dropinfo__content-box_show {
   visibility: visible;
@@ -982,6 +982,7 @@ body {
 .competence-block .competence-table .category-competence .competence {
   border-bottom: dotted 1px #ccc;
   padding: 4px;
+  text-align: left;
 }
 .competence-block .competence-table .category-competence .competence:last-child {
   border-bottom: none;
@@ -1048,11 +1049,11 @@ body {
 }
 .half-year .half-year__months-container .half-year__months > .pa:first-child:last-child {
   border-radius: 4px;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #d0d0d0;
 }
 .half-year .half-year__months-container .half-year__months > .pa:first-child {
   border-radius: 4px 4px 0 0;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #d0d0d0;
 }
 .year {
   margin-bottom: 32px;
@@ -1098,8 +1099,8 @@ body {
   background-color: #fff;
 }
 .pa {
-  background-color: #f5f5f5;
-  border: 2px solid #ddd;
+  background-color: #dbdbdb;
+  border: 2px solid #d0d0d0;
   border-top: none;
   border-bottom: none;
   border-radius: 0 0 4px 4px;
@@ -1107,14 +1108,14 @@ body {
 }
 .pa:first-child {
   border-bottom: none;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #d0d0d0;
   border-radius: 0;
 }
 .pa:last-child {
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #d0d0d0;
 }
 .pa:first-child:last-child {
-  border: 2px solid #ddd;
+  border: 2px solid #d0d0d0;
   border-top: none;
   border-radius: 0 0 4px 4px;
 }
@@ -1794,6 +1795,9 @@ body {
   .col-lg-offset-0 {
     margin-left: 0%;
   }
+}
+.wt-zone-right {
+  display: none;
 }
 .assessment-container {
   min-width: 1200px;

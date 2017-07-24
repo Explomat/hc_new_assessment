@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Modal from './modules/modal';
 import { TextView, TextAreaView } from './modules/text-label';
 import { AlertDanger } from './modules/alert';
@@ -9,36 +10,39 @@ class Task extends Component {
 	constructor(props){
 		super(props);
 		
+		this.disabledTypes = {
+			'fact': props.type === 'year'
+		};
 		this.handleSave = this.handleSave.bind(this);
 		this.handleChangeField = this.handleChangeField.bind(this);
 		this.handleCloseError = this.handleCloseError.bind(this);
 		
-		/*this._checkFields = () => {
-			const { fields } = this.state;
-			const { header } = this.props;
-			return Object.keys(fields)
-				.filter(k => (k in header) && fields[k])
-				.length === Object.keys(header).length;
-		};*/
-		
 		this._checkFields = () => {
 			const { fields } = this.state;
 			const { tasksHeader } = this.props;
+
 			return Object.keys(fields)
-				.filter(k => (k in tasksHeader) && fields[k].toString().trim() !== '')
+				.filter(k => {
+					return (
+						(k in tasksHeader) &&
+						fields[k].toString().trim() !== '' &&
+						(!(k in this.disabledTypes) ||
+						this.disabledTypes[k])
+					);
+				})
 				.length === Object.keys(tasksHeader).length;
 		};
 		
-		const { id, name, unit, weight, min, targ, max, fact, percent, comment } = this.props.task || {};
+		const { id, name, unit, weight, threshold, plan, challenge, fact, percent, comment } = this.props.task || {};
 		this.state = {
 			fields: {
 				id: id || null,
 				name: name || '',
 				unit: unit || '',
 				weight: weight || 0,
-				min: min || 0,
-				targ: targ || 0,
-				max: max ||  0,
+				threshold: threshold || 0,
+				plan: plan || 0,
+				challenge: challenge ||  0,
 				fact: fact || 0,
 				percent: percent || 0,
 				comment: comment || ''
@@ -63,7 +67,6 @@ class Task extends Component {
 		const { fields } = this.state;
 		const newFields = { ...fields };
 		newFields[key] = val;
-		//newFields.percent = this._calcPercent();
 		this.setState({
 			fields: newFields
 		});
@@ -79,7 +82,7 @@ class Task extends Component {
 			title
 		} = this.props;
 		const { fields, error } = this.state;
-		const { name, unit, weight, min, targ, max, fact, comment } = fields;
+		const { name, unit, weight, threshold, plan, challenge, fact, comment } = fields;
 		return (
 			<Modal
 				title={title}
@@ -124,35 +127,35 @@ class Task extends Component {
 											/>
 										</div>
 									);
-								case 'min':
+								case 'threshold':
 									return (
 										<div key={index} className='new-task__min'>
 											<InputReal
-												value={min}
-												title={tasksHeader.min}
-												onChange={(val) => this.handleChangeField('min', (val || 0))}
+												value={threshold}
+												title={tasksHeader.threshold}
+												onChange={(val) => this.handleChangeField('threshold', (val || 0))}
 												className='form-control'
 											/>
 										</div>
 									);
-								case 'targ':
+								case 'plan':
 									return (
 										<div key={index} className='new-task__targ'>
 											<InputReal
-												value={targ}
-												title={tasksHeader.targ}
-												onChange={(val) => this.handleChangeField('targ', (val || 0))}
+												value={plan}
+												title={tasksHeader.plan}
+												onChange={(val) => this.handleChangeField('plan', (val || 0))}
 												className='form-control'
 											/>
 										</div>
 									);
-								case 'max':
+								case 'challenge':
 									return (
 										<div key={index} className='new-task__max'>
 											<InputReal
-												value={max}
-												title={tasksHeader.max}
-												onChange={(val) => this.handleChangeField('max', (val || 0))}
+												value={challenge}
+												title={tasksHeader.challenge}
+												onChange={(val) => this.handleChangeField('challenge', (val || 0))}
 												className='form-control'
 											/>
 										</div>
@@ -165,6 +168,7 @@ class Task extends Component {
 												title={tasksHeader.fact}
 												onChange={(val) => this.handleChangeField('fact', (val || 0))}
 												className='form-control'
+												disabled={this.disabledTypes.fact}
 											/>
 										</div>
 									);
@@ -195,9 +199,10 @@ Task.defaultProps = {
 };
 
 Task.propTypes = {
-	tasksHeader: React.PropTypes.object,
-	title: React.PropTypes.string,
-	footerButtonText: React.PropTypes.string
+	type: PropTypes.string,
+	tasksHeader: PropTypes.object,
+	title: PropTypes.string,
+	footerButtonText: PropTypes.string
 };
 
 export default Task;

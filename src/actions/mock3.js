@@ -655,13 +655,13 @@ export function assessments(){
 			'changes': [
 				{
 					'id': 'type_0',
-					'type': 'quarter',
+					'type': 'year',
 					'title': 'Категория - S',
 					'bossFullname': 'Черкасова Марина Сергеевна',
 					'pas': [
 						{
 							'id': '6436071536650501798',
-							'isEdit': false,
+							'isEdit': true,
 							'title': 'Результаты за квартал',
 							'tasksHeader': {
 								'name': 'Наименование',
@@ -696,7 +696,7 @@ export function assessments(){
 									'fact': '',
 									'mark': '',
 									'weight': '',
-									'isEdit': false,
+									'isEdit': true,
 									'unit': 'процент',
 									'percent': 0
 								},
@@ -722,7 +722,7 @@ export function assessments(){
 									'fact': '',
 									'mark': '',
 									'weight': '',
-									'isEdit': false,
+									'isEdit': true,
 									'unit': 'процент',
 									'percent': 0
 								},

@@ -20,6 +20,7 @@ class QuarterContainer extends Component {
 						<PaContainer
 							key={index}
 							id={p}
+							type='quarter'
 						/>
 					)}
 				</div>

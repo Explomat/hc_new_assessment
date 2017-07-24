@@ -20,6 +20,7 @@ class YearContainer extends Component {
 						<PaContainer
 							key={index}
 							id={p}
+							type='year'
 						/>
 					)}
 				</div>
