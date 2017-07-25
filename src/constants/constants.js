@@ -10,7 +10,8 @@ const remoteConstants = createRemoteActions([
 	'ASSESSMENT_REMOVE_TASKS',
 	'ASSESSMENT_ADD_TASK',
 	'ASSESSMENT_EDIT_TASK',
-	'ASSESSMENT_ACTIVATE_TEST'
+	'ASSESSMENT_ACTIVATE_TEST',
+	'ASSESSMENT_SAVE_COMPETENCES'
 ]);
 
 const constants = keyMirror({

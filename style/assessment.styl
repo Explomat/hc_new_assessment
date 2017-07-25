@@ -1,36 +1,56 @@
-.wt-zone-right{
-	display: none;
+#wt-zone-right {
+	display: none !important;
+}
+#wt-zone-main {
+	margin-right: 0px !important;
 }
 
 .assessment-container{
 	min-width: 1200px;
 	color: #444;
 	
-	.prev-assessment{
-		padding: 16px;
-		padding: 15px 0 15px 15px;
-	    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
-	    margin-bottom: 8px;
-	    background-color: #fff;
-	    margin-bottom: 32px;
-		
-		.prev-assessment__drop-title{
-			background-color: #fff;
+
+	.assessment-container__wrapper{
+		.prev-assessment{
+			padding: 16px;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+		    margin-bottom: 8px;
+		    background-color: #fff;
+		    margin-bottom: 32px;
+			
+			.prev-assessment__drop-title{
+				background-color: #fff;
+			}
 		}
+		
+		.cur-assessment {
+			padding: 16px;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+		    margin-bottom: 8px;
+		    background-color: #fff;
+		    margin-bottom: 32px;
+		    
+		    .prev-assessment__type-container{
+		    	margin-bottom: 16px;
+		    }
+		}
+		
+		.assessment-container__footer{
+			padding: 16px;
+			background-color: #dbdbdb;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+			
+			.assessment-container__buttons {
+				text-align: center;
+				
+				.assessment-container__button{
+					width: 200px;
+				}
+			}
+		}
+		
 	}
 	
-	.cur-assessment {
-		padding: 16px;
-		padding: 15px 0 15px 15px;
-	    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
-	    margin-bottom: 8px;
-	    background-color: #fff;
-	    margin-bottom: 32px;
-	    
-	    .prev-assessment__type-container{
-	    	margin-bottom: 16px;
-	    }
-	}
 	
 	.tasks-container {
 		.new-task__container{

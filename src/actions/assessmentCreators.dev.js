@@ -118,6 +118,17 @@ export function activateTest(testId){
 	};
 }
 
+export function saveCompetences(paId){
+	return (dispatch) => {
+		setTimeout(() => {
+			dispatch({
+				type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS,
+				paId
+			});
+		}, 300);
+	};
+}
+
 export function toggleSelectTask(taskId, val){
 	return {
 		type: constants.ASSESSMENT_TOGGLE_SELECT_TASK,

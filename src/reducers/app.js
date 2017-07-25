@@ -2,6 +2,9 @@ import constants from '../constants';
 import { setSuccess, setFailure } from './utils/setState';
 
 export default function app(state = {
+	step: '',
+	isBoss: false,
+	isCollaborator: false,
 	title: '',
 	access: true,
 	isFetching: false,
@@ -19,6 +22,13 @@ export default function app(state = {
 		case constants.APP_GET_ACCESS_SUCCESS:
 			return setSuccess(state, action.response, 'error', 'isFetching');
 			
+		case constants.ASSESSMENT_GET_DATA_SUCCESS: {
+			return {
+				...state,
+				...action.result
+			};
+		}
+
 		case constants.APP_ERROR_MESSAGE:
 			return {
 				...state,

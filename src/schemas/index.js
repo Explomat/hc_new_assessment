@@ -30,19 +30,21 @@ const curAssessment = new schema.Entity('assessments',
 	}
 );
 
-const assessment = new schema.Array({
-	prevAssessment,
-	curAssessment
-}, 'type');
-export default assessment;
+const app = new schema.Object({
+	assessments: new schema.Array({
+		prevAssessment,
+		curAssessment
+	}, 'type')
+});
+export default app;
 
 
 /*
-assessments
-	changes
-		pas
-			tasks
-	competenceBlocks
-		categoryCompetences
-			competences
+	assessments
+		changes
+			pas
+				tasks
+		competenceBlocks
+			categoryCompetences
+				competences
 */
