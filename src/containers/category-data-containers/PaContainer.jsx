@@ -97,7 +97,16 @@ class PaContainer extends Component {
 	}
 	
 	render(){
-		const { type, isEdit, title, tasksHeader, tasks, checkedTasksCount, calcs, editedTask } = this.props;
+		const {
+			type,
+			isEdit,
+			title,
+			tasksHeader,
+			tasks,
+			checkedTasksCount,
+			calcs,
+			editedTask
+		} = this.props;
 		const { isDisplayNewTask, isDisplayEditTask, isDisplayConfirm } = this.state;
 		return (
 			<div className='pa'>
