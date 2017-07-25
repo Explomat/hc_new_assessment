@@ -16,7 +16,7 @@ class CompetenceStageContainer extends Component {
 						{tasksHeader.map((th, index) =>
 							<span
 								key={index}
-								className='competence-table__th-name col-lg-3 col-md-3 col-sm-3'
+								className='competence-table__th-name col-lg-4 col-md-4 col-sm-4'
 							>
 								{th}
 							</span>

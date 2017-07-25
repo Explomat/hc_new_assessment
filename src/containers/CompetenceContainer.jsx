@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DropDown from '../components/modules/dropdown';
-import { TextView } from '../components/modules/text-label';
+//import { TextView } from '../components/modules/text-label';
 import * as actionCreators from '../actions';
 import { connect } from 'react-redux';
 
@@ -11,7 +11,7 @@ class CompetenceContainer extends Component {
 		
 		this.handleChangeCompetenceUserMark = this.handleChangeCompetenceUserMark.bind(this);
 		this.handleChangeCompetenceBossMark = this.handleChangeCompetenceBossMark.bind(this);
-		this.handleChangeCompetenceComment = this.handleChangeCompetenceComment.bind(this);
+		//this.handleChangeCompetenceComment = this.handleChangeCompetenceComment.bind(this);
 	}
 
 	handleChangeCompetenceUserMark(e, payload){
@@ -24,42 +24,44 @@ class CompetenceContainer extends Component {
 		changeBossMarkInCompetence(id, payload);
 	}
 
-	handleChangeCompetenceComment(val){
+	/*handleChangeCompetenceComment(val){
 		const { id, changeCommentInCompetence } = this.props;
 		changeCommentInCompetence(id, val);
-	}
+	}*/
 	
 	render(){
-		const { title, userMark, bossMark, comment } = this.props;
+		const { title, userMark, bossMark/*, comment */ } = this.props;
 		return (
 			<div className='competence col-lg-12 col-md-12 col-sm-12'>
-				<span className='competence__title competence__field col-lg-3 col-md-3 col-sm-3'>
+				<span className='competence__title competence__field col-lg-4 col-md-4 col-sm-4'>
 					{title.value}
 				</span>
-				<span className='competence__user-mark competence__field col-lg-3 col-md-3 col-sm-3'>
+				<span className='competence__user-mark competence__field col-lg-4 col-md-4 col-sm-4'>
 					{userMark &&
 						<DropDown
 							selectedPayload={userMark.value.selectedPayload}
 							items={userMark.value.items}
 							onChange={this.handleChangeCompetenceUserMark}
+							disabled={!userMark.isEdit}
 						/>
 					}
 				</span>
-				<span className='competence__boss-mark competence__field col-lg-3 col-md-3 col-sm-3'>
+				<span className='competence__boss-mark competence__field col-lg-4 col-md-4 col-sm-4'>
 					{bossMark &&
 						<DropDown
 							selectedPayload={bossMark.value.selectedPayload}
 							items={bossMark.value.items}
 							onChange={this.handleChangeCompetenceBossMark}
+							disabled={!bossMark.isEdit}
 						/>
 					}
 				</span>
-				<span className='competence__comment competence__field col-lg-3 col-md-3 col-sm-3'>
+				{/*<span className='competence__comment competence__field col-lg-3 col-md-3 col-sm-3'>
 					<TextView
 						value={comment.value}
 						onBlur={this.handleChangeCompetenceComment}
 					/>
-				</span>
+				</span>*/}
 			</div>
 		);
 	}

@@ -156,8 +156,7 @@ export function assessments(){
 					'tasksHeader': [
 						'Название компетенции',
 						'Оценка сотрудника',
-						'Оценка руководителя',
-						'Комментарий'
+						'Оценка руководителя'
 					],
 					'competenceBlocks': [
 						{
@@ -193,10 +192,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
@@ -253,10 +248,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -311,10 +302,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
@@ -377,10 +364,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -435,10 +418,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
@@ -495,10 +474,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -554,10 +529,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -612,10 +583,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
@@ -1271,8 +1238,7 @@ export function assessments(){
 					'tasksHeader': [
 						'Название компетенции',
 						'Оценка сотрудника',
-						'Оценка руководителя',
-						'Комментарий'
+						'Оценка руководителя'
 					],
 					'competenceBlocks': [
 						{
@@ -1312,10 +1278,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
@@ -1380,10 +1342,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -1447,10 +1405,6 @@ export function assessments(){
 											]
 										}
 									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
-									},
 									'userMark': {
 										'isEdit': false,
 										'value': {
@@ -1513,10 +1467,6 @@ export function assessments(){
 												}
 											]
 										}
-									},
-									'comment': {
-										'isEdit': false,
-										'value': 'Тупой кандидат'
 									},
 									'userMark': {
 										'isEdit': false,
