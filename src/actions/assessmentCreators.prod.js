@@ -107,7 +107,6 @@ export function editTask(paId, task){
 
 export function removeTasks(paId){
 	return (dispatch, getState) => {
-	
 		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'RemoveTasks'
@@ -175,7 +174,6 @@ export function activateTest(testId){
 
 export function saveCompetences(paId){
 	return (dispatch, getState) => {
-
 		const { competences } = getState();
 		const path = url.createPath({
 			server_name: 'assessment',
