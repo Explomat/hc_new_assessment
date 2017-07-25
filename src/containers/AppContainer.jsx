@@ -5,27 +5,27 @@ import { connect } from 'react-redux';
 import { dom } from '../config';
 // import cx from 'classnames';
 
-const AppContainer = ({ isFetching, access, errorMessage, infoMessage, ...props }) => {
+const AppContainer = ({ isFetching, access, errorMessage, infoMessage, error, info, children }) => {
 	return (
 		<div className='app-container'>
 			<div className='app-container__header'>
 				{errorMessage &&
 					<AlertDanger
 						text={errorMessage}
-						onClose={props.error.bind(this, null)}
+						onClose={error.bind(this, null)}
 						className='app-container__error'
 					/>
 				}
 				{infoMessage &&
 					<AlertInfo
 						text={infoMessage}
-						onClose={props.info.bind(this, null)}
+						onClose={info.bind(this, null)}
 						className='app-container__error'
 					/>
 				}
 			</div>
 			<div className='app-container__body'>
-				{isFetching ? <h2>Запрос доступа...</h2> : access ? props.children : <h1>Доступ запрещен</h1>}
+				{isFetching ? <h2>Запрос доступа...</h2> : access ? children : <h1>Доступ запрещен</h1>}
 			</div>
 			<div id={dom.portalModalId} />
 		</div>
