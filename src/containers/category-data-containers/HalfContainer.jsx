@@ -54,7 +54,7 @@ class HalfContainer extends Component {
 						/>
 					</div>
 				</div>
-				{isDisplayMonths ?
+				{isDisplayMonths && pas.length > 1 ?
 					<div
 						className='half-year__display-months'
 						onClick={this.handleToggleDisplayMonths}

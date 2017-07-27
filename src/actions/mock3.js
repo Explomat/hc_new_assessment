@@ -521,7 +521,7 @@ export function assessments(){
 											'value': 'Профессиональное мастерство'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -549,7 +549,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
