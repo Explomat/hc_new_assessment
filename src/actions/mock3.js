@@ -1,8 +1,8 @@
 export function assessments(){
 	return {
 		'step': 'firstStep',
-		'isBoss': false,
-		'isCollaborator': false,
+		'isBoss': true,
+		'isCollaborator': true,
 		'assessments': [
 			{
 				'id': 'assessment_1',
@@ -521,7 +521,7 @@ export function assessments(){
 											'value': 'Профессиональное мастерство'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -549,7 +549,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -586,7 +586,7 @@ export function assessments(){
 											'value': 'Ответственность'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -614,7 +614,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -645,7 +645,7 @@ export function assessments(){
 											'value': 'Открытость'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -673,7 +673,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -704,7 +704,7 @@ export function assessments(){
 											'value': 'Партнерство'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -732,7 +732,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -763,7 +763,7 @@ export function assessments(){
 											'value': 'Энергия'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -791,7 +791,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -822,7 +822,7 @@ export function assessments(){
 											'value': 'Клиентоориентированность'
 										},
 										'userMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -850,7 +850,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': false,
+											'isEdit': true,
 											'value': {
 												'selectedPayload': '0',
 												'items': [

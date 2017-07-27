@@ -11,7 +11,8 @@ addServer({ id: '6413685501030040067', name: 'assessment' })
 		'AddTask',
 		'EditTask',
 		'RemoveTasks',
-		'ActivateTest'
+		'ActivateTest',
+		'SaveCompetences'
 	]
 );
 

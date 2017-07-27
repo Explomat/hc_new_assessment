@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PrevAssessmentContainer from './PrevAssessmentContainer';
 import CurAssessmentContainer from './CurAssessmentContainer';
-import { AlertDanger } from '../components/modules/alert';
+import { AlertDanger, AlertInfo } from '../components/modules/alert';
 import { ButtonDefault } from '../components/modules/button';
 import getUrlParams from '../utils/url';
 import * as actionCreators from '../actions';
@@ -14,6 +14,7 @@ class AssessmentContainer extends Component {
 
 		this.handleSave = this.handleSave.bind(this);
 		this.handleCloseError = this.handleCloseError.bind(this);
+		this.handleCloseMessageCompetences = this.handleCloseMessageCompetences.bind(this);
 		this.state = {
 			error: null
 		};
@@ -40,17 +41,31 @@ class AssessmentContainer extends Component {
 	handleCloseError(){
 		this.setState({ error: null });
 	}
+
+	handleCloseMessageCompetences(){
+		this.props.changeCompetencesMessage(null);
+	}
 	
 	_isCompetencesFilled(){
-		const { competences } = this.props;
+		const { competences, isBoss, isCollaborator } = this.props;
+		
 		return competences.filter(c => {
-			return c.bossMark.value.selectedPayload.toString() !== '0' &&
-				c.userMark.value.selectedPayload.toString() !== '0';
+			const bossPayload = c.bossMark.value.selectedPayload.toString();
+			const userPayload = c.userMark.value.selectedPayload.toString();
+
+			if (isBoss && isCollaborator) {
+				return bossPayload !== '0' && userPayload !== '0';
+			} else if (isBoss){
+				return bossPayload !== '0';
+			} else if (isCollaborator){
+				return userPayload !== '0';
+			}
+			return false;
 		}).length === competences.length;
 	}
 	
 	render(){
-		const { isFetching, items, step, isBoss, isCollaborator } = this.props;
+		const { isFetching, isFetchingCompetences, infoMessageCompetences, items, step, isBoss, isCollaborator } = this.props;
 		const { error } = this.state;
 		const isSaveButton = (isCollaborator && step === 'firstStep') || (isBoss && step === 'secondStep');
 		const isButtons = isSaveButton;
@@ -68,9 +83,17 @@ class AssessmentContainer extends Component {
 						</div>
 						<div className='assessment-container__footer'>
 							{error && <AlertDanger text={error} onClose={this.handleCloseError}/>}
+							{infoMessageCompetences && <AlertInfo text={infoMessageCompetences} onClose={this.handleCloseMessageCompetences}/>}
 							{isButtons && 
 								<div className='assessment-container__buttons'>
-									{isSaveButton && <ButtonDefault text='Сохранить' className='assessment-container__button' onClick={this.handleSave} />}
+									{isSaveButton &&
+										<ButtonDefault
+											text='Сохранить'
+											className='assessment-container__button'
+											onClick={this.handleSave}
+											loading={isFetchingCompetences}
+										/>
+									}
 								</div>
 							}
 						</div>

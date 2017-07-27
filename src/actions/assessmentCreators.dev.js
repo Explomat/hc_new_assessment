@@ -118,12 +118,15 @@ export function activateTest(testId){
 	};
 }
 
-export function saveCompetences(paId){
+export function saveCompetences(){
 	return (dispatch) => {
 		setTimeout(() => {
 			dispatch({
-				type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS,
-				paId
+				type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS
+			});
+			dispatch({
+				type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
+				message: 'Данные успешно сохранены!'
 			});
 		}, 300);
 	};
@@ -158,5 +161,12 @@ export function changeCommentInCompetence(competenceId, text){
 		type: constants.ASSESSMENT_CHANGE_COMMENT_COMPETENCE,
 		competenceId,
 		text
+	};
+}
+
+export function changeCompetencesMessage(message){
+	return {
+		type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
+		message
 	};
 }

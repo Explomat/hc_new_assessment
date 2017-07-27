@@ -174,12 +174,17 @@ export function activateTest(testId){
 
 export function saveCompetences(paId){
 	return (dispatch, getState) => {
+		dispatch({
+			type: constants.ASSESSMENT_SAVE_COMPETENCES
+		});
+
 		const { competences } = getState();
 		const path = url.createPath({
 			server_name: 'assessment',
-			action_name: 'SaveCompetences'
+			action_name: 'SaveCompetences',
+			pa_id: paId
 		});
-		post(path, JSON.stringify({ pa_id: paId, competences: Object.values(competences) }))
+		post(path, JSON.stringify({ competences: Object.values(competences) }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -187,6 +192,10 @@ export function saveCompetences(paId){
 			} else {
 				dispatch({
 					type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS
+				});
+				dispatch({
+					type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
+					message: data.message
 				});
 			}
 		})
@@ -227,5 +236,12 @@ export function changeCommentInCompetence(competenceId, text){
 		type: constants.ASSESSMENT_CHANGE_COMMENT_COMPETENCE,
 		competenceId,
 		text
+	};
+}
+
+export function changeCompetencesMessage(message){
+	return {
+		type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
+		message
 	};
 }
