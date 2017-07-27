@@ -4,18 +4,18 @@ import CompetenceStageContainer from './CompetenceStageContainer';
 import { DropInfo, DropInfoBody } from '../components/modules/dropinfo';
 import { connect } from 'react-redux';
 
+const Label = ({ title, className }) => (
+	<strong className={className}>
+		{title}
+	</strong>
+);
+
 const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
-	const header = (
-		<strong className='category__title'>
-			{title}
-		</strong>
-	);
-	
 	return (
 		<div className='cur-assessment'>
 			<DropInfo
 				expanded
-				label={header}
+				label={<Label title={title} className='category__title'/>}
 				transitionTimeout={0.5}
 				classNameBlock='prev-assessment__drop-title'
 			>
@@ -26,7 +26,7 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 								return (
 									<DropInfo
 										key={c.id}
-										label={c.title}
+										label={<Label title={c.title}/>}
 										transitionTimeout={0.5}
 										className='prev-assessment__type-container'
 									>

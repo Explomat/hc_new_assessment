@@ -52,6 +52,8 @@ class AssessmentContainer extends Component {
 	render(){
 		const { isFetching, items, step, isBoss, isCollaborator } = this.props;
 		const { error } = this.state;
+		const isSaveButton = (isCollaborator && step === 'firstStep') || (isBoss && step === 'secondStep');
+		const isButtons = isSaveButton;
 		return (
 			<div className='assessment-container'>
 				{isFetching ?
@@ -66,12 +68,11 @@ class AssessmentContainer extends Component {
 						</div>
 						<div className='assessment-container__footer'>
 							{error && <AlertDanger text={error} onClose={this.handleCloseError}/>}
-							<div className='assessment-container__buttons'>
-								{(isCollaborator && step === 'firstStep') &&
-									<ButtonDefault text='Сохранить' className='assessment-container__button' onClick={this.handleSave} />}
-								{(isBoss && step === 'secondStep') &&
-									<ButtonDefault text='Сохранить' className='assessment-container__button' onClick={this.handleSave} />}
-							</div>
+							{isButtons && 
+								<div className='assessment-container__buttons'>
+									{isSaveButton && <ButtonDefault text='Сохранить' className='assessment-container__button' onClick={this.handleSave} />}
+								</div>
+							}
 						</div>
 					</div>
 				}
