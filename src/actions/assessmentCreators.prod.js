@@ -37,13 +37,13 @@ export function getAssessments(){
 	};
 }
 
-export function addTask(paId, task){
+export function addTask(paId, type, category, task){
 	return (dispatch, getState) => {
 		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'AddTask'
 		});
-		post(path, JSON.stringify({ task, pa_id: paId }))
+		post(path, JSON.stringify({ pa_id: paId, type, category, task }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -71,13 +71,13 @@ export function addTask(paId, task){
 	};
 }
 
-export function editTask(paId, task){
+export function editTask(paId, type, category, task){
 	return (dispatch, getState) => {
 		const path = url.createPath({
 			server_name: 'assessment',
 			action_name: 'EditTask'
 		});
-		post(path, JSON.stringify({ task, pa_id: paId }))
+		post(path, JSON.stringify({ pa_id: paId, type, category, task }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -105,7 +105,7 @@ export function editTask(paId, task){
 	};
 }
 
-export function removeTasks(paId){
+export function removeTasks(paId, type, category){
 	return (dispatch, getState) => {
 		const path = url.createPath({
 			server_name: 'assessment',
@@ -119,7 +119,7 @@ export function removeTasks(paId){
 			};
 		});
 		
-		post(path, JSON.stringify({ pa_id: paId, tasks: checkedTasks }))
+		post(path, JSON.stringify({ pa_id: paId, type, category, tasks: checkedTasks }))
 		.then(resp => JSON.parse(resp))
 		.then(data => {
 			if (data.error){
@@ -190,13 +190,14 @@ export function saveCompetences(paId){
 			if (data.error){
 				dispatch(error(data.error));
 			} else {
-				dispatch({
+				window.location.reload(true);
+				/*dispatch({
 					type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS
 				});
 				dispatch({
 					type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
 					message: data.message
-				});
+				});*/
 			}
 		})
 		.catch(e => {

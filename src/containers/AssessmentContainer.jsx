@@ -88,7 +88,7 @@ class AssessmentContainer extends Component {
 								<div className='assessment-container__buttons'>
 									{isSaveButton &&
 										<ButtonDefault
-											text='Сохранить'
+											text='Сохранить и отправить на утверждение'
 											className='assessment-container__button'
 											onClick={this.handleSave}
 											loading={isFetchingCompetences}

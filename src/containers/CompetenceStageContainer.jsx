@@ -22,9 +22,11 @@ class CompetenceStageContainer extends Component {
 							</span>
 						)}
 					</div>
-					{competenceBlocks.map(cc =>
-						<CompetenceBlockContainer key={cc} id={cc} />
-					)}
+					<div className='competence-table__body'>
+						{competenceBlocks.map(cc =>
+							<CompetenceBlockContainer key={cc} id={cc} />
+						)}
+					</div>
 				</div>
 			</div>
 		);

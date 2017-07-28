@@ -11,7 +11,7 @@ class Task extends Component {
 		super(props);
 		
 		this.disabledTypes = {
-			'fact': props.type === 'year'
+			'fact': props.type === 'year' || props.type === 'halfYear' || props.type === 'quarter'
 		};
 		this.handleSave = this.handleSave.bind(this);
 		this.handleChangeField = this.handleChangeField.bind(this);

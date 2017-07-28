@@ -7,7 +7,9 @@ class QuarterContainer extends Component {
 		const {
 			title,
 			bossFullname,
-			pas
+			pas,
+			type,
+			category
 		} = this.props;
 		return (
 			<div className='quarter'>
@@ -20,7 +22,8 @@ class QuarterContainer extends Component {
 						<PaContainer
 							key={index}
 							id={p}
-							type='quarter'
+							type={type}
+							category={category}
 						/>
 					)}
 				</div>

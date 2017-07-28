@@ -4,10 +4,21 @@ import CompetenceStageContainer from './CompetenceStageContainer';
 import { DropInfo, DropInfoBody } from '../components/modules/dropinfo';
 import { connect } from 'react-redux';
 
-const Label = ({ title, className }) => (
-	<strong className={className}>
+const Label = ({ title }) => (
+	<strong className='category__title'>
 		{title}
 	</strong>
+);
+
+const TypeLabel = ({ title, bossFullname }) => (
+	<span className='cur-assessment__title'>
+		<strong className='cur-assessment__title--left'>
+			{title}
+		</strong>
+		<strong className='cur-assessment__title--right'>
+			{bossFullname}
+		</strong>
+	</span>
 );
 
 const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
@@ -17,7 +28,7 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 				expanded
 				label={<Label title={title} className='category__title'/>}
 				transitionTimeout={0.5}
-				classNameBlock='prev-assessment__drop-title'
+				classNameBlock='cur-assessment__drop-title'
 			>
 				<DropInfoBody>
 					<div className='cur-assessment__changes'>
@@ -26,9 +37,9 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 								return (
 									<DropInfo
 										key={c.id}
-										label={<Label title={c.title}/>}
+										label={<TypeLabel {...c}/>}
 										transitionTimeout={0.5}
-										className='prev-assessment__type-container'
+										className='cur-assessment__type-container'
 									>
 										<DropInfoBody>
 											<TypeContainer key={c.id} id={c.id} />
@@ -55,7 +66,8 @@ function mapStateToProps(state, ownProps) {
 		changes: assessment.changes.map(c => {
 			return {
 				id: state.changes[c].id,
-				title: state.changes[c].title
+				title: state.changes[c].title,
+				bossFullname: state.changes[c].bossFullname
 			};
 		})
 	};

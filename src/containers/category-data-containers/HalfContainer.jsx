@@ -20,12 +20,12 @@ class HalfContainer extends Component {
 	}
 	
 	_renderMonths(){
-		const { pas } = this.props;
+		const { pas, type } = this.props;
 		return (
 			<div className='half-year__months-container'>
 				<div className='half-year__months'>
 					{pas.map((p, index) => {
-						return index > 0 ? <PaContainer key={p} id={p} type='halfYear' /> : null;
+						return index > 0 ? <PaContainer key={p} id={p} type={type} /> : null;
 					})}
 				</div>
 			</div>
@@ -33,7 +33,7 @@ class HalfContainer extends Component {
 	}
 	
 	render(){
-		const { title, bossFullname, pas } = this.props;
+		const { title, bossFullname, pas, type, category } = this.props;
 		const pasLen = pas ? pas.length : 0;
 		const { isDisplayMonths } = this.state;
 		if (pasLen === 0){
@@ -50,25 +50,28 @@ class HalfContainer extends Component {
 						<PaContainer
 							key={pas[0]}
 							id={pas[0]}
-							type='halfYear'
+							type={type}
+							category={category}
 						/>
 					</div>
 				</div>
-				{isDisplayMonths && pas.length > 1 ?
-					<div
-						className='half-year__display-months'
-						onClick={this.handleToggleDisplayMonths}
-					>
-						Скрыть
-						<i className='icon-up-open' />
-					</div> :
-					<div
-						className='half-year__display-months'
-						onClick={this.handleToggleDisplayMonths}
-					>
-						Показать по месяцам
-						<i className='icon-down-open' />
-					</div>
+				{pas.length > 1 &&
+					(isDisplayMonths ?
+						<div
+							className='half-year__display-months'
+							onClick={this.handleToggleDisplayMonths}
+						>
+							Скрыть
+							<i className='icon-up-open' />
+						</div> :
+						<div
+							className='half-year__display-months'
+							onClick={this.handleToggleDisplayMonths}
+						>
+							Показать по месяцам
+							<i className='icon-down-open' />
+						</div>
+					)
 				}
 				{isDisplayMonths && this._renderMonths()}
 			</div>

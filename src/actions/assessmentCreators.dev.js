@@ -23,7 +23,8 @@ export function getAssessments(){
 	};
 }
 
-export function addTask(paId, task){
+export function addTask(paId, type, category, task){
+	console.log(type, category);
 	return (dispatch, getState) => {
 		setTimeout(() => {
 			const pa = getState().pas[paId];
@@ -48,7 +49,8 @@ export function addTask(paId, task){
 	};
 }
 
-export function editTask(paId, task){
+export function editTask(paId, type, category, task){
+	console.log(type, category);
 	return (dispatch, getState) => {
 		setTimeout(() => {
 			const pa = getState().pas[paId];
@@ -69,7 +71,8 @@ export function editTask(paId, task){
 	};
 }
 
-export function removeTasks(paId){
+export function removeTasks(paId, type, category){
+	console.log(type, category);
 	return (dispatch, getState) => {
 		setTimeout(() => {
 			const state = getState();
@@ -119,15 +122,16 @@ export function activateTest(testId){
 }
 
 export function saveCompetences(){
-	return (dispatch) => {
+	return () => {
 		setTimeout(() => {
-			dispatch({
+			window.location.reload(true);
+			/*dispatch({
 				type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS
 			});
 			dispatch({
 				type: constants.ASSESSMENT_CHANGE_COMPETENCES_MESSAGE,
 				message: 'Данные успешно сохранены!'
-			});
+			});*/
 		}, 300);
 	};
 }

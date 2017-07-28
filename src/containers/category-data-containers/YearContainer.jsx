@@ -7,7 +7,9 @@ class YearContainer extends Component {
 		const {
 			title,
 			bossFullname,
-			pas
+			pas,
+			type,
+			category
 		} = this.props;
 		return (
 			<div className='year'>
@@ -20,7 +22,8 @@ class YearContainer extends Component {
 						<PaContainer
 							key={index}
 							id={p}
-							type='year'
+							type={type}
+							category={category}
 						/>
 					)}
 				</div>

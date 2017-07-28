@@ -40,23 +40,23 @@ class PaContainer extends Component {
 	}
 	
 	handleRemoveTasks(isConfirm){
-		const { id, removeTasks } = this.props;
+		const { id, type, category, removeTasks } = this.props;
 		if (isConfirm){
-			removeTasks(id);
+			removeTasks(id, type, category);
 		}
 		this.handleToggleConfirm();
 	}
 	
 	handleAddNewTask(task){
-		const { id, addTask } = this.props;
+		const { id, type, category, addTask } = this.props;
 		this.handleToogleDisplayNewTask();
-		addTask(id, task);
+		addTask(id, type, category, task);
 	}
 	
 	handleEditTask(task){
-		const { id, editTask } = this.props;
+		const { id, type, category, editTask } = this.props;
 		this.handleToggleEditTask();
-		editTask(id, task);
+		editTask(id, type, category, task);
 	}
 	
 	handleToggleEditTask(){
@@ -111,7 +111,7 @@ class PaContainer extends Component {
 		return (
 			<div className='pa'>
 				<div className='pa__container'>
-					<strong>{title}</strong>
+					<strong className='pa__title'>{title}</strong>
 					<div className='tasks-container'>
 						{tasks.length > 0 ? this._renderTasks() : <AlertInfo text='Список задач пуст' isClose={false} />}
 						{isEdit &&

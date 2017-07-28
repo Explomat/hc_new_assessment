@@ -29,7 +29,6 @@
     "react-dom": "^15.6.0",
     "react-icons": "^2.2.5",
     "react-input-slider": "^1.6.0",
-    "react-numeric-input": "^2.0.7",
     "react-onclickoutside": "^5.7.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",

@@ -90,6 +90,9 @@ class DropDown extends React.Component {
 
 	handleToggleDisplay(e) {
 		this._stopPropagation(e);
+		if (this.props.disabled){
+			return;
+		}
 		this.setState({ display: !this.state.display });
 	}
 

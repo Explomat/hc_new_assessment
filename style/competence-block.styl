@@ -3,22 +3,27 @@
     	border-spacing: 1px;
         padding: 0;   
     	
-    	.competence-table__th-name{
-            font-size: 12px;   
-            display: inline-block;   
-			padding: 4px;
-			background-color: #eeeeee;
-			border-left: dotted 1px #cccccc;
-			border-right: dotted 1px #cccccc;
-			border-bottom: solid 1px #cccccc;
-    	}
-     
+        .competence-table__header{
+            .competence-table__th-name{
+                font-size: 12px;   
+                display: inline-block;   
+                padding: 4px;
+                background-color: #dbdbdb;
+                border-left: dotted 1px #cccccc;
+                border-right: dotted 1px #cccccc;
+                border-bottom: solid 1px #cccccc;
+            }
+        }
+        
+        .competence-table__body{
+            border: dotted 1px #cccccc;
+        }
+
         .category-competence{
             width: 100%;
             vertical-align: top;
             padding: 0px;
             background-color: #ffffff;
-            border: dotted 1px #cccccc;
             
             .category-competence__title{
                 padding: 4px;
@@ -26,8 +31,9 @@
                 background-repeat: no-repeat;
                 font-size: 12px;
                 font-weight: bold;
-                color: #667;
                 text-align: left;
+                background-color: #eee;
+                color: #cd2826;
             }
             
             .competence{
