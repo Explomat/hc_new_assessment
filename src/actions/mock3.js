@@ -1,6 +1,6 @@
 export function assessments(){
 	return {
-		'step': 'firstStep',
+		'step': 'secondStep',
 		'isBoss': true,
 		'isCollaborator': true,
 		'assessments': [
@@ -586,7 +586,7 @@ export function assessments(){
 											'value': 'Ответственность'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -614,7 +614,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -645,7 +645,7 @@ export function assessments(){
 											'value': 'Открытость'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -673,7 +673,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -704,7 +704,7 @@ export function assessments(){
 											'value': 'Партнерство'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -732,7 +732,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -763,7 +763,7 @@ export function assessments(){
 											'value': 'Энергия'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -791,7 +791,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -822,7 +822,7 @@ export function assessments(){
 											'value': 'Клиентоориентированность'
 										},
 										'userMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [
@@ -850,7 +850,7 @@ export function assessments(){
 											'value': 'Умный кандидат'
 										},
 										'bossMark': {
-											'isEdit': true,
+											'isEdit': false,
 											'value': {
 												'selectedPayload': '0',
 												'items': [

@@ -27,15 +27,21 @@ class AssessmentContainer extends Component {
 	handleSave(){
 		if (!this._isCompetencesFilled()){
 			this.setState({
-				error: 'Необходимо заполнить все компетенции!'
+				error: 'Необходимо заполнить все компетенции'
 			});
-		} else {
-			const paId = getUrlParams(window.location.href, 'pa_id');
-			this.setState({
-				error: null
-			});
-			this.props.saveCompetences(paId);
+			return;
 		}
+		if (!this._isTasksFilled()){
+			this.setState({
+				error: 'Необходимо, чтобы суммарный вес индивидульных показателей был ровно 100%'
+			});
+			return;
+		}
+		const paId = getUrlParams(window.location.href, 'pa_id');
+		this.setState({
+			error: null
+		});
+		this.props.saveCompetences(paId);
 	}
 
 	handleCloseError(){
@@ -48,26 +54,57 @@ class AssessmentContainer extends Component {
 	
 	_isCompetencesFilled(){
 		const { competences, isBoss, isCollaborator } = this.props;
-		
-		return competences.filter(c => {
+
+		const editedCompetences = competences.filter(c => c.bossMark.isEdit || c.userMark.isEdit);
+
+		const cc = competences.filter(c => {
 			const bossPayload = c.bossMark.value.selectedPayload.toString();
 			const userPayload = c.userMark.value.selectedPayload.toString();
 
 			if (isBoss && isCollaborator) {
-				return bossPayload !== '0' && userPayload !== '0';
+				return c.userMark.isEdit && userPayload !== '0';
 			} else if (isBoss){
-				return bossPayload !== '0';
-			} else if (isCollaborator){
-				return userPayload !== '0';
+				return c.bossMark.isEdit && bossPayload !== '0';
 			}
 			return false;
-		}).length === competences.length;
+		});
+		return cc.length === editedCompetences.length;
+	}
+
+	_isTasksFilled(){
+		const { pas, tasks } = this.props;
+		return pas.filter(p => {
+			if (!p.isEdit){
+				return true;
+			}
+			const _tasks = p.tasks.map(t => tasks[t]);
+			return _tasks
+				.map(t => t.weight)
+				.reduce((f, s) => {
+					const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;
+					const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
+					return fTask + sTask;
+				}, 0) === 100;
+		}).length === pas.length;
 	}
 	
 	render(){
-		const { isFetching, isFetchingCompetences, infoMessageCompetences, items, step, isBoss, isCollaborator } = this.props;
+		const {
+			isFetching,
+			isFetchingCompetences,
+			infoMessageCompetences,
+			items,
+			step,
+			isBoss,
+			isCollaborator
+		} = this.props;
 		const { error } = this.state;
-		const isSaveButton = (isCollaborator && step === 'firstStep') || (isBoss && step === 'secondStep');
+		const isSaveButton =
+			(isCollaborator && step === 'firstStep') ||
+			(isBoss && step === 'secondStep');
+		const saveButtonText = step === 'firstStep' ?
+			'Сохранить и отправить на утверждение' :
+			'Сохранить и завершить оценку';
 		const isButtons = isSaveButton;
 		return (
 			<div className='assessment-container'>
@@ -88,7 +125,7 @@ class AssessmentContainer extends Component {
 								<div className='assessment-container__buttons'>
 									{isSaveButton &&
 										<ButtonDefault
-											text='Сохранить и отправить на утверждение'
+											text={saveButtonText}
 											className='assessment-container__button'
 											onClick={this.handleSave}
 											loading={isFetchingCompetences}
@@ -105,10 +142,12 @@ class AssessmentContainer extends Component {
 }
 
 function mapStateToProps(state) {
-	const { app, assessments, competences } = state;
+	const { app, assessments, competences, pas, tasks } = state;
 	return {
 		...assessments,
 		competences: Object.values(competences),
+		pas: Object.values(pas),
+		tasks,
 		items: Object.values(assessments.items),
 		step: app.step,
 		isBoss: app.isBoss,

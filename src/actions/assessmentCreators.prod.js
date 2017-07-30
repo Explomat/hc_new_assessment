@@ -190,7 +190,7 @@ export function saveCompetences(paId){
 			if (data.error){
 				dispatch(error(data.error));
 			} else {
-				window.location.reload(true);
+				window.location.href = data.url;
 				/*dispatch({
 					type: constants.ASSESSMENT_SAVE_COMPETENCES_SUCCESS
 				});
