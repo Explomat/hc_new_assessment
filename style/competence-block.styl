@@ -1,12 +1,17 @@
 .competence-block{
     .competence-table{
     	border-spacing: 1px;
-        padding: 0;   
+        padding: 0;
+        display: table;
+        width: 100%;
     	
         .competence-table__header{
+            display: table;
+            width: 100%;
+            
             .competence-table__th-name{
                 font-size: 12px;   
-                display: inline-block;   
+                display: table-cell;   
                 padding: 4px;
                 background-color: #dbdbdb;
                 border-left: dotted 1px #cccccc;
@@ -24,6 +29,7 @@
             vertical-align: top;
             padding: 0px;
             background-color: #ffffff;
+            display: table;
             
             .category-competence__title{
                 padding: 4px;
@@ -34,19 +40,22 @@
                 text-align: left;
                 background-color: #eee;
                 color: #cd2826;
+                display: table-caption;
             }
             
             .competence{
                 border-bottom: dotted 1px #cccccc;
                 padding: 4px;
                 text-align: left;
+                display: table-row;
                 
                 &:last-child {
                     border-bottom: none;
                 }
                 
                 .competence__field{
-                    display: inline-block;
+                    display: table-cell;
+                    width: 30%;
                     
                     padding: 0px;
                     font-size: 12px;

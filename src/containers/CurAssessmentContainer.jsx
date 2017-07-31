@@ -12,10 +12,10 @@ const Label = ({ title }) => (
 
 const TypeLabel = ({ title, bossFullname }) => (
 	<span className='cur-assessment__title'>
-		<strong className='cur-assessment__title--left'>
+		<strong className='cur-assessment__title--left col-lg-6 col-md-6 col-sm-6 col-xs-6'>
 			{title}
 		</strong>
-		<strong className='cur-assessment__title--right'>
+		<strong className='cur-assessment__title--right col-lg-6 col-md-6 col-sm-6 col-xs-6'>
 			{bossFullname}
 		</strong>
 	</span>

@@ -37,6 +37,10 @@ class AssessmentContainer extends Component {
 			});
 			return;
 		}
+		
+		if (this.props.step === 'secondStep'){
+			alert('После сохранения бланка оценка не забудьте провести оценочную встречу с сотрудником.');
+		}
 		const paId = getUrlParams(window.location.href, 'pa_id');
 		this.setState({
 			error: null
@@ -135,6 +139,11 @@ class AssessmentContainer extends Component {
 											loading={isFetchingCompetences}
 										/>
 									}
+									<ButtonDefault
+										text='Печать формы'
+										className='assessment-container__button'
+										onClick={window.print}
+									/>
 								</div>
 							}
 						</div>
