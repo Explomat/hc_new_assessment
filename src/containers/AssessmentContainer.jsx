@@ -33,7 +33,7 @@ class AssessmentContainer extends Component {
 		}
 		if (!this._isTasksFilled()){
 			this.setState({
-				error: 'Необходимо, чтобы суммарный вес индивидульных показателей был ровно 100%'
+				error: 'Необходимо корректно заполнить суммарный вес показателей'
 			});
 			return;
 		}
@@ -65,6 +65,8 @@ class AssessmentContainer extends Component {
 				return c.userMark.isEdit && userPayload !== '0';
 			} else if (isBoss){
 				return c.bossMark.isEdit && bossPayload !== '0';
+			} else if (isCollaborator){
+				return c.userMark.isEdit && userPayload !== '0';
 			}
 			return false;
 		});
@@ -73,18 +75,25 @@ class AssessmentContainer extends Component {
 
 	_isTasksFilled(){
 		const { pas, tasks } = this.props;
+
 		return pas.filter(p => {
 			if (!p.isEdit){
 				return true;
 			}
-			const _tasks = p.tasks.map(t => tasks[t]);
-			return _tasks
+			const _tasks = p.tasks.map(t => tasks[t]).filter(t => !t.isRemoved);
+			const summ = _tasks
 				.map(t => t.weight)
 				.reduce((f, s) => {
 					const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;
 					const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
 					return fTask + sTask;
-				}, 0) === 100;
+				}, 0);
+			if (p.type === 'quarter'){
+				return summ === 100;
+			} else if (p.type === 'year'){
+				return summ >= 100 && summ <= 150;
+			}
+			return true;
 		}).length === pas.length;
 	}
 	

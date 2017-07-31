@@ -95,6 +95,27 @@ class PaContainer extends Component {
 			</table>
 		);
 	}
+
+	_isTasksFilled(){
+		const { isEdit, type, tasks } = this.props;
+
+		if (!isEdit){
+			return true;
+		}
+
+		const summ = tasks
+			.map(t => t.weight)
+			.reduce((f, s) => {
+				const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;
+				const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
+				return fTask + sTask;
+			}, 0);
+		if (type === 'quarter'){
+			return summ === 100;
+		} else if (type === 'year'){
+			return summ >= 100 && summ <= 150;
+		}
+	}
 	
 	render(){
 		const {
@@ -167,6 +188,13 @@ class PaContainer extends Component {
 							</span>
 						)}
 					</div>
+					{(isEdit && !this._isTasksFilled()) &&
+						<div
+							className='pa__summ-weight-description'
+						>
+								{`Суммарный вес показателей должен быть ${type === 'quarter' ? 'ровно 100%' : 'от 100% до 150%'}`}
+						</div>
+					}
 					<Portal nodeId={dom.portalModalId}>
 						{isDisplayConfirm &&
 							<Confirm
