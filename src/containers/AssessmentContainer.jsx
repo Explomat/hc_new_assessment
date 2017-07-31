@@ -88,12 +88,7 @@ class AssessmentContainer extends Component {
 					const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
 					return fTask + sTask;
 				}, 0);
-			if (p.type === 'quarter'){
-				return summ === 100;
-			} else if (p.type === 'year'){
-				return summ >= 100 && summ <= 150;
-			}
-			return true;
+			return summ === 100;
 		}).length === pas.length;
 	}
 	

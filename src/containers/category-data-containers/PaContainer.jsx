@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ViewTask from '../../components/ViewTask';
 import Task from '../../components/Task';
+import { AlertDanger } from '../../components/modules/alert';
 import { ButtonDefault, ButtonPrimary } from '../../components/modules/button';
 import { AlertInfo } from '../../components/modules/alert';
 import Portal from '../../components/modules/portal';
@@ -97,7 +98,7 @@ class PaContainer extends Component {
 	}
 
 	_isTasksFilled(){
-		const { isEdit, type, tasks } = this.props;
+		const { isEdit, tasks } = this.props;
 
 		if (!isEdit){
 			return true;
@@ -110,11 +111,7 @@ class PaContainer extends Component {
 				const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
 				return fTask + sTask;
 			}, 0);
-		if (type === 'quarter'){
-			return summ === 100;
-		} else if (type === 'year'){
-			return summ >= 100 && summ <= 150;
-		}
+		return summ === 100;
 	}
 	
 	render(){
@@ -189,11 +186,7 @@ class PaContainer extends Component {
 						)}
 					</div>
 					{(isEdit && !this._isTasksFilled()) &&
-						<div
-							className='pa__summ-weight-description'
-						>
-								{`Суммарный вес показателей должен быть ${type === 'quarter' ? 'ровно 100%' : 'от 100% до 150%'}`}
-						</div>
+						<AlertDanger isClose={false} text='Суммарный вес показателей должен быть ровно 100%' />
 					}
 					<Portal nodeId={dom.portalModalId}>
 						{isDisplayConfirm &&
