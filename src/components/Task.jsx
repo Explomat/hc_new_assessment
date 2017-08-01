@@ -120,7 +120,7 @@ class Task extends Component {
 									return (
 										<div key={index} className='new-task__weight'>
 											<InputReal
-												value={weight - 10}
+												value={weight}
 												min={0}
 												title={tasksHeader.weight}
 												onChange={(val) => this.handleChangeField('weight', (val || 0))}
