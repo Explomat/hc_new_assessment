@@ -21,7 +21,9 @@ const TypeContainer = ({ id, type }) => {
 
 function mapStateToProps(state, ownProps) {
 	const { id } = ownProps;
-	return { ...state.changes[id] };
+	return {
+		...state.changes[id]
+	};
 }
 
 

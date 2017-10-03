@@ -101,6 +101,7 @@ class PaContainer extends Component {
 			type,
 			isEdit,
 			title,
+			blockFields,
 			tasksHeader,
 			tasks,
 			checkedTasksCount,
@@ -142,6 +143,7 @@ class PaContainer extends Component {
 						{isDisplayNewTask &&
 							<Task
 								type={type}
+								blockFields={blockFields}
 								tasksHeader={tasksHeader}
 								onClose={this.handleToogleDisplayNewTask}
 								onSave={this.handleAddNewTask}
@@ -150,6 +152,7 @@ class PaContainer extends Component {
 						{isDisplayEditTask &&
 							<Task
 								type={type}
+								blockFields={blockFields}
 								tasksHeader={tasksHeader}
 								title='Редактирование задачи'
 								footerButtonText='Сохранить'

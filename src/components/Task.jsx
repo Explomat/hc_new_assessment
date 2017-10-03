@@ -10,9 +10,10 @@ class Task extends Component {
 	constructor(props){
 		super(props);
 		
-		this.disabledTypes = {
-			'fact': props.type === 'year' || props.type === 'halfYear' || props.type === 'quarter'
-		};
+		this.disabledTypes = (props.blockFields || []).reduce((f, s) => {
+			f[s] = true;
+			return f;
+		}, {});
 		this.handleSave = this.handleSave.bind(this);
 		this.handleChangeField = this.handleChangeField.bind(this);
 		this.handleCloseError = this.handleCloseError.bind(this);
@@ -124,6 +125,7 @@ class Task extends Component {
 												title={tasksHeader.weight}
 												onChange={(val) => this.handleChangeField('weight', (val || 0))}
 												className='form-control'
+												disabled={this.disabledTypes.weight}
 											/>
 										</div>
 									);
@@ -135,6 +137,7 @@ class Task extends Component {
 												title={tasksHeader.threshold}
 												onChange={(val) => this.handleChangeField('threshold', (val || 0))}
 												className='form-control'
+												disabled={this.disabledTypes.threshold}
 											/>
 										</div>
 									);
@@ -146,6 +149,7 @@ class Task extends Component {
 												title={tasksHeader.plan}
 												onChange={(val) => this.handleChangeField('plan', (val || 0))}
 												className='form-control'
+												disabled={this.disabledTypes.plan}
 											/>
 										</div>
 									);
@@ -157,6 +161,7 @@ class Task extends Component {
 												title={tasksHeader.challenge}
 												onChange={(val) => this.handleChangeField('challenge', (val || 0))}
 												className='form-control'
+												disabled={this.disabledTypes.challenge}
 											/>
 										</div>
 									);

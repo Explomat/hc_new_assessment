@@ -42,7 +42,7 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 										className='cur-assessment__type-container'
 									>
 										<DropInfoBody>
-											<TypeContainer key={c.id} id={c.id} />
+											<TypeContainer key={c.id} {...c} />
 										</DropInfoBody>
 									</DropInfo>
 								);
@@ -66,6 +66,7 @@ function mapStateToProps(state, ownProps) {
 		changes: assessment.changes.map(c => {
 			return {
 				id: state.changes[c].id,
+				type: state.changes[c].type,
 				title: state.changes[c].title,
 				bossFullname: state.changes[c].bossFullname
 			};

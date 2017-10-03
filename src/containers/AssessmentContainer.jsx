@@ -77,7 +77,7 @@ class AssessmentContainer extends Component {
 			if (!p.isEdit){
 				return true;
 			}
-			const _tasks = p.tasks.map(t => tasks[t]);
+			const _tasks = p.tasks.map(t => tasks[t]).filter(ft => !ft.isRemoved);
 			return _tasks
 				.map(t => t.weight)
 				.reduce((f, s) => {

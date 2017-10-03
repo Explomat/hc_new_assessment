@@ -22,6 +22,7 @@ export function assessments(){
 										'id': '6447215975931669071',
 										'isEdit': false,
 										'title': 'Данные за первое полугодие',
+										'blockFields': [ 'fact' ],
 										'tasksHeader': {
 											'name': 'Наименование',
 											'unit': 'eд.изм-я',
@@ -87,6 +88,7 @@ export function assessments(){
 										'id': '6447213970346096472',
 										'isEdit': false,
 										'title': 'Результат за январь 2017',
+										'blockFields': [ 'fact' ],
 										'tasksHeader': {
 											'name': 'Наименование',
 											'unit': 'eд.изм-я',
@@ -160,6 +162,7 @@ export function assessments(){
 										'id': '6447213964171935828',
 										'isEdit': false,
 										'title': 'Результат за февраль 2017',
+										'blockFields': [ 'fact' ],
 										'tasksHeader': {
 											'name': 'Наименование',
 											'unit': 'eд.изм-я',
@@ -212,6 +215,7 @@ export function assessments(){
 										'id': '6447213969419214830',
 										'isEdit': false,
 										'title': 'Результат за март 2017',
+										'blockFields': [ 'fact' ],
 										'tasksHeader': {
 											'name': 'Наименование',
 											'unit': 'eд.изм-я',
@@ -282,6 +286,7 @@ export function assessments(){
 								'id': '6447207745862773255',
 								'isEdit': false,
 								'title': 'Итоги за второй квартал 2017',
+								'blockFields': [ 'fact' ],
 								'tasksHeader': {
 									'name': 'Наименование',
 									'unit': 'eд.изм-я',
@@ -378,69 +383,10 @@ export function assessments(){
 								]
 							},
 							{
-								'id': '6447207746154413398',
-								'isEdit': true,
-								'title': 'Итоги за третий квартал 2017',
-								'tasksHeader': {
-									'name': 'Наименование',
-									'unit': 'eд.изм-я',
-									'weight': 'вес, %',
-									'threshold': 'MIN',
-									'plan': 'TARG',
-									'challenge': 'MAX',
-									'fact': 'ФАКТ',
-									'percent': '% выполнения'
-								},
-								'tasks': [
-									{
-										'id': 'wl_standart_comand_KPI_15960',
-										'name': 'Активные клиенты Банк/Дирекция',
-										'threshold': '2641598',
-										'plan': '3301998',
-										'challenge': '3962398',
-										'fact': '',
-										'mark': '0',
-										'weight': '15',
-										'isEdit': false,
-										'unit': 'процент',
-										'percent': '0'
-									},
-									{
-										'id': 'wl_standart_comand_KPI_9084',
-										'name': 'NPS рыночный Банк/Дирекция',
-										'threshold': '14',
-										'plan': '18',
-										'challenge': '23',
-										'fact': '',
-										'mark': '0',
-										'weight': '15',
-										'isEdit': false,
-										'unit': 'процент',
-										'percent': '0'
-									}
-								],
-								'calcs': [
-									{
-										'id': 'calc_0',
-										'name': 'Суммарный вес индивидуальных показателей',
-										'value': '30'
-									},
-									{
-										'id': '1',
-										'name': 'Процент выполнения',
-										'value': '0'
-									},
-									{
-										'id': '2',
-										'name': 'Процент премии',
-										'value': '0'
-									}
-								]
-							},
-							{
 								'id': '6447207746937950240',
 								'isEdit': true,
 								'title': 'Итоги за четвертый квартал 2017',
+								'blockFields': [ 'fact' ],
 								'tasksHeader': {
 									'name': 'Наименование',
 									'unit': 'eд.изм-я',
