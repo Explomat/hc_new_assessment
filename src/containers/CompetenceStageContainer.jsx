@@ -11,12 +11,12 @@ class CompetenceStageContainer extends Component {
 				<div className='competence-block__header'>
 					<strong>{title}</strong>
 				</div>
-				<div className='competence-table col-lg-12 col-md-12 col-sm-12'>
+				<div className='competence-table'>
 					<div className='competence-table__header'>
 						{tasksHeader.map((th, index) =>
 							<span
 								key={index}
-								className='competence-table__th-name col-lg-4 col-md-4 col-sm-4'
+								className='competence-table__th-name'
 							>
 								{th}
 							</span>

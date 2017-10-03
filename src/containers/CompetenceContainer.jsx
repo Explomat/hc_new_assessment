@@ -32,11 +32,11 @@ class CompetenceContainer extends Component {
 	render(){
 		const { title, userMark, bossMark/*, comment */ } = this.props;
 		return (
-			<div className='competence col-lg-12 col-md-12 col-sm-12'>
-				<span className='competence__title competence__field col-lg-4 col-md-4 col-sm-4'>
+			<div className='competence'>
+				<span className='competence__title competence__field'>
 					{title.value}
 				</span>
-				<span className='competence__user-mark competence__field col-lg-4 col-md-4 col-sm-4'>
+				<span className='competence__user-mark competence__field'>
 					{userMark &&
 						<DropDown
 							selectedPayload={userMark.value.selectedPayload}
@@ -46,7 +46,7 @@ class CompetenceContainer extends Component {
 						/>
 					}
 				</span>
-				<span className='competence__boss-mark competence__field col-lg-4 col-md-4 col-sm-4'>
+				<span className='competence__boss-mark competence__field'>
 					{bossMark &&
 						<DropDown
 							selectedPayload={bossMark.value.selectedPayload}

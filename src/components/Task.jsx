@@ -122,6 +122,7 @@ class Task extends Component {
 										<div key={index} className='new-task__weight'>
 											<InputReal
 												value={weight}
+												min={0}
 												title={tasksHeader.weight}
 												onChange={(val) => this.handleChangeField('weight', (val || 0))}
 												className='form-control'

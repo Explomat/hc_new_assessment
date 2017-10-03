@@ -7,6 +7,7 @@ import '../style/pa.styl';
 import '../style/bootstrap-grid.css';
 
 import '../style/assessment.styl';
+import '../style/print.styl';
 
 import '../style/icon-file.css';
 import '../fonts/icon-file.eot';

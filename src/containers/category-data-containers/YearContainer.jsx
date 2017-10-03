@@ -13,9 +13,9 @@ class YearContainer extends Component {
 		} = this.props;
 		return (
 			<div className='year'>
-				<div className='year__header'>
-					<strong className='year__title'>{title}</strong>
-					<strong className='year__boss-fullname'>{bossFullname}</strong>
+				<div className='year__header clearfix'>
+					<strong className='year__title col-lg-6 col-md-6 col-sm-6 col-xs-6'>{title}</strong>
+					<strong className='year__boss-fullname col-lg-6 col-md-6 col-sm-6 col-xs-6'>{bossFullname}</strong>
 				</div>
 				<div className='pas'>
 					{pas.map((p, index) =>

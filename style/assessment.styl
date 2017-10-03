@@ -5,6 +5,10 @@
 	margin-right: 0px !important;
 }
 
+.form-container{
+	overflow-y: visible !important;
+}
+
 .assessment-container{
 	min-width: 700px;
 	color: #444;
@@ -29,6 +33,12 @@
 		    background-color: #fff;
 		    margin-bottom: 32px;
 		    
+		    .cur-assessment__root-title{
+	    		font-size: 16px;
+	    		padding: 16px;
+	    		font-weight: bold;
+	    	}
+
 		    .cur-assessment__type-container{
 		    	margin-bottom: 16px;
 		    	
@@ -36,11 +46,12 @@
 		    		font-size: 14px;
 		    		
 		    		&--left {
-
+		    			word-break: break-word;
 		    		}
 		    		&--right {
-		    			float: right;
 		    			padding-right: 40px;
+		    			text-align: right;
+		    			word-break: break-word;
 		    		}
 		    	}
 		    }
@@ -55,6 +66,7 @@
 				
 				.assessment-container__button{
 					min-width: 200px;
+					margin-right: 8px;
 				}
 			}
 		}

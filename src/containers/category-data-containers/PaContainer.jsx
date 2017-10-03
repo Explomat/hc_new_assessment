@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ViewTask from '../../components/ViewTask';
 import Task from '../../components/Task';
+import { AlertDanger } from '../../components/modules/alert';
 import { ButtonDefault, ButtonPrimary } from '../../components/modules/button';
 import { AlertInfo } from '../../components/modules/alert';
 import Portal from '../../components/modules/portal';
@@ -95,6 +96,23 @@ class PaContainer extends Component {
 			</table>
 		);
 	}
+
+	_isTasksFilled(){
+		const { isEdit, tasks } = this.props;
+
+		if (!isEdit){
+			return true;
+		}
+
+		const summ = tasks
+			.map(t => t.weight)
+			.reduce((f, s) => {
+				const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;
+				const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
+				return fTask + sTask;
+			}, 0);
+		return summ === 100;
+	}
 	
 	render(){
 		const {
@@ -170,6 +188,9 @@ class PaContainer extends Component {
 							</span>
 						)}
 					</div>
+					{(isEdit && !this._isTasksFilled()) &&
+						<AlertDanger isClose={false} text='Суммарный вес показателей должен быть ровно 100%' />
+					}
 					<Portal nodeId={dom.portalModalId}>
 						{isDisplayConfirm &&
 							<Confirm

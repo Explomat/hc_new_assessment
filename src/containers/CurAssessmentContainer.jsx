@@ -5,17 +5,17 @@ import { DropInfo, DropInfoBody } from '../components/modules/dropinfo';
 import { connect } from 'react-redux';
 
 const Label = ({ title }) => (
-	<strong className='category__title'>
+	<div className='cur-assessment__root-title'>
 		{title}
-	</strong>
+	</div>
 );
 
 const TypeLabel = ({ title, bossFullname }) => (
 	<span className='cur-assessment__title'>
-		<strong className='cur-assessment__title--left'>
+		<strong className='cur-assessment__title--left col-lg-6 col-md-6 col-sm-6 col-xs-6'>
 			{title}
 		</strong>
-		<strong className='cur-assessment__title--right'>
+		<strong className='cur-assessment__title--right col-lg-6 col-md-6 col-sm-6 col-xs-6'>
 			{bossFullname}
 		</strong>
 	</span>
@@ -24,12 +24,14 @@ const TypeLabel = ({ title, bossFullname }) => (
 const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 	return (
 		<div className='cur-assessment'>
-			<DropInfo
+			<Label title={title}/>
+			{/*<DropInfo
 				expanded
 				label={<Label title={title} className='category__title'/>}
 				transitionTimeout={0.5}
 				classNameBlock='cur-assessment__drop-title'
 			>
+<<<<<<< HEAD
 				<DropInfoBody>
 					<div className='cur-assessment__changes'>
 						{changes.map((c, index) => {
@@ -55,6 +57,33 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 					</div>
 				</DropInfoBody>
 			</DropInfo>
+=======
+				<DropInfoBody>*/}
+			<div className='cur-assessment__changes'>
+				{changes.map((c, index) => {
+					if (index < changes.length - 1){
+						return (
+							<DropInfo
+								key={c.id}
+								label={<TypeLabel {...c}/>}
+								transitionTimeout={0.5}
+								className='cur-assessment__type-container'
+							>
+								<DropInfoBody>
+									<TypeContainer key={c.id} id={c.id} />
+								</DropInfoBody>
+							</DropInfo>
+						);
+					}
+					return <TypeContainer key={c.id} id={c.id} />;
+				})}
+			</div>
+			<div className='cur-assessment__competences'>
+				{competenceStages.map(c => <CompetenceStageContainer key={c} id={c} />)}
+			</div>
+			{/*</DropInfoBody>
+			</DropInfo>*/}
+>>>>>>> origin/master
 		</div>
 	);
 };

@@ -33,9 +33,13 @@ class AssessmentContainer extends Component {
 		}
 		if (!this._isTasksFilled()){
 			this.setState({
-				error: 'Необходимо, чтобы суммарный вес индивидульных показателей был ровно 100%'
+				error: 'Необходимо корректно заполнить суммарный вес показателей'
 			});
 			return;
+		}
+		
+		if (this.props.step === 'secondStep'){
+			alert('После сохранения бланка оценка не забудьте провести оценочную встречу с сотрудником.');
 		}
 		const paId = getUrlParams(window.location.href, 'pa_id');
 		this.setState({
@@ -65,6 +69,8 @@ class AssessmentContainer extends Component {
 				return c.userMark.isEdit && userPayload !== '0';
 			} else if (isBoss){
 				return c.bossMark.isEdit && bossPayload !== '0';
+			} else if (isCollaborator){
+				return c.userMark.isEdit && userPayload !== '0';
 			}
 			return false;
 		});
@@ -73,18 +79,25 @@ class AssessmentContainer extends Component {
 
 	_isTasksFilled(){
 		const { pas, tasks } = this.props;
+
 		return pas.filter(p => {
 			if (!p.isEdit){
 				return true;
 			}
+<<<<<<< HEAD
 			const _tasks = p.tasks.map(t => tasks[t]).filter(ft => !ft.isRemoved);
 			return _tasks
+=======
+			const _tasks = p.tasks.map(t => tasks[t]).filter(t => !t.isRemoved);
+			const summ = _tasks
+>>>>>>> origin/master
 				.map(t => t.weight)
 				.reduce((f, s) => {
 					const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;
 					const sTask = /\d+\.?(\d+)?/.test(s) ? Number(s) : 0;
 					return fTask + sTask;
-				}, 0) === 100;
+				}, 0);
+			return summ === 100;
 		}).length === pas.length;
 	}
 	
@@ -131,6 +144,11 @@ class AssessmentContainer extends Component {
 											loading={isFetchingCompetences}
 										/>
 									}
+									<ButtonDefault
+										text='Печать формы'
+										className='assessment-container__button'
+										onClick={window.print}
+									/>
 								</div>
 							}
 						</div>
