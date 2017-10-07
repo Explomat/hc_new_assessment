@@ -25,40 +25,6 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 	return (
 		<div className='cur-assessment'>
 			<Label title={title}/>
-			{/*<DropInfo
-				expanded
-				label={<Label title={title} className='category__title'/>}
-				transitionTimeout={0.5}
-				classNameBlock='cur-assessment__drop-title'
-			>
-<<<<<<< HEAD
-				<DropInfoBody>
-					<div className='cur-assessment__changes'>
-						{changes.map((c, index) => {
-							if (index < changes.length - 1){
-								return (
-									<DropInfo
-										key={c.id}
-										label={<TypeLabel {...c}/>}
-										transitionTimeout={0.5}
-										className='cur-assessment__type-container'
-									>
-										<DropInfoBody>
-											<TypeContainer key={c.id} {...c} />
-										</DropInfoBody>
-									</DropInfo>
-								);
-							}
-							return <TypeContainer key={c.id} id={c.id} />;
-						})}
-					</div>
-					<div className='cur-assessment__competences'>
-						{competenceStages.map(c => <CompetenceStageContainer key={c} id={c} />)}
-					</div>
-				</DropInfoBody>
-			</DropInfo>
-=======
-				<DropInfoBody>*/}
 			<div className='cur-assessment__changes'>
 				{changes.map((c, index) => {
 					if (index < changes.length - 1){
@@ -81,9 +47,6 @@ const CurAssessmentContainer = ({ title, changes, competenceStages }) => {
 			<div className='cur-assessment__competences'>
 				{competenceStages.map(c => <CompetenceStageContainer key={c} id={c} />)}
 			</div>
-			{/*</DropInfoBody>
-			</DropInfo>*/}
->>>>>>> origin/master
 		</div>
 	);
 };

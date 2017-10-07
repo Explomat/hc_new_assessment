@@ -84,13 +84,8 @@ class AssessmentContainer extends Component {
 			if (!p.isEdit){
 				return true;
 			}
-<<<<<<< HEAD
-			const _tasks = p.tasks.map(t => tasks[t]).filter(ft => !ft.isRemoved);
-			return _tasks
-=======
 			const _tasks = p.tasks.map(t => tasks[t]).filter(t => !t.isRemoved);
 			const summ = _tasks
->>>>>>> origin/master
 				.map(t => t.weight)
 				.reduce((f, s) => {
 					const fTask = /\d+\.?(\d+)?/.test(f) ? Number(f) : 0;

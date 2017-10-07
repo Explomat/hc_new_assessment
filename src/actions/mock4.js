@@ -265,6 +265,7 @@ export function assessments(){
 								'isEdit': true,
 								'type': 'year',
 								'title': 'Данные за год',
+								'blockFields': [ 'fact' ],
 								'tasksHeader': {
 									'name': 'Наименование',
 									'unit': 'eд.изм-я',
