@@ -74,6 +74,16 @@ input-box() {
     position: relative;
     outline: 0;
     margin-bottom: 16px;
+    
+    &__disabled {
+        position: absolute;
+        height: 32px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+        background-color: rgba(169, 169, 169, 0.14);
+    }
 }
 
 input-box__input() {

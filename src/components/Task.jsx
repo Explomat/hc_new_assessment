@@ -4,6 +4,7 @@ import Modal from './modules/modal';
 import { TextView, TextAreaView } from './modules/text-label';
 import { AlertDanger } from './modules/alert';
 import InputReal from './modules/input-real';
+import { isReal } from '../utils/validate';
 
 class Task extends Component {
 	
@@ -44,7 +45,7 @@ class Task extends Component {
 				threshold: threshold || 0,
 				plan: plan || 0,
 				challenge: challenge ||  0,
-				fact: fact || 0,
+				fact: fact || '',
 				percent: percent || 0,
 				comment: comment || ''
 			},
@@ -169,12 +170,14 @@ class Task extends Component {
 								case 'fact':
 									return (
 										<div key={index} className='new-task__fact'>
-											<InputReal
+											<TextView
 												value={fact}
-												title={tasksHeader.fact}
-												onChange={(val) => this.handleChangeField('fact', (val || 0))}
-												className='form-control'
-												disabled={this.disabledTypes.fact}
+												placeholder={tasksHeader.fact}
+												onChange={(val) => this.handleChangeField('fact', (val || ''))}
+												isValid={val => {
+													return isReal(val) || val === '';
+												}}
+												disabled={this.disabledTypes.fact} 
 											/>
 										</div>
 									);
@@ -184,7 +187,7 @@ class Task extends Component {
 											<TextAreaView
 												value={comment}
 												placeholder={tasksHeader.comment}
-												onChange={(val) => this.handleChangeField('comment', (val || 0))}
+												onChange={(val) => this.handleChangeField('comment', (val || ''))}
 											/>
 										</div>
 									);

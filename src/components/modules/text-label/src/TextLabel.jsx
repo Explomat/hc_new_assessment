@@ -69,11 +69,13 @@ const TextBase = {
 	},
 
 	handleChange(e) {
-		this.addNotValidClassIfNeeded(e.target.value);
 		const val = e.target.value;
-		this.setState({ value: e.target.value });
-		if (this.props.onChange && this.props.isValid(val)) {
-			this.props.onChange(val);
+		//this.addNotValidClassIfNeeded(val);
+		if (this.props.isValid(val)){
+			this.setState({ value: val });
+			if (this.props.onChange) {
+				this.props.onChange(val);
+			}
 		}
 	},
 
@@ -81,7 +83,7 @@ const TextBase = {
 		let val = e.target.value;
 		if (!this.props.isValid(e.target.value)) {
 			this.setState({ value: this.props.value });
-			e.target.classList.remove(this.props.notValidClass);
+			//e.target.classList.remove(this.props.notValidClass);
 			val = this.props.value;
 		}
 
@@ -116,6 +118,7 @@ const TextView = React.createClass({
 		const isPlaceholderClass = this.props.placeholder ? '' : 'input-box__input--empty-placeholder';
 		return (
 			<div className={'input-box ' + className} tabIndex={1} onBlur={this.handleDetranslate}>
+				{this.props.disabled && <div className='input-box__disabled' />}
 				<input
 					ref='inpt'
 					name={name}
