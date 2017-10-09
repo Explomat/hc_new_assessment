@@ -1,16 +1,16 @@
-Hash: 5660580450fbf5a6c0cd
+Hash: 69aad923f93366f80512
 Version: webpack 2.7.0
-Time: 41002ms
+Time: 15912ms
                                                 Asset       Size  Chunks                    Chunk Names
  fonts/bb7dd692d58b601c8dce47f2a6df6680.icon-file.eot    33.2 kB          [emitted]         
 fonts/3682a480291da6c609a04f3d049bb3c3.icon-file.woff    19.2 kB          [emitted]         
- fonts/4984fd3fad444b5b0183e5d79da39c75.icon-file.svg      41 kB          [emitted]         
+ fonts/16725937b098d4d2056e68843c6cc671.icon-file.svg    41.3 kB          [emitted]         
  fonts/b77466892c1e5e5a894cf1e0adbf0ab3.icon-file.ttf      33 kB          [emitted]         
-                       c3612aad6620eedbee06.bundle.js     704 kB       0  [emitted]  [big]  main
-                        5660580450fbf5a6c0cd.react.js    42.9 kB       1  [emitted]         react
-             style/c3612aad6620eedbee06.style.min.css    57.1 kB       0  [emitted]         main
+                       702e6296fa06edce83e4.bundle.js     705 kB       0  [emitted]  [big]  main
+                        69aad923f93366f80512.react.js    42.9 kB       1  [emitted]         react
+             style/702e6296fa06edce83e4.style.min.css    57.3 kB       0  [emitted]         main
                                            index.html  710 bytes          [emitted]         
-chunk    {0} c3612aad6620eedbee06.bundle.js, style/c3612aad6620eedbee06.style.min.css (main) 1.3 MB {1} [initial] [rendered]
+chunk    {0} 702e6296fa06edce83e4.bundle.js, style/702e6296fa06edce83e4.style.min.css (main) 1.3 MB {1} [initial] [rendered]
    [84] ./src/config.js 1.52 kB {0} [built]
   [169] ./~/react-dom/index.js 59 bytes {0} [built]
   [269] ./src/containers/Root.js 153 bytes {0} [built]
@@ -19,15 +19,15 @@ chunk    {0} c3612aad6620eedbee06.bundle.js, style/c3612aad6620eedbee06.style.mi
   [272] ./~/babel-polyfill/lib/index.js 833 bytes {0} [built]
   [273] ./~/classlist-polyfill/src/index.js 5.7 kB {0} [built]
   [274] ./~/console-polyfill/index.js 831 bytes {0} [built]
-  [500] ./style/competence-block.styl 41 bytes {0} [built]
-  [502] ./style/pa.styl 41 bytes {0} [built]
-  [503] ./style/print.styl 41 bytes {0} [built]
-  [504] ./style/quarter.styl 41 bytes {0} [built]
-  [505] ./style/year.styl 41 bytes {0} [built]
-  [631] ./~/react-dom/lib/ReactDOM.js 5.17 kB {0} [built]
-  [709] ./src/index.jsx 2.01 kB {0} [built]
+  [501] ./style/competence-block.styl 41 bytes {0} [built]
+  [503] ./style/pa.styl 41 bytes {0} [built]
+  [504] ./style/print.styl 41 bytes {0} [built]
+  [505] ./style/quarter.styl 41 bytes {0} [built]
+  [506] ./style/year.styl 41 bytes {0} [built]
+  [632] ./~/react-dom/lib/ReactDOM.js 5.17 kB {0} [built]
+  [710] ./src/index.jsx 2 kB {0} [built]
      + 715 hidden modules
-chunk    {1} 5660580450fbf5a6c0cd.react.js (react) 116 kB [entry] [rendered]
+chunk    {1} 69aad923f93366f80512.react.js (react) 116 kB [entry] [rendered]
     [1] ./~/react/react.js 56 bytes {1} [built]
     [6] ./~/fbjs/lib/warning.js 2.1 kB {1} [built]
    [11] ./~/object-assign/index.js 2.11 kB {1} [built]
@@ -36,18 +36,18 @@ chunk    {1} 5660580450fbf5a6c0cd.react.js (react) 116 kB [entry] [rendered]
   [261] ./~/react/lib/ReactBaseClasses.js 5.44 kB {1} [built]
   [263] ./~/react/lib/ReactElementSymbol.js 622 bytes {1} [built]
   [264] ./~/react/lib/ReactNoopUpdateQueue.js 3.36 kB {1} [built]
-  [733] ./~/react/lib/ReactChildren.js 6.19 kB {1} [built]
-  [734] ./~/react/lib/ReactDOMFactories.js 5.48 kB {1} [built]
-  [735] ./~/react/lib/ReactPropTypes.js 500 bytes {1} [built]
-  [736] ./~/react/lib/ReactVersion.js 350 bytes {1} [built]
-  [737] ./~/react/lib/createClass.js 688 bytes {1} [built]
-  [741] ./~/react/lib/onlyChild.js 1.34 kB {1} [built]
+  [734] ./~/react/lib/ReactChildren.js 6.19 kB {1} [built]
+  [735] ./~/react/lib/ReactDOMFactories.js 5.48 kB {1} [built]
+  [736] ./~/react/lib/ReactPropTypes.js 500 bytes {1} [built]
+  [737] ./~/react/lib/ReactVersion.js 350 bytes {1} [built]
+  [738] ./~/react/lib/createClass.js 688 bytes {1} [built]
+  [742] ./~/react/lib/onlyChild.js 1.34 kB {1} [built]
   [760] multi react 28 bytes {1} [built]
      + 16 hidden modules
 
 WARNING in ./src/containers/AssessmentContainer.jsx
 
-[4m/home/explomat/repos/new_assessment/src/containers/AssessmentContainer.jsx[24m
+[4mC:\repos\hc_new_assessment\src\containers\AssessmentContainer.jsx[24m
   [2m42:4[22m  [33mwarning[39m  Unexpected alert  [2mno-alert[22m
 
 [33m[1m✖ 1 problem (0 errors, 1 warning)
@@ -58,7 +58,7 @@ WARNING in ./src/containers/AssessmentContainer.jsx
 
 WARNING in ./src/components/modules/numeric-input/src/NumericInput.jsx
 
-[4m/home/explomat/repos/new_assessment/src/components/modules/numeric-input/src/NumericInput.jsx[24m
+[4mC:\repos\hc_new_assessment\src\components\modules\numeric-input\src\NumericInput.jsx[24m
    [2m95:4[22m  [33mwarning[39m  Do not mutate state directly. Use setState()  [2mreact/no-direct-mutation-state[22m
   [2m176:3[22m  [33mwarning[39m  Do not mutate state directly. Use setState()  [2mreact/no-direct-mutation-state[22m
   [2m177:3[22m  [33mwarning[39m  Do not mutate state directly. Use setState()  [2mreact/no-direct-mutation-state[22m
@@ -70,7 +70,7 @@ WARNING in ./src/components/modules/numeric-input/src/NumericInput.jsx
  @ ./src/components/modules/input-real/index.js
  @ ./src/components/Task.jsx
  @ ./src/containers/category-data-containers/PaContainer.jsx
- @ ./src/containers/category-data-containers/YearContainer.jsx
+ @ ./src/containers/category-data-containers/QuarterContainer.jsx
  @ ./src/containers/TypeContainer.jsx
  @ ./src/containers/PrevAssessmentContainer.jsx
  @ ./src/containers/AssessmentContainer.jsx
@@ -82,50 +82,50 @@ Child html-webpack-plugin for "index.html":
     index.html  545 kB       0  
     chunk    {0} index.html 541 kB [entry] [rendered]
         [0] ./~/lodash/lodash.js 540 kB {0} [built]
-        [1] ./~/html-webpack-plugin/lib/loader.js!./dist/index.html 820 bytes {0} [built]
+        [1] ./~/html-webpack-plugin/lib/loader.js!./dist/index.html 846 bytes {0} [built]
         [2] (webpack)/buildin/global.js 509 bytes {0} [built]
         [3] (webpack)/buildin/module.js 517 bytes {0} [built]
-Child extract-text-webpack-plugin:
-                                                    Asset     Size  Chunks  Chunk Names
-     fonts/bb7dd692d58b601c8dce47f2a6df6680.icon-file.eot  33.2 kB          
-    fonts/3682a480291da6c609a04f3d049bb3c3.icon-file.woff  19.2 kB          
-     fonts/4984fd3fad444b5b0183e5d79da39c75.icon-file.svg    41 kB          
-     fonts/b77466892c1e5e5a894cf1e0adbf0ab3.icon-file.ttf    33 kB          
-    chunk    {0} extract-text-webpack-plugin-output-filename 10.9 kB [entry] [rendered]
-        [0] ./fonts/icon-file.eot 95 bytes {0} [built]
-        [1] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [2] ./fonts/icon-file.woff 96 bytes {0} [built]
-        [3] ./fonts/icon-file.svg 95 bytes {0} [built]
-        [4] ./fonts/icon-file.ttf 95 bytes {0} [built]
-        [5] ./~/css-loader!./style/icon-file.css 8.29 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 14.9 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./style/bootstrap-grid.css 12.6 kB {0} [built]
 Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 4.07 kB [entry] [rendered]
-        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/competence-block.styl 1.8 kB {0} [built]
-Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 4.03 kB [entry] [rendered]
-        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/half-year.styl 1.77 kB {0} [built]
+                                                    Asset     Size  Chunks  Chunk Names
+     fonts/bb7dd692d58b601c8dce47f2a6df6680.icon-file.eot  33.2 kB          
+    fonts/3682a480291da6c609a04f3d049bb3c3.icon-file.woff  19.2 kB          
+     fonts/16725937b098d4d2056e68843c6cc671.icon-file.svg  41.3 kB          
+     fonts/b77466892c1e5e5a894cf1e0adbf0ab3.icon-file.ttf    33 kB          
+    chunk    {0} extract-text-webpack-plugin-output-filename 11.3 kB [entry] [rendered]
+        [0] ./fonts/icon-file.eot 95 bytes {0} [built]
+        [1] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+        [2] ./fonts/icon-file.woff 96 bytes {0} [built]
+        [3] ./fonts/icon-file.svg 95 bytes {0} [built]
+        [4] ./fonts/icon-file.ttf 95 bytes {0} [built]
+        [5] ./~/css-loader!./style/icon-file.css 8.63 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 2.96 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/quarter.styl 705 bytes {0} [built]
 Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 3.42 kB [entry] [rendered]
+    chunk    {0} extract-text-webpack-plugin-output-filename 4.07 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/pa.styl 1.16 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/competence-block.styl 1.8 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 2.76 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/print.styl 498 bytes {0} [built]
 Child extract-text-webpack-plugin:
+    chunk    {0} extract-text-webpack-plugin-output-filename 4.03 kB [entry] [rendered]
+        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/half-year.styl 1.77 kB {0} [built]
+Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 3.02 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/year.styl 759 bytes {0} [built]
+Child extract-text-webpack-plugin:
+    chunk    {0} extract-text-webpack-plugin-output-filename 3.42 kB [entry] [rendered]
+        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/pa.styl 1.16 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 8.69 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
@@ -136,25 +136,29 @@ Child extract-text-webpack-plugin:
         [1] ./images/loading-circle.gif 5.1 kB {0} [built]
         [2] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./style/common.styl 4.88 kB {0} [built]
 Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 2.96 kB [entry] [rendered]
-        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/alert/src/style/alert.styl 699 bytes {0} [built]
-Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 4.92 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/button/src/style/button.styl 2.66 kB {0} [built]
+Child extract-text-webpack-plugin:
+    chunk    {0} extract-text-webpack-plugin-output-filename 2.96 kB [entry] [rendered]
+        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/alert/src/style/alert.styl 699 bytes {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 4.42 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/dropinfo/src/style/dropinfo.styl 2.15 kB {0} [built]
 Child extract-text-webpack-plugin:
+    chunk    {0} extract-text-webpack-plugin-output-filename 3.31 kB [entry] [rendered]
+        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/confirm/src/style/confirm.styl 1.05 kB {0} [built]
+Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 6.1 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/dropdown/src/style/dropdown.styl 3.84 kB {0} [built]
 Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 3.31 kB [entry] [rendered]
+    chunk    {0} extract-text-webpack-plugin-output-filename 5.2 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/confirm/src/style/confirm.styl 1.05 kB {0} [built]
+        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/checkbox/src/style/checkbox.styl 2.94 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 2.58 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
@@ -163,10 +167,6 @@ Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 3.18 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
         [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/modal/src/style/modal.styl 920 bytes {0} [built]
-Child extract-text-webpack-plugin:
-    chunk    {0} extract-text-webpack-plugin-output-filename 5.16 kB [entry] [rendered]
-        [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]
-        [1] ./~/css-loader!./~/postcss-loader/lib!./~/stylus-loader!./src/components/modules/checkbox/src/style/checkbox.styl 2.9 kB {0} [built]
 Child extract-text-webpack-plugin:
     chunk    {0} extract-text-webpack-plugin-output-filename 6.1 kB [entry] [rendered]
         [0] ./~/css-loader/lib/css-base.js 2.26 kB {0} [built]

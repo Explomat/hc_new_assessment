@@ -27,9 +27,11 @@ class Task extends Component {
 				.filter(k => {
 					return (
 						(k in tasksHeader) &&
-						fields[k].toString().trim() !== '' &&
-						(!(k in this.disabledTypes) ||
-						this.disabledTypes[k])
+						(this.disabledTypes[k] || 
+							fields[k].toString().trim() !== '' &&
+							(!(k in this.disabledTypes) ||
+							this.disabledTypes[k])
+						)
 					);
 				})
 				.length === Object.keys(tasksHeader).length;
