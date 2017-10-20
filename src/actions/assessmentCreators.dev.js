@@ -5,7 +5,7 @@ import toArray from 'lodash/toArray';
 
 import {
 	assessments
-} from './mock4';
+} from './mock5';
 import assessmentSchema from '../schemas';
 
 export function getAssessments(){

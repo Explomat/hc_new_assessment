@@ -137,8 +137,7 @@ DropInfo.childContextTypes = {
 };
 
 DropInfo.defaultProps = {
-	transitionTimeout: 1,
-	expanded: false
+	transitionTimeout: 1
 };
 
 export default DropInfo;
